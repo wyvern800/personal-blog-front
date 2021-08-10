@@ -24,14 +24,8 @@ module.exports = {
          }
       },
       {
-        test: /\.(sass|less|css)$/,
-        exclude: /node_modules/, // excluir os arquivos do node da transpilação
-        use: [{ loader: "style-loader" }, { loader: "css-loader" },{ loader: "less-loader" }],
-      },
-      {
-        test: /\.css$/, // para arquivos que terminam em css
-            exclude: /node_modules/,
-            use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+        test: /\.css$/i, // para arquivos que terminam em css
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
      },
      {
   test: /.*\.(gif|png|jpe?g)$/i, // Pode haver quantos caracteres quiser, escapa o . , pega todos os tipos de imagem, e o i é para pegar case insensitive
