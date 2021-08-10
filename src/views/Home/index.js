@@ -7,6 +7,7 @@ export default function Home() {
     <>
       <Container>
       This is the basic application - Home/index.js
+        <p>This is not a paragraph, it is an idea</p>
       </Container>
     </>
   );
