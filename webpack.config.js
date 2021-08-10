@@ -30,7 +30,6 @@ module.exports = {
       },
       {
         test: /\.css$/, // para arquivos que terminam em css
-            exclude: /node_modules/,
             use: [{ loader: "style-loader" }, { loader: "css-loader" }],
      },
      {
