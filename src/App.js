@@ -8,9 +8,6 @@ import Routes from './routes';
 import { Container } from 'react-bootstrap';
 import GlobalStyle from './styles/global';
 
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-
 function App() {
   return (
     <>
@@ -20,7 +17,6 @@ function App() {
             <Routes />
             <GlobalStyle />
           </Container>
-          <Button>Botão</Button>
           {/** <Rodape /> **/}
         </ScrollToTop>
       </BrowserRouter>
