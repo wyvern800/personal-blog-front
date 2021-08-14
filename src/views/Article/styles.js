@@ -40,5 +40,8 @@ export const ArticleFooter = styled.div`
 
   .author {
     margin: 10px;
+
+    font-weight: bold;
+    font-style: italic;
   }
 `;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import api from '../../services/api';
 
 import {
   Container,
@@ -11,20 +12,36 @@ import {
 import Title from '../../assets/components/Title';
 
 export default class Article extends Component {
+  state = {
+    post: [],
+  };
+
+  async componentDidMount() {
+    const { id } = this.props.match.params;
+
+    const response = await api.get(`/posts/${id}`);
+
+    console.log(response.data);
+
+    this.setState({ post: response.data });
+  }
+
   render() {
+    const { post } = this.state;
+
     return (
       <>
-        <Title name="Article Name" />
+        <Title name="Article" />
         <Container>
           <Main>
             <ArticleBody className="article">
               <ArticleHeader>
-                <div className="article-title">header</div>
+                <div className="article-title">{post.title}</div>
               </ArticleHeader>
-              article
+              {post.content}
               <ArticleFooter>
-                <div className="likes">10</div>
-                <div className="author">Victor</div>
+                <div className="likes">{post.likes + " pessoa"+(post.likes > 1 ? "s gostaram" : " gostou")+" deste artigo" }</div>
+                <div className="author">{post.author}</div>
               </ArticleFooter>
             </ArticleBody>
           </Main>

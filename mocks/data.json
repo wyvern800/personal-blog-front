@@ -3,16 +3,27 @@
     {
       "id": 1,
       "title": "A normal post",
-      "content": "Post content",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vestibulum a eros non laoreet. Vestibulum et nisi velit. Proin lorem velit, elementum at dolor ut, viverra eleifend augue. Praesent vitae porttitor augue, a ultrices leo. Donec aliquam velit eget magna consequat laoreet. Nunc vel dui sit amet metus consequat ultrices. Suspendisse feugiat in turpis eu mollis. Nam non nisi non neque euismod vestibulum sit amet ac tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin faucibus a turpis eu egestas.",
       "author": "wyvern800",
+      "likes": 20,
       "dateInsert": "2021-05-21T01:14:00.221Z",
       "dateUpdate": "2021-06-26T16:01:12.442Z"
     },
     {
       "id": 2,
       "title": "A extreme important post",
-      "content": "Post content like bike",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vestibulum a eros non laoreet. Vestibulum et nisi velit. Proin lorem velit, elementum at dolor ut, viverra eleifend augue. Praesent vitae porttitor augue, a ultrices leo. Donec aliquam velit eget magna consequat laoreet. Nunc vel dui sit amet metus consequat ultrices. Suspendisse feugiat in turpis eu mollis. Nam non nisi non neque euismod vestibulum sit amet ac tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin faucibus a turpis eu egestas.",
       "author": "Terrible-Developer",
+      "likes": 14,
+      "dateInsert": "2021-05-21T01:14:00.221Z",
+      "dateUpdate": "2021-06-26T16:01:12.442Z"
+    },
+    {
+      "id": 3,
+      "title": "Pharophinha online",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vestibulum a eros non laoreet. Vestibulum et nisi velit. Proin lorem velit, elementum at dolor ut, viverra eleifend augue. Praesent vitae porttitor augue, a ultrices leo. Donec aliquam velit eget magna consequat laoreet. Nunc vel dui sit amet metus consequat ultrices. Suspendisse feugiat in turpis eu mollis. Nam non nisi non neque euismod vestibulum sit amet ac tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin faucibus a turpis eu egestas.",
+      "author": "Terrible-Developer",
+      "likes": 1,
       "dateInsert": "2021-05-21T01:14:00.221Z",
       "dateUpdate": "2021-06-26T16:01:12.442Z"
     }

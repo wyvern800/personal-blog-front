@@ -8,8 +8,8 @@ import About from './views/About';
 export default function Routes() {
   return (
     <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/articles" component={Article} />
+        <Route exact path="/" exact component={Home} />
+        <Route path="/articles/:id" exact component={Article} />
         <Route path="/about" component={About}/>
         {/**<Route path="/characters" exact component={Character} />**/}
     </Switch>

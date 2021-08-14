@@ -21,7 +21,8 @@ export const Container = styled.div`
 
   // Navbar active link
   .nav-link-active {
-    color: red;
+    color: #3a5cc9;
+    font-weight: bold;
   }
 `;
 
