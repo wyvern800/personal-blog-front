@@ -5,10 +5,11 @@ export default createGlobalStyle`
   font-family: 'Viga', sans-serif;
   font-size: 14px;
   text-align: center;
-  color: white;
+  color: gray;
 }
 
 body, html {
-  background-color: rgb(26,27,31);
+  //background-color: rgba(26,27,31);
+  background-color: white;
 }
 `;

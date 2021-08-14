@@ -2,7 +2,7 @@ import styled, { keyframes, css } from 'styled-components';
 
 // Celular
 export const Container = styled.div`
-  @media(max-width: 600px) {
+  @media only screen and(max-width: 600px) {
     div.main {
       display: flex;
       flex-direction: column;
@@ -26,7 +26,7 @@ export const Main = styled.div`
   section {
     margin-top: 10px;
     margin-bottom: 10px;
-    border: 1px solid yellow;
+    border: 1px solid red;
     width: 60%;
   }
 
@@ -34,6 +34,6 @@ export const Main = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
     width: 35%;
-    border: 1px solid cyan;
+    border: 1px solid green;
   }
 `;

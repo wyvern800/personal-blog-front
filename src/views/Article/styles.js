@@ -4,7 +4,7 @@ export const Container = styled.div``;
 
 export const Main = styled.div`
   // Celular
-  @media(max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     .article {
       min-width: 100%;
     }
@@ -16,7 +16,7 @@ export const Main = styled.div`
 `;
 
 export const ArticleBody = styled.section`
-  border: 1px solid yellow;
+  border: 1px solid orange;
   margin-top: 10px;
   margin-bottom: 10px;
   width: 70%;

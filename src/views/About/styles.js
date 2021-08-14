@@ -14,7 +14,6 @@ export const Main = styled.div`
     display: flex;
     flex-direction: column;
     width: 40%;
-    background-color: gray;
 
     div {
         width: 100%;
@@ -23,4 +22,5 @@ export const Main = styled.div`
 export const AboutSection = styled.div`
     margin-top: 2%;
     margin-bottom: 2%;
+    border: 1px solid red;
 `
