@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-around;
   background-color: rgba(20, 20, 20, 1);
+  padding: 15px;
 
   .empty-element {
     visibility: hidden !important;

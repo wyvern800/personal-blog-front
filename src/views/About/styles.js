@@ -9,6 +9,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid purple;
 `;
 export const Main = styled.div`
     display: flex;

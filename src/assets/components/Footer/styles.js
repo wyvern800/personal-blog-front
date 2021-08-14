@@ -3,10 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   .credit {
     color: gray;
+    padding-top: 10px;
   }
 
   div.links {
-
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -26,6 +26,7 @@ export const Container = styled.div`
 
 export const FooterBar = styled.div`
   background-color: rgba(20, 20, 20, 1);
+  padding: 15px;
 
   display: flex;
   justify-content: space-between;
