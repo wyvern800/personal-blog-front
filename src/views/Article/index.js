@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
 
-import { Container } from './styles';
+import {
+  Container,
+  Main,
+  ArticleBody,
+  ArticleHeader,
+  ArticleFooter,
+} from './styles';
 
 export default class Article extends Component {
   render() {
     return (
       <Container>
-        <div className="main">
-          <section className="article">
-          <div className="article-header">
+        <Main>
+          <ArticleBody className='article'>
+            <ArticleHeader>
               <div className="article-title">header</div>
-            </div>
+            </ArticleHeader>
             article
-            <div className="article-footer">
+            <ArticleFooter>
               <div className="likes">10</div>
               <div className="author">Victor</div>
-            </div>
-          </section>
-        </div>
+            </ArticleFooter>
+          </ArticleBody>
+        </Main>
       </Container>
     );
   }
