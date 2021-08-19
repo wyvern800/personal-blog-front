@@ -2,7 +2,11 @@ import styled, { keyframes, css } from 'styled-components';
 
 // Celular
 export const Container = styled.div`
-  @media only screen and(max-width: 600px) {
+  @media (max-width: 600px) {
+    * {
+      font-size: 11px;
+    }
+
     div.main {
       display: flex;
       flex-direction: column;

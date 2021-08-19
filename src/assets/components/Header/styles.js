@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  @media (max-width: 600px) {
+    * {
+      font-size: 11px;
+    }
+  }
+
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   background-color: rgba(20, 20, 20, 1);
   padding: 15px;
+
 
   .empty-element {
     visibility: hidden !important;

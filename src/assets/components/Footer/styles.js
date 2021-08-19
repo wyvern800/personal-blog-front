@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  @media (max-width: 600px) {
+    * {
+      font-size: 11px;
+    }
+  }
   .credit {
     color: gray;
     padding-top: 10px;
@@ -40,4 +45,4 @@ export const FooterLink = styled.a`
   &:hover {
     color: #404040;
   }
-`
+`;

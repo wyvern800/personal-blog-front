@@ -12,7 +12,7 @@ export default class About extends Component {
           <Main>
             <AboutSection>
               <p>placeholder/insert image</p>
-              <div class="devInfo">
+              <div className="devInfo">
                 <h2>Matheus Guilherme Ferreira</h2>
                 <p>*Insira frase de efeito*</p>
                 <h3>Sobre:</h3>
@@ -23,7 +23,7 @@ export default class About extends Component {
             </AboutSection>
             <AboutSection>
               <p>placeholder for image</p>
-              <div class="devInfo">
+              <div className="devInfo">
                 <h2>Victor Bruno Paro</h2>
                 <p>"Antes tarde do que mais tarde ainda."</p>
                 <h3>Sobre:</h3>
