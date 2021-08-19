@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, FooterBar } from './styles';
+import { Container, FooterBar, FooterLink } from './styles';
 import myCaco from '../../images/logo.png';
 
 export default class Footer extends Component {
@@ -8,9 +8,10 @@ export default class Footer extends Component {
       <Container>
         <div className="links">
           <dl>
-            <dt>Titulo</dt>
-            <dd>Info 1</dd>
-            <dd>Info 2</dd>
+            <dt>Sobre o projeto</dt>
+            <dd><FooterLink href="https://github.com/wyvern800/personal-blog-front">Repositório</FooterLink></dd>
+            <dd><FooterLink href="https://reactjs.org/">ReactJS</FooterLink></dd>
+            <dd><FooterLink href="https://adonisjs.com/">AdonisJS</FooterLink></dd>
           </dl>
           <dl>
             <dt>Titulo</dt>

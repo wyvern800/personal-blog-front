@@ -33,3 +33,11 @@ export const FooterBar = styled.div`
   align-items: center;
   padding: 10px;
 `;
+
+export const FooterLink = styled.a`
+  text-decoration: none;
+  color: gray;
+  &:hover {
+    color: #404040;
+  }
+`
