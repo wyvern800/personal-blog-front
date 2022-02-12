@@ -10,10 +10,6 @@ import SinglePost from '../../components/SinglePost';
 import {
   Container,
   Main,
-  ArticleBody,
-  ArticleHeader,
-  ArticleFooter,
-  Loading,
 } from './styles';
 
 import Title from '../../components/Title';

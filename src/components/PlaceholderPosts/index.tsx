@@ -8,14 +8,6 @@ const PlaceholderPosts = () => {
   return (
     <Wrapper>
       <PostWrap>
-      <Segment>
-        <Dimmer active inverted>
-          <Loader size="mini">Loading</Loader>
-        </Dimmer>
-        <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
-        </Segment>
-      </PostWrap>
-      <PostWrap>
         <Placeholder fluid>
           <Placeholder.Header image>
             <Placeholder.Line />
