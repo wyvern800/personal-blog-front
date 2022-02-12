@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { BrowserRouter } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';
+import Header from './assets/components/Header';
+import Footer from './assets/components/Footer';
+import ScrollToTop from './assets/components/ScrollToTop';
 import Routes from './routes';
 import { Container } from 'react-bootstrap';
 import GlobalStyle from './styles/global';

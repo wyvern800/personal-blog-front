@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, FooterBar, FooterLink } from './styles';
-import myCaco from '../../assets/images/logo.png';
+import myCaco from '../../images/logo.png';
 
 export default class Footer extends Component {
   render() {

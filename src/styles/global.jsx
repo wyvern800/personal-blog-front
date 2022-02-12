@@ -11,6 +11,5 @@ export default createGlobalStyle`
 body, html {
   //background-color: rgba(26,27,31);
   background-color: white;
-  margin: 0;
 }
 `;
