@@ -38,6 +38,7 @@
     "@babel/preset-react": "^7.12.10",
     "@babel/preset-typescript": "^7.16.7",
     "@types/react-dom": "^17.0.11",
+    "@types/styled-components": "^5.1.22",
     "babel": "^6.23.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",

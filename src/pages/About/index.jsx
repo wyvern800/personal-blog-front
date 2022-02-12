@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Container, Main, AboutSection } from './styles';
-import Title from '../../assets/components/Title';
+import Title from '../../components/Title';
 
 export default class About extends Component {
   render() {
