@@ -2,23 +2,26 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src', 'index.js'), // arquivo de entrada da nossa aplicação (src/index.js)
+  entry: path.resolve(__dirname, 'src', 'index.tsx'), // arquivo de entrada da nossa aplicação (src/index.js)
   output: {
-    path: path.resolve(__dirname, 'public'), // diretório arquivo que vai ser gerado após ser convertido
+    path: path.resolve(__dirname, 'dist'), // diretório arquivo que vai ser gerado após ser convertido
     filename: 'bundle.js' // nome do arquivo que vai ser gerado pós conversão (bundle.js)
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'public'), // caminho pro diretório onde contém os arquivos públicos da aplicação
+    contentBase: path.resolve(__dirname, 'dist'), // caminho pro diretório onde contém os arquivos públicos da aplicação
     hot: true,
     historyApiFallback:{
       index:'/'
     },
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
+  },
   module: {
     rules: [
       {
-         test: /\.js$/,   // apenas arquivos que terminam com .js
-         exclude: /node_modules/, // excluir os arquivos do node da transpilação
+        exclude: /node_modules/, // excluir os arquivos do node da transpilação
+        test: /\.(j|t)sx$/,   // apenas arquivos que terminam com .js
          use: {
            loader: 'babel-loader',
          }

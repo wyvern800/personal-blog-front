@@ -1,6 +1,7 @@
 module.exports = {
   presets: [
     '@babel/preset-env',  // converter o código de javascript moderno para um mais antigo, baseado no ambiente de aplicação
+    '@babel/preset-typescript',
     '@babel/preset-react',
   ],
   plugins: [
