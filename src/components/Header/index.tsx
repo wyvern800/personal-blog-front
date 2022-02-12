@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Container, NavigationBar } from './styles';
 import { NavLink } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
 
-export default class Header extends Component {
-  render() {
+const Header = () => {
     return (
       <Container>
         <div className="empty-element">Buiu Richards</div>
@@ -26,5 +24,6 @@ export default class Header extends Component {
         <div className="empty-element">pessoaJuridicas</div>
       </Container>
     );
-  }
 }
+
+export default Header;

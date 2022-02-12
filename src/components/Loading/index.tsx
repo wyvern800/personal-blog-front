@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { DivLoader } from './styles';
 
-export default class Loading extends Component {
-  render() {
+const Loading = () => {
     return (
       <>
       <DivLoader>
@@ -10,5 +9,6 @@ export default class Loading extends Component {
       </DivLoader>
       </>
     );
-  }
 }
+
+export default Loading;

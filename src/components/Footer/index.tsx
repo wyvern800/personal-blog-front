@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Container, FooterBar, FooterLink } from './styles';
 import myCaco from '../../assets/images/logo.png';
 
-export default class Footer extends Component {
-  render() {
+const Footer = () => {
     return (
       <Container>
         <div className="links">
@@ -31,5 +30,6 @@ export default class Footer extends Component {
         <p className="credit">© 2021 Primatas - Seu universo da programação web. Todos os direitos reservados.</p>
       </Container>
     );
-  }
 }
+
+export default Footer;
