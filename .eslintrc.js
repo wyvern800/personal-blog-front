@@ -19,5 +19,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', 'js'] }],
     'import/prefer-default-export': 'off',
+    'react/jsx-filename-extension': [0],
+    'import/extensions': 'off',
   },
 };
