@@ -15,11 +15,13 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: rgba(237, 237, 237, 1);
+    background-color: #1f1f1e;
+    padding-top: 2%;
+    padding-bottom: 1.5%;
 
     dl {
       dt {
-        color: black;
+        color: lightgray;
       }
 
       dd {

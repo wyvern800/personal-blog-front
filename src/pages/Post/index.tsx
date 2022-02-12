@@ -5,12 +5,15 @@ import api from '../../services/api';
 import { PostType } from '../../types/post';
 import { PostParams } from '../../types/post.params';
 
+import SinglePost from '../../components/SinglePost';
+
 import {
   Container,
   Main,
   ArticleBody,
   ArticleHeader,
   ArticleFooter,
+  Loading,
 } from './styles';
 
 import Title from '../../components/Title';
@@ -26,35 +29,21 @@ const Post = () => {
       setPost(response?.data);
     };
     getPost().then(() => {
-        setLoaded(true)
+      setInterval(() => {
+        setLoaded(true);
+      }, 1000);
     });
   }, []);
 
-  return loaded ? (
+  return (
     <>
-      <Title name="Article" />
+      <Title name={post?.title} />
       <Container>
         <Main>
-          <ArticleBody className="article">
-            <ArticleHeader>
-              <div className="article-title">{post?.title}</div>
-            </ArticleHeader>
-            {post?.content}
-            <ArticleFooter>
-              <div className="likes">
-                {post?.likes +
-                  ' pessoa' +
-                  (post?.likes ?? 0 > 1 ? 's gostaram' : ' gostou') +
-                  ' deste artigo'}
-              </div>
-              <div className="author">{post?.author}</div>
-            </ArticleFooter>
-          </ArticleBody>
+          <SinglePost post={post} loaded={loaded} width={"70%"}/>
         </Main>
       </Container>
     </>
-  ) : (
-    <>Loading</>
   );
 };
 

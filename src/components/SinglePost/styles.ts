@@ -4,29 +4,25 @@ export const Container = styled.div``;
 
 export const Main = styled.div`
   // Celular
-  @media only screen and (max-width: 600px) {
-    .article {
-      min-width: 100%;
-    }
-  }
-
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid purple;
 `;
 
-export const ArticleBody = styled.section`
+export const Body = styled.div`
   border: 1px solid orange;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 70%;
+
   //margin-left: 20%;
 `;
 
-export const ArticleHeader = styled.div``;
+export const Header = styled.div``;
 
-export const ArticleFooter = styled.div`
+export const Content = styled.div``;
+
+export const Footer = styled.div`
   border: 1px solid pink;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -44,10 +40,4 @@ export const ArticleFooter = styled.div`
     font-weight: bold;
     font-style: italic;
   }
-`;
-
-export const Loading = styled.div`
-  display: flex;
-  width: 50%;
-  border: 1px solid red;
 `;

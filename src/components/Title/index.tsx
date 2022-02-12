@@ -1,6 +1,6 @@
 type TitleProps = {
-  name: string;
-}
+  name?: string | undefined;
+};
 
 const Title = (props: TitleProps) => {
   const { name } = props;
