@@ -32,6 +32,9 @@ export const Main = styled.div`
     margin-bottom: 10px;
     border: 1px solid red;
     width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     a:visited,
     a:link {

@@ -4,7 +4,7 @@ import { PostType } from '../../types/post';
 
 import { TagType } from '../../types/tag';
 
-import { Tags, Post, Tag } from './styles';
+import { Tags, Post, Tag, PostList } from './styles';
 import SinglePost from '../../components/SinglePost';
 
 import api from '../../services/api';
@@ -14,10 +14,11 @@ import PlaceholderPosts from '../../components/PlaceholderPosts';
 
 type AllPostsProps = {
   firstSeparated?: Boolean;
+  width?: string | undefined;
 };
 
 const AllPosts = (props: AllPostsProps) => {
-  const { firstSeparated } = props;
+  const { firstSeparated, width } = props;
   const [posts, setPosts] = useState<PostType[]>([]);
   const [loaded, setLoaded] = useState<Boolean>(false);
 
@@ -43,14 +44,14 @@ const AllPosts = (props: AllPostsProps) => {
           {posts
             .filter((_, index: number) => index === 0)
             .map((post: PostType) => {
-              return <SinglePost key={post?.id} post={post} loaded={loaded} />;
+              return <SinglePost key={post?.id} post={post} loaded={loaded} width={width ?? '100%'}/>;
             })}
         </>
       )}
       {loaded ? (
         <>
           {firstSeparated ? (
-            <>
+            <PostList>
               {posts
                 .filter((_, index: number) => index !== 0)
                 .map((post: PostType) => (
@@ -67,9 +68,9 @@ const AllPosts = (props: AllPostsProps) => {
                     </Post>
                   </Link>
                 ))}
-            </>
+            </PostList>
           ) : (
-            <>
+            <PostList>
               {posts
                 .map((post: PostType) => (
                   <Link key={post?.id} to={`/posts/${post?.id}`}>
@@ -85,7 +86,7 @@ const AllPosts = (props: AllPostsProps) => {
                     </Post>
                   </Link>
                 ))}
-            </>
+            </PostList>
           )}
         </>
       ) : (

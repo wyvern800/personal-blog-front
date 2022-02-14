@@ -6,15 +6,13 @@ import { PostType } from '../../types/post';
 import { PostParams } from '../../types/post.params';
 
 import SinglePost from '../../components/SinglePost';
+import Breadcrumb from '../../components/Breadcrumb';
 
-import {
-  Container,
-  Main,
-} from './styles';
+import { Container, Main } from './styles';
 
 import Title from '../../components/Title';
 
-const Post = () => {
+const ViewPost = () => {
   const [post, setPost] = useState<PostType>();
   const { id } = useParams<PostParams>();
   const [loaded, setLoaded] = useState<Boolean>(false);
@@ -34,13 +32,17 @@ const Post = () => {
   return (
     <>
       <Title name={post?.title} />
+      <Breadcrumb
+        previous={[{ name: 'Posts', linkTo: '/posts' }]}
+        currentAt={{ name: post?.title, linkTo: `/posts/${post?.id}` }}
+      />
       <Container>
         <Main>
-          <SinglePost post={post} loaded={loaded} width={"70%"}/>
+          <SinglePost post={post} loaded={loaded} width={'70%'} />
         </Main>
       </Container>
     </>
   );
 };
 
-export default Post;
+export default ViewPost;

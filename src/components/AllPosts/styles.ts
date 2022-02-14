@@ -32,7 +32,11 @@ export const Main = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
     border: 1px solid red;
-    width: 60%;
+    //width: 60%;
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
 
     a:visited,
     a:link {
@@ -99,7 +103,7 @@ export const Tag = styled(Link)`
 export const Post = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color:white;
+  background-color: white;
 
   justify-items: center;
   align-items: center;
@@ -125,4 +129,9 @@ export const Post = styled.div`
     border-top: 1px solid rgba(196, 196, 196, 0.2);
   }
 `;
-''
+
+export const PostList = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+`;

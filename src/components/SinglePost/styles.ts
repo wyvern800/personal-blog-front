@@ -15,6 +15,10 @@ export const Body = styled.div`
   margin-top: 10px;
   margin-bottom: 10px;
 
+  @media only screen and (max-width: 600px) {
+      min-width: 100%;
+    }
+
   //margin-left: 20%;
 `;
 

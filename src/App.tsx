@@ -5,7 +5,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Routes from './routes';
-import { Container } from 'react-bootstrap';
 import GlobalStyle from './styles/global';
 
 function App() {
