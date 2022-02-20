@@ -1,10 +1,6 @@
 import React from 'react';
 import { Wrapper, CrumbLink } from './styles';
-
-type CrumbType = {
-  name?: string;
-  linkTo?: string;
-};
+import { CrumbType } from '../../types/crumb';
 
 type BreadcrumbProps = {
   previous?: CrumbType[];
@@ -27,7 +23,7 @@ const Breadcrumb = (props: BreadcrumbProps) => {
               <>
                 {crumb.linkTo && (
                   <>
-                    <CrumbLink to={crumb?.linkTo} className="section">
+                    <CrumbLink key={index} to={crumb?.linkTo} className="section">
                       <span>{crumb?.name}</span>
                     </CrumbLink>
                     {index !== previous.length - 1 && (

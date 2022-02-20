@@ -6,11 +6,16 @@ export const Wrapper = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
 
-  margin-left: 1%;
   padding: 0.5%;
 
   .section {
     color: #fb0;
+  }
+
+  border-bottom: 1px solid #4d4d4d;
+
+  .ui {
+    margin-left: 2%;
   }
 `;
 

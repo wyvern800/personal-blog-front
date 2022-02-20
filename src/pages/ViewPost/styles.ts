@@ -4,7 +4,7 @@ export const Container = styled.div``;
 
 export const Main = styled.div`
   // Celular
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 985px) {
     .article {
       min-width: 100%;
     }
@@ -13,11 +13,10 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid purple;
 `;
 
 export const ArticleBody = styled.section`
-  border: 1px solid orange;
+  //border: 1px solid orange;
   margin-top: 10px;
   margin-bottom: 10px;
   width: 70%;
@@ -49,5 +48,5 @@ export const ArticleFooter = styled.div`
 export const Loading = styled.div`
   display: flex;
   width: 50%;
-  border: 1px solid red;
+  //border: 1px solid red;
 `;

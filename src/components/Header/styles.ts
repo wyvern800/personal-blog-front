@@ -10,9 +10,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: rgba(20, 20, 20, 1);
-  padding: 15px;
 
+  background-color: #181818;
+  height: 56px;
+  z-index: 1000;
+  box-shadow: 0 0 0 #181818;
+
+  padding: 15px;
 
   .empty-element {
     visibility: hidden !important;

@@ -31,7 +31,7 @@ export const Main = styled.div`
   section {
     margin-top: 10px;
     margin-bottom: 10px;
-    border: 1px solid red;
+    //border: 1px solid red;
     //width: 60%;
 
     @media only screen and (max-width: 600px) {
@@ -103,12 +103,13 @@ export const Tag = styled(Link)`
 export const Post = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  background-color: rgba(124, 131, 128, 0.2);
 
   justify-items: center;
   align-items: center;
 
   padding: 1.5%;
+  margin-bottom: 0.2%;
 
   border: 0.1em solid #3c3c3c;
   box-shadow: 0 3px 6px rgb(0 0 0 / 16%);

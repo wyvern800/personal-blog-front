@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
   @media only screen and (max-width: 600px) {
@@ -9,15 +9,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid purple;
 `;
 
 export const Main = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 40%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 
-    div {
-        width: 100%;
-    }
-`
+  div {
+    width: 100%;
+  }
+`;

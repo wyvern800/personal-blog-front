@@ -11,7 +11,7 @@ export const Main = styled.div`
 `;
 
 export const Body = styled.div`
-  border: 1px solid orange;
+  //border: 1px solid orange;
   margin-top: 10px;
   margin-bottom: 10px;
 
@@ -27,12 +27,17 @@ export const Header = styled.div``;
 export const Content = styled.div``;
 
 export const Footer = styled.div`
-  border: 1px solid pink;
+  border: 1px solid #1f1f1e;
+  background-color: #1f1f1e;
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  border-radius: 0 0 10px 10px;
+
+  color: lightgray;
 
   .likes {
     margin: 10px;

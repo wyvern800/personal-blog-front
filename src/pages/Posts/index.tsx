@@ -6,12 +6,15 @@ import Title from '../../components/Title';
 
 import Breadcrumb from '../../components/Breadcrumb';
 
+import { CrumbType } from '../../types/crumb';
+
 const Posts = () => {
+  const currentAt: CrumbType = { name: 'Posts', linkTo: '/posts' };
 
   return (
     <>
       <Title name="All posts" />
-      <Breadcrumb currentAt={{ name: 'Posts', linkTo: '/posts' }} />
+      <Breadcrumb currentAt={currentAt} />
       <Container>
         <Main>
           <AllPosts firstSeparated={false} width={'80%'} />

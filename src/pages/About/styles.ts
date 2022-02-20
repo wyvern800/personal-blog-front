@@ -9,22 +9,20 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid purple;
 `;
 export const Main = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 40%;
+  display: flex;
+  flex-direction: column;
 
-    div {
-        width: 100%;
-    }
-`
+  div {
+    width: 100%;
+  }
+`;
 export const AboutSection = styled.div`
-    display: flex;
-    flex-direction: row;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    border: 1px solid red;
-    color: black;
-`
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border: 1px solid red;
+  color: black;
+`;

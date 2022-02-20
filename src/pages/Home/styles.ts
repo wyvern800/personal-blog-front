@@ -25,12 +25,11 @@ export const Container = styled.div`
 export const Main = styled.div`
   display: flex;
   justify-content: space-around;
-  border: 1px solid purple;
 
   section {
     margin-top: 10px;
     margin-bottom: 10px;
-    border: 1px solid red;
+    //border: 1px solid red;
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -54,6 +53,10 @@ export const Main = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
     width: 35%;
-    border: 1px solid green;
+    border: 1px dashed #4D4D4D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
   }
 `;
