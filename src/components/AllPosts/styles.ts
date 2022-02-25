@@ -50,6 +50,7 @@ export const Main = styled.div`
         text-decoration: none;
       }
     }
+
   }
 
   aside {
@@ -100,34 +101,35 @@ export const Tag = styled(Link)`
   }
 `;
 
-export const Post = styled.div`
+export const Post = styled(Link)`
   display: flex;
   justify-content: space-between;
   background-color: rgba(124, 131, 128, 0.2);
+  width: 100%;
 
   justify-items: center;
   align-items: center;
 
   padding: 1.5%;
-  margin-bottom: 0.2%;
 
   border: 0.1em solid #3c3c3c;
   box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
   border-radius: 10px;
 
   &:hover {
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color, border-color 0.3s ease-in-out;
     background-color: rgba(54, 54, 54, 0.24);
+    border: 2px solid #fb0;
     cursor: pointer;
   }
 
   // Animatin when we move our mouse out
   &:not(:hover) {
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color, border-color 0.3s ease-in-out;
   }
 
   &:not(:first-child) {
-    border-top: 1px solid rgba(196, 196, 196, 0.2);
+    margin-top: 1%;
   }
 `;
 

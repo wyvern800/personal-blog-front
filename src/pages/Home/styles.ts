@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 // Celular
 export const Container = styled.div`
+  margin: 0.1%;
+
   @media (max-width: 600px) {
     * {
       font-size: 11px;

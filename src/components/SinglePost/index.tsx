@@ -5,6 +5,8 @@ import { Body, Header, Content, Footer } from './styles';
 
 import Placeholder from '../../components/Placeholder';
 
+import profile from '../../assets/images/profiles/a.jpg';
+
 type PostProps = {
   post: PostType;
   loaded: Boolean;
@@ -28,7 +30,9 @@ const SinglePost = (props: PostProps) => {
                   (post?.likes ?? 0 > 1 ? 's gostaram' : ' gostou') +
                   ' deste artigo'}
               </div>
-              <div className="author">{post?.author}</div>
+              <div className="author">
+                {post?.author}
+              </div>
             </Footer>
           </>
         ) : (

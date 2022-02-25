@@ -11,7 +11,7 @@ const Home = () => {
       <Container>
         <Main className="main">
           <section>
-            <AllPosts firstSeparated={true} width={'80%'}/>
+            <AllPosts firstSeparated={true} width={'100%'}/>
           </section>
           <aside>aside</aside>
         </Main>

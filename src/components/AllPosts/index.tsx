@@ -44,7 +44,14 @@ const AllPosts = (props: AllPostsProps) => {
           {posts
             .filter((_, index: number) => index === 0)
             .map((post: PostType) => {
-              return <SinglePost key={post?.id} post={post} loaded={loaded} width={width ?? '100%'}/>;
+              return (
+                <SinglePost
+                  key={post?.id}
+                  post={post}
+                  loaded={loaded}
+                  width={width ?? '100%'}
+                />
+              );
             })}
         </>
       )}
@@ -55,8 +62,7 @@ const AllPosts = (props: AllPostsProps) => {
               {posts
                 .filter((_, index: number) => index !== 0)
                 .map((post: PostType) => (
-                  <Link key={post?.id} to={`/posts/${post?.id}`}>
-                    <Post>
+                  <Post key={post?.id} to={`/posts/${post?.id}`}>
                       <h4>{post?.title}</h4>
                       <Tags>
                         {post?.tags?.map((tag: TagType) => (
@@ -65,27 +71,23 @@ const AllPosts = (props: AllPostsProps) => {
                           </Tag>
                         ))}
                       </Tags>
-                    </Post>
-                  </Link>
+                  </Post>
                 ))}
             </PostList>
           ) : (
             <PostList>
-              {posts
-                .map((post: PostType) => (
-                  <Link key={post?.id} to={`/posts/${post?.id}`}>
-                    <Post>
-                      <h4>{post?.title}</h4>
-                      <Tags>
-                        {post?.tags?.map((tag: TagType) => (
-                          <Tag key={tag.id} to={`/posts?tag=${tag.id}`}>
-                            {tag.name}
-                          </Tag>
-                        ))}
-                      </Tags>
-                    </Post>
-                  </Link>
-                ))}
+              {posts.map((post: PostType) => (
+                <Post key={post?.id} to={`/posts/${post?.id}`}>
+                    <h4>{post?.title}</h4>
+                    <Tags>
+                      {post?.tags?.map((tag: TagType) => (
+                        <Tag key={tag.id} to={`/posts?tag=${tag.id}`}>
+                          {tag.name}
+                        </Tag>
+                      ))}
+                    </Tags>
+                </Post>
+              ))}
             </PostList>
           )}
         </>

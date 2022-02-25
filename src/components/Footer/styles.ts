@@ -8,12 +8,6 @@ export const Container = styled.div`
       font-size: 11px;
     }
   }
-  .credit {
-    color: gray;
-    padding: 10px;
-    background-color: rgba(45, 45, 45, 0.3);
-    font-family: 'Roboto', sans-serif;
-  }
 
   div.links {
     display: flex;
@@ -34,7 +28,6 @@ export const Container = styled.div`
     border-image-slice: 1;
 
     dl {
-
       dt {
         color: lightgray;
         text-transform: uppercase;
@@ -59,15 +52,7 @@ export const FooterBar = styled.div`
   background-color: rgba(20, 20, 20, 1);
   padding: 15px;
 
-  border-style: solid;
-  border-width: 1px 0 0 0;
-  border-image-source: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0),
-    #fff 52%,
-    rgba(255, 255, 255, 0)
-  );
-  border-image-slice: 1;
+  border: 1px solid #2d2d2d;
 
   display: flex;
   justify-content: space-between;
@@ -93,4 +78,12 @@ export const FooterLink = styled.a`
   &:hover {
     color: #fb0;
   }
+`;
+
+export const Credit = styled.div`
+  border: 1px solid #2d2d2d;
+  color: gray;
+  padding: 5px;
+  background-color: rgba(45, 45, 45);
+  font-family: 'Roboto', sans-serif;
 `;

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Container, FooterBar, FooterLink } from './styles';
+import React from 'react';
+import { Container, FooterBar, FooterLink, Credit } from './styles';
 
 const Footer = () => {
     return (
@@ -26,7 +26,7 @@ const Footer = () => {
           <a href="#">Copyright © 2021-2022 Primatas Ltd. All rights reserved.</a>
           <div className="social-links"><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></div>
         </FooterBar>
-        <p className="credit">© 2021-2022 Primatas - Seu universo da programação web. Todos os direitos reservados.</p>
+        <Credit>© 2021-2022 Primatas - Seu universo da programação web. Todos os direitos reservados.</Credit>
       </Container>
     );
 }

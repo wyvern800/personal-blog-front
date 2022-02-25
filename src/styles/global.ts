@@ -49,9 +49,13 @@ body {
 export const Wrapper = styled.div`
   width: 80%;
   margin: auto;
+  margin-top: 3%;
+  margin-bottom: 3%;
 
   border-top: 20px solid #2d2d2d;
+  border-bottom: 5px solid #2d2d2d;
   background-color: #383838;
+  border-radius: 7px;
 
   @media (max-width: 985px) {
     width: 95%;
