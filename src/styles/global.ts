@@ -32,8 +32,9 @@ user-select: text;
 
 body, html {
   //background-color: rgba(26,27,31);
-  background-color: white;
+  //background-color:  #08070d;
   margin: 0;
+  height:100%;
 }
 
 body {
@@ -43,6 +44,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height:100vh;
 }
 `;
 

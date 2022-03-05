@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 export const Container = styled.div``;
 
 export const Main = styled.div`
@@ -74,5 +76,22 @@ export const Footer = styled.div`
     font-style: italic;
 
     margin: 0.8%;
+  }
+`;
+
+export const LinkToPost = styled(Link)`
+  text-decoration: none;
+  color: gray;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: #fb0;
   }
 `;

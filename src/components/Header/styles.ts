@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   @media (max-width: 600px) {
@@ -32,7 +33,7 @@ export const Container = styled.div`
 
   // Navbar active link
   .nav-link-active {
-    color: #3a5cc9;
+    color:  #fb0;
     font-weight: bold;
   }
 `;

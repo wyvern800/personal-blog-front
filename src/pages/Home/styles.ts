@@ -32,7 +32,7 @@ export const Main = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
     //border: 1px solid red;
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,7 +54,7 @@ export const Main = styled.div`
   aside {
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 35%;
+    width: 25%;
     border: 1px dashed #4D4D4D;
     display: flex;
     justify-content: center;
