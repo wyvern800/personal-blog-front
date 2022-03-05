@@ -12,14 +12,14 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <ScrollToTop>
-          <Header />
-          <Wrapper>
-            <Routes />
-            <GlobalStyle />
-          </Wrapper>
-          <Footer />
-        </ScrollToTop>
+          <ScrollToTop>
+            <Header />
+            <Wrapper>
+              <Routes />
+              <GlobalStyle />
+            </Wrapper>
+            <Footer />
+          </ScrollToTop>
       </BrowserRouter>
     </>
   );

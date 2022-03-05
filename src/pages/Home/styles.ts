@@ -55,7 +55,7 @@ export const Main = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
     width: 25%;
-    border: 1px dashed #4D4D4D;
+    border: 1px dashed #4d4d4d;
     display: flex;
     justify-content: center;
     align-items: center;
