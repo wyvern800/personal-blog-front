@@ -14,14 +14,15 @@ import api from '../../services/api';
 
 import { useLocation, useHistory } from 'react-router-dom';
 
+import auth from '../../services/authService';
+
 const FormLogin = () => {
   const history = useHistory();
 
   const validationSchema = yup.object().shape({
-    email: yup.string().email().required('E-mail inválido'),
+    email: yup.string().required('E-mail/login inválido'),
     password: yup
       .string()
-      .min(8, 'Sua senha precisa ter no mínimo 8 carácteres!')
       .max(32, 'Sua senha só pode ter no máximo 32 caracteres!')
       .required(),
   });
@@ -30,32 +31,28 @@ const FormLogin = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setError
+    setError,
   } = useForm({ resolver: yupResolver(validationSchema) });
 
   const { state } = useLocation();
-  const [redirectToReferrer, setRedirectToReferrer] = useState(false);
 
   /**
    * Executado ao dar submit no forum de login
    * @param data Dados do login
    */
   const onSubmit = async (data: any) => {
-    console.log(data);
 
-    await api.post('/login', { uid: data?.email, password: data?.password }).then((response) => {
-      //history.push(state?.from || '/');
-      console.log(response)
-    }).catch((e) => {
-      setError("email", {
-        type: "manual",
-        message: "Autenticação falhou, verifique se o login ou senha não contém erros"
-      })
-    })
+    await auth.login(data?.email, data?.password).then((res)=> {
+      history.push('/dashboard')
 
-    /*fakeAuth.authenticate(() => {
-      history.push(state?.from || '/');
-    });*/
+    }).catch((err) => {
+      console.log(err)
+      setError('password', {
+        type: 'manual',
+        message:
+          'Autenticação falhou, verifique se o login ou senha não contém erros',
+      });
+    });
 
   };
 

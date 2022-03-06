@@ -7,20 +7,21 @@ import ScrollToTop from './components/ScrollToTop';
 import Routes from './routes';
 import GlobalStyle from './styles/global';
 import { Wrapper } from './styles/global';
+import UserObjectDataProvider from './hooks/UserObjectData';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-          <ScrollToTop>
-            <Header />
-            <Wrapper>
-              <Routes />
-              <GlobalStyle />
-            </Wrapper>
-            <Footer />
-          </ScrollToTop>
-      </BrowserRouter>
+      {/*<ScrollToTop>*/}
+      <UserObjectDataProvider>
+        <Header />
+        <Wrapper>
+          <Routes />
+          <GlobalStyle />
+        </Wrapper>
+        <Footer />
+      </UserObjectDataProvider>
+      {/*</ScrollToTop>*/}
     </>
   );
 }
