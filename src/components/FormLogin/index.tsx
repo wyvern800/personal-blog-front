@@ -8,8 +8,6 @@ import FormField from '../../components/FormField';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { fakeAuth } from '../../services/fakeApi';
-
 import api from '../../services/api';
 
 import { useLocation, useHistory } from 'react-router-dom';
@@ -41,19 +39,19 @@ const FormLogin = () => {
    * @param data Dados do login
    */
   const onSubmit = async (data: any) => {
-
-    await auth.login(data?.email, data?.password).then((res)=> {
-      history.push('/dashboard')
-
-    }).catch((err) => {
-      console.log(err)
-      setError('password', {
-        type: 'manual',
-        message:
-          'Autenticação falhou, verifique se o login ou senha não contém erros',
+    await auth
+      .login(data?.email, data?.password)
+      .then((res) => {
+        history.push(state?.from || '/');
+      })
+      .catch((err) => {
+        console.log(err);
+        setError('password', {
+          type: 'manual',
+          message:
+            'Autenticação falhou, verifique se o login ou senha não contém erros',
+        });
       });
-    });
-
   };
 
   return (

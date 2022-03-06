@@ -10,6 +10,8 @@ import Logout from './pages/Logout';
 
 import Main from './components/Main';
 import Dashboard from './pages/Dashboard';
+import AdminArea from './pages/AdminArea';
+import NotFound from './pages/NotFound';
 
 const PrivateRoute = ({ component: Component, ...rest }: any) => {
   const isAuthenticate = localStorage.getItem('token');
@@ -40,15 +42,20 @@ const Routes = () => (
     <Route exact path="/posts/:id" component={ViewPost} />
     <Route exact path="/about" component={About} />
 
-    <Route path="/dashboard" component={Main} />
+    {/* Rotas privadas */}
+    <PrivateRoute path="/dashboard" component={Main} />
+    <PrivateRoute path="/admin" component={Main} />
+
+    <Route component={NotFound} />
   </Switch>
 );
 
 export const PrivateRoutes = ({ userObjectData }: any) => (
   <>
     {userObjectData['type_user'] === 'admin' && (
-      <PrivateRoute exact path="/dashboard" component={Dashboard} />
+      <PrivateRoute exact path="/admin" component={AdminArea} />
     )}
+    <PrivateRoute exact path="/dashboard" component={Dashboard} />
   </>
 );
 
