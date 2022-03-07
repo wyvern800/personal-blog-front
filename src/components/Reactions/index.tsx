@@ -21,7 +21,7 @@ const Reactions = (props: PostProps) => {
   return (
     <Wrapper>
       <LikeButton onClick={processLike}>
-        <LikeIcon /> {post?.likes}{' '}
+        <LikeIcon /> {post?.likes}
       </LikeButton>
     </Wrapper>
   );

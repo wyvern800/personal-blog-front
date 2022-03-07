@@ -42,7 +42,7 @@ const SinglePost = (props: PostProps) => {
         {loaded ? (
           <>
             <Header>
-              <LinkToPost to={`/posts`}>{post?.title}</LinkToPost>
+              <LinkToPost to={`/posts/${post?.id}`}>{post?.title}</LinkToPost>
             </Header>
             <Content>{post?.content}</Content>
             <Footer>
