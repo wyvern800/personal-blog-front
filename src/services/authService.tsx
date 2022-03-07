@@ -62,10 +62,7 @@ const login = async (email: string, password: string) => {
 };
 
 /**
- * Método responsável por logar na plataforma
- * @param {string} email O email do cliente
- * @param {string} password Senha do cliente
- * @returns Retorna true se login foi OK, senão retorna um erro
+ * Método responsável por deslogar na plataforma
  */
  const logout = async () => {
   const response = await api
