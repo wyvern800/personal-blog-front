@@ -7,7 +7,7 @@ import api from '../../services/authService';
 const Login = () => {
   let history = useHistory();
 
-  // Se o usuário já estiver logado, ignorar
+  // If user isn't logged, ignore and moves him to homepage
   useEffect(() =>{
     if (api.isUserLogged()) {
       history.push('/');

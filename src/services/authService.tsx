@@ -3,15 +3,15 @@ import api from './api';
 const tokenKey = 'token';
 
 /**
- * Método usado para checagem se usuário está logado
+ * Function used to check if user is logged in or not
  */
 const isUserLogged = () => {
   return localStorage.getItem(tokenKey) === null ? false : true;
 };
 
+
 /**
- * Método usado para obter informaçõoes do usuário autenticado
- * @returns Retorna informações do usuário autenticado atualmente
+ * Function used to get the logged in user's informations
  */
 const getCurrentUser = async () => {
     const user = await api.get(`/users/profile`, {
@@ -23,8 +23,8 @@ const getCurrentUser = async () => {
 };
 
 /**
- *
- * @returns Perfil do usuário
+ * Returns profile of someone by its username
+ * @returns Someone's user profile
  */
 const getProfileByUsername = async (username: string ) => {
   const user = await api.get(`/users/profile/${username}`);
@@ -32,7 +32,7 @@ const getProfileByUsername = async (username: string ) => {
 };
 
 /**
- * Checa se usuário é admin
+ * Checks if user is admin or normal member
  */
 const isUserAdmin = async () => {
   const response = await api.get(`/authadmin`, {
@@ -44,17 +44,16 @@ const isUserAdmin = async () => {
 };
 
 /**
- * Método responsável por deslogar o usuário da plataforma
+ * Clears the token from user's storage
  */
 const clearToken = async () => {
   localStorage.removeItem(tokenKey);
 };
 
 /**
- * Método responsável por logar na plataforma
- * @param {string} email O email do cliente
- * @param {string} password Senha do cliente
- * @returns Retorna true se login foi OK, senão retorna um erro
+ * Method triggered when we login
+ * @param {string} email User's email
+ * @param {string} password User's password
  */
 const login = async (email: string, password: string) => {
   const response = await api
@@ -70,7 +69,7 @@ const login = async (email: string, password: string) => {
 };
 
 /**
- * Método responsável por deslogar na plataforma
+ * Triggered when we're logging out
  */
  const logout = async () => {
   const response = await api

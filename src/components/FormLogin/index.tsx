@@ -8,7 +8,6 @@ import FormField from '../../components/FormField';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import api from '../../services/api';
 
 import { useLocation, useHistory } from 'react-router-dom';
 
@@ -17,7 +16,6 @@ import auth from '../../services/authService';
 import { useUserObjectData } from '../../hooks/UserObjectData';
 
 const FormLogin = () => {
-  const { userObjectData, setUserObjectData } = useUserObjectData();
 
   const history = useHistory();
 
@@ -39,7 +37,7 @@ const FormLogin = () => {
   const { state } = useLocation();
 
   /**
-   * Executado ao dar submit no forum de login
+   * Executed when we hit submit on the login form
    * @param data Dados do login
    */
   const onSubmit = async (data: any) => {

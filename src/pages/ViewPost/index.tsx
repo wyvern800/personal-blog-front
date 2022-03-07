@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import api from '../../services/api';
 
 import { PostType } from '../../types/post';
 import { PostParams } from '../../types/post.params';
@@ -12,21 +11,23 @@ import { Container, Main } from './styles';
 
 import Title from '../../components/Title';
 
+import { getPost } from '../../services/callsApi';
+
 const ViewPost = () => {
   const [post, setPost] = useState<PostType>();
   const { id } = useParams<PostParams>();
   const [loaded, setLoaded] = useState<Boolean>(false);
 
   useEffect(() => {
-    const getPost = async (): Promise<void> => {
-      const response = await api.get(`/posts/${id}`);
-      setPost(response?.data);
+    const get = async (): Promise<void> => {
+      await getPost(id).then((response) => {
+        setPost(response?.data);
+        setInterval(() => {
+          setLoaded(true);
+        }, 1000);
+      });
     };
-    getPost().then(() => {
-      setInterval(() => {
-        setLoaded(true);
-      }, 1000);
-    });
+    get();
   }, []);
 
   return (

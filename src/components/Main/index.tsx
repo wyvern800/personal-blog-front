@@ -13,7 +13,7 @@ const Dashboard = () => {
   const { userObjectData, setUserObjectData } = useUserObjectData();
   const history = useHistory();
 
-  // Efeito que autentica o usuário
+  // Effect that authenticates the user
   useEffect(() => {
     async function get() {
       if (!userObjectData) {
@@ -23,7 +23,7 @@ const Dashboard = () => {
           .then((response) => {
             const { isAdmin } = response?.data;
 
-            // Seta o tipo do admin
+            // Sets the user type
             setUserObjectData({
               type_user: isAdmin ? 'admin' : 'user',
             });

@@ -12,6 +12,8 @@ import api from '../../services/api';
 
 import { User } from '../../types/user';
 
+import { getPostAuthor } from '../../services/callsApi';
+
 type PostProps = {
   post: PostType;
   loaded: Boolean;
@@ -27,7 +29,7 @@ const SinglePost = (props: PostProps) => {
   useEffect(() => {
     const get = async () => {
       if (post === undefined) return;
-      await api.get(`/users/${post?.userid}`).then((response) => {
+      await getPostAuthor(post?.userid).then((response) => {
         setAuthor(response?.data);
       });
     };
@@ -46,7 +48,9 @@ const SinglePost = (props: PostProps) => {
             <Footer>
               <Reactions post={post} />
               <div className="author">
-                <Author to={`/profile/${author?.username}`}>{author?.username}</Author>
+                <Author to={`/profile/${author?.username}`}>
+                  {author?.username}
+                </Author>
               </div>
             </Footer>
           </>

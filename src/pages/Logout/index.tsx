@@ -7,20 +7,21 @@ const Logout = () => {
   const { setUserObjectData } = useUserObjectData();
   let history = useHistory();
 
+  // Handles the logging out
   const handleLogout = () => {
-    // Remove o token
+    // Removes the token
     localStorage.removeItem('token');
 
-    // Limpa os dados do context
+    // Clears data from the context
     setUserObjectData(null);
 
-    // Depois de alguns segundos, redirecionar para a tela de login
+    // Redirect the logged out user to login after 3 seconds
     setTimeout(() => {
       history.push('/login');
     }, 3000);
   };
 
-  // Efeito que dispara o logout
+  // Effect that triggers the logout
   useEffect(() => {
     handleLogout();
   }, []);

@@ -11,7 +11,7 @@ import api from '../../services/api';
 
 import PlaceholderPosts from '../../components/PlaceholderPosts';
 
-import { User } from '../../types/user';
+import { getAllPosts } from '../../services/callsApi';
 
 type AllPostsProps = {
   firstSeparated?: Boolean;
@@ -23,10 +23,10 @@ const AllPosts = (props: AllPostsProps) => {
   const [posts, setPosts] = useState<PostType[]>([]);
   const [loaded, setLoaded] = useState<Boolean>(false);
 
-  // Pega todos os posts
+  // Gets a list of all posts
   useEffect(() => {
     const getPosts = async (): Promise<PostType[]> => {
-      const response = await api.get('/posts');
+      const response = await getAllPosts();
       setPosts(response.data);
       return response.data;
     };
@@ -65,21 +65,6 @@ const AllPosts = (props: AllPostsProps) => {
                 .filter((_, index: number) => index !== 0)
                 .map((post: PostType) => (
                   <Post key={post?.id} to={`/posts/${post?.id}`}>
-                      <h4>{post?.title}</h4>
-                      <Tags>
-                        {post?.tags?.map((tag: TagType) => (
-                          <Tag key={tag.id} to={`/posts?tag=${tag.id}`}>
-                            {tag.name}
-                          </Tag>
-                        ))}
-                      </Tags>
-                  </Post>
-                ))}
-            </PostList>
-          ) : (
-            <PostList>
-              {posts.map((post: PostType) => (
-                <Post key={post?.id} to={`/posts/${post?.id}`}>
                     <h4>{post?.title}</h4>
                     <Tags>
                       {post?.tags?.map((tag: TagType) => (
@@ -88,6 +73,21 @@ const AllPosts = (props: AllPostsProps) => {
                         </Tag>
                       ))}
                     </Tags>
+                  </Post>
+                ))}
+            </PostList>
+          ) : (
+            <PostList>
+              {posts.map((post: PostType) => (
+                <Post key={post?.id} to={`/posts/${post?.id}`}>
+                  <h4>{post?.title}</h4>
+                  <Tags>
+                    {post?.tags?.map((tag: TagType) => (
+                      <Tag key={tag.id} to={`/posts?tag=${tag.id}`}>
+                        {tag.name}
+                      </Tag>
+                    ))}
+                  </Tags>
                 </Post>
               ))}
             </PostList>

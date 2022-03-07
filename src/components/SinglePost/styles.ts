@@ -43,6 +43,8 @@ export const Content = styled.div`
 
   text-align: justify;
   text-indent: 50px;
+
+  word-wrap: break-word;
 `;
 
 export const Footer = styled.div`
