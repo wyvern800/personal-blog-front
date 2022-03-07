@@ -7,6 +7,8 @@ import { PrivateRoutes } from '../../routes';
 
 import { Container, Body, Navbar, Footer, TextFooter } from './styles';
 
+import auth from '../../services/authService';
+
 const Dashboard = () => {
   const { userObjectData, setUserObjectData } = useUserObjectData();
   const history = useHistory();
@@ -16,30 +18,17 @@ const Dashboard = () => {
     async function get() {
       try {
         if (!userObjectData) {
+          await auth
+            .isUserAdmin()
+            .catch(() => {})
+            .then((response) => {
+              const { isAdmin } = response?.data?.data;
 
-          /*const result = await api.get(`/users/${3}`, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-            },
-          });*/
-
-          //const { isAdmin } = result.data?.data;
-
-          let data = {};
-          let user;
-
-          /*if (isAdmin) {
-            user = 'admin';
-          } else {
-            user = 'member';
-          }*/
-
-          data = {
-            type_user: 'admin',
-          };
-
-          // Seta o tipo do menu
-          setUserObjectData(data);
+              // Seta o tipo do admin
+              setUserObjectData({
+                type_user: isAdmin ? 'admin' : 'user'
+              })
+            });
         }
       } catch (error) {
         // Remove tudo do storage
@@ -56,7 +45,9 @@ const Dashboard = () => {
       {userObjectData && (
         <>
           <Container>
-            <Navbar>Adicionar Post | <Link to="/logout">Deslogar</Link></Navbar>
+            <Navbar>
+              Adicionar Post | <Link to="/logout">Deslogar</Link>
+            </Navbar>
             <Body>
               <PrivateRoutes userObjectData={userObjectData} />
             </Body>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Form } from './styles';
+import { Form, Login } from './styles';
 
 import FormField from '../../components/FormField';
 
@@ -14,7 +14,11 @@ import { useLocation, useHistory } from 'react-router-dom';
 
 import auth from '../../services/authService';
 
+import { useUserObjectData } from '../../hooks/UserObjectData';
+
 const FormLogin = () => {
+  const { userObjectData, setUserObjectData } = useUserObjectData();
+
   const history = useHistory();
 
   const validationSchema = yup.object().shape({
@@ -41,8 +45,11 @@ const FormLogin = () => {
   const onSubmit = async (data: any) => {
     await auth
       .login(data?.email, data?.password)
-      .then((res) => {
+      .then((response) => {
+
         history.push(state?.from || '/');
+        localStorage.setItem('token', response?.data?.token);
+
       })
       .catch((err) => {
         console.log(err);
@@ -69,7 +76,7 @@ const FormLogin = () => {
         register={register}
         error={errors.password?.message}
       />
-      <button type="submit">Login</button>
+      <Login type="submit">Login</Login>
     </Form>
   );
 };

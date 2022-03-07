@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Label, Input, ErrorMessage } from './styles';
+import { Field, Label, Input, ErrorMessage } from './styles';
 
 const FormField = ({
   type = 'text',
@@ -27,7 +27,7 @@ const FormField = ({
   return (
     <>
       <Label>
-        {label ?? ''}:
+        <Field>{label ?? ''}:</Field>
         <Input
           type={type}
           {...register(name)}
