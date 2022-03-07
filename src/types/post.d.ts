@@ -5,7 +5,7 @@ export type PostType = {
   title: string;
   content: string;
   tags?: TagType[];
-  author: string;
+  userid: number;
   likes?: number;
   dateInsert: Date;
   dateUpdate: Date;

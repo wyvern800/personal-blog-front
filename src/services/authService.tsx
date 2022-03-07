@@ -4,7 +4,6 @@ const tokenKey = 'token';
 
 /**
  * Método usado para checagem se usuário está logado
- * @returns Retorna true se usuário está logado, e false se estiver deslogado
  */
 const isUserLogged = () => {
   return localStorage.getItem(tokenKey) === null ? false : true;
@@ -24,10 +23,19 @@ const getCurrentUser = async () => {
 };
 
 /**
+ *
+ * @returns Perfil do usuário
+ */
+const getProfileByUsername = async (username: string ) => {
+  const user = await api.get(`/users/profile/${username}`);
+  return user;
+};
+
+/**
  * Checa se usuário é admin
  */
 const isUserAdmin = async () => {
-  const response = await api.get(`/auth/admin`, {
+  const response = await api.get(`/authadmin`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
     },
@@ -84,6 +92,7 @@ export default {
   clearToken,
   logout,
   getCurrentUser,
+  getProfileByUsername,
   isUserLogged,
   isUserAdmin
 };

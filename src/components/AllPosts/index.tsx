@@ -8,9 +8,10 @@ import { Tags, Post, Tag, PostList } from './styles';
 import SinglePost from '../../components/SinglePost';
 
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
 
 import PlaceholderPosts from '../../components/PlaceholderPosts';
+
+import { User } from '../../types/user';
 
 type AllPostsProps = {
   firstSeparated?: Boolean;
@@ -22,6 +23,7 @@ const AllPosts = (props: AllPostsProps) => {
   const [posts, setPosts] = useState<PostType[]>([]);
   const [loaded, setLoaded] = useState<Boolean>(false);
 
+  // Pega todos os posts
   useEffect(() => {
     const getPosts = async (): Promise<PostType[]> => {
       const response = await api.get('/posts');

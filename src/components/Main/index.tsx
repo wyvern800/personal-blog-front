@@ -16,24 +16,18 @@ const Dashboard = () => {
   // Efeito que autentica o usuário
   useEffect(() => {
     async function get() {
-      try {
-        if (!userObjectData) {
-          await auth
-            .isUserAdmin()
-            .catch(() => {})
-            .then((response) => {
-              const { isAdmin } = response?.data?.data;
+      if (!userObjectData) {
+        await auth
+          .isUserAdmin()
+          .catch(() => {})
+          .then((response) => {
+            const { isAdmin } = response?.data;
 
-              // Seta o tipo do admin
-              setUserObjectData({
-                type_user: isAdmin ? 'admin' : 'user'
-              })
+            // Seta o tipo do admin
+            setUserObjectData({
+              type_user: isAdmin ? 'admin' : 'user',
             });
-        }
-      } catch (error) {
-        // Remove tudo do storage
-        localStorage.clear();
-        history.push('/logout');
+          });
       }
     }
 
@@ -46,14 +40,14 @@ const Dashboard = () => {
         <>
           <Container>
             <Navbar>
-              Adicionar Post | <Link to="/logout">Deslogar</Link>
+              <Link to="/logout">Deslogar</Link>
             </Navbar>
             <Body>
               <PrivateRoutes userObjectData={userObjectData} />
             </Body>
           </Container>
           <Footer>
-            <TextFooter>Blog dos Primatas</TextFooter>
+            <TextFooter>Footer</TextFooter>
           </Footer>
         </>
       )}

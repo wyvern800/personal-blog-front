@@ -17,7 +17,7 @@ export const Body = styled.div`
   margin-top: 10px;
   margin-bottom: 10px;
 
-  background-color: rgba(124,131,128,0.2);
+  background-color: rgba(124, 131, 128, 0.2);
   border-radius: 30px;
 
   @media only screen and (max-width: 600px) {
@@ -80,6 +80,23 @@ export const Footer = styled.div`
 `;
 
 export const LinkToPost = styled(Link)`
+  text-decoration: none;
+  color: gray;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: #fb0;
+  }
+`;
+
+export const Author = styled(Link)`
   text-decoration: none;
   color: gray;
 
