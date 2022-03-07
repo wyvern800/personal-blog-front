@@ -25,7 +25,7 @@ const SinglePost = (props: PostProps) => {
 
   const [author, setAuthor] = useState<User>();
 
-  // Pega o autor do post e seta no state
+  // Gets post author and set to state
   useEffect(() => {
     const get = async () => {
       if (post === undefined) return;
