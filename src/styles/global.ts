@@ -2,14 +2,13 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import background from '../assets/images/bg.jpg';
 
-
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap');
 
 * {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  text-align: center;
+
   color: gray;
 
   -webkit-font-smoothing: antialiased;
@@ -35,6 +34,9 @@ body, html {
   //background-color:  #08070d;
   margin: 0;
   height:100%;
+
+  max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -54,9 +56,9 @@ export const Wrapper = styled.div`
   margin-top: 3%;
   margin-bottom: 3%;
 
-  border-top: 20px solid #2d2d2d;
+  border-top: 8px solid #2d2d2d;
   border-bottom: 5px solid #2d2d2d;
-  background-color: #383838;
+  background-color: rgba(56, 56, 56, 0.92);
   border-radius: 7px;
 
   @media (max-width: 985px) {

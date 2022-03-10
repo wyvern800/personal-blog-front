@@ -1,29 +1,37 @@
-import React, { useState, useEffect, SyntheticEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { Wrapper, LikeButton, LikeIcon } from './styles';
+import { Wrapper, LikeButton, LikeIcon, DislikeIcon, Likes } from './styles';
 import { PostType } from '../../types/post';
 
+// Post Props
 type PostProps = {
   post: PostType;
 };
 
 const Reactions = (props: PostProps) => {
   const { post } = props;
-  const [liked, setLiked] = useState<Boolean>();
+  const [likeStatus, setLikeStatus] = useState<Boolean>(false);
 
-  useEffect(() => {}, [post]);
+  useEffect(() => {}, [likeStatus, post]);
 
   // Processes the liking
-  const processLike = (event: SyntheticEvent) => {
-    alert('like')
+  const processLikeBehavior = (status: Boolean): void => {
+    setLikeStatus(!status);
   };
 
   return (
-    <Wrapper>
-      <LikeButton onClick={processLike}>
-        <LikeIcon /> {post?.likes}
-      </LikeButton>
-    </Wrapper>
+    post && (
+      <Wrapper>
+        <LikeButton onClick={() => processLikeBehavior(likeStatus)}>
+          {!likeStatus ? (
+            <LikeIcon statusLike={likeStatus} />
+          ) : (
+            <DislikeIcon statusLike={likeStatus} />
+          )}
+        </LikeButton>
+        <Likes>{post?.likes}1.123 likes</Likes>
+      </Wrapper>
+    )
   );
 };
 

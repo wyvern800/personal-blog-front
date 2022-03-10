@@ -28,6 +28,8 @@ export const Body = styled.div`
 `;
 
 export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
   border: 1px solid #1f1f1e;
   background-color: #1f1f1e;
   padding-top: 1.6%;
@@ -84,6 +86,8 @@ export const Footer = styled.div`
 export const LinkToPost = styled(Link)`
   text-decoration: none;
   color: gray;
+  padding: 0.2%;
+  margin-left: 1%;
 
   &:focus,
   &:hover,

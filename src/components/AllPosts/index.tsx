@@ -10,6 +10,7 @@ import SinglePost from '../../components/SinglePost';
 import api from '../../services/api';
 
 import PlaceholderPosts from '../../components/PlaceholderPosts';
+import NewBadge from '../../components/NewBadge';
 
 import { getAllPosts } from '../../services/callsApi';
 
@@ -66,13 +67,16 @@ const AllPosts = (props: AllPostsProps) => {
                 .map((post: PostType) => (
                   <Post key={post?.id} to={`/posts/${post?.id}`}>
                     <h4>{post?.title}</h4>
-                    <Tags>
-                      {post?.tags?.map((tag: TagType) => (
-                        <Tag key={tag.id} to={`/posts?tag=${tag.id}`}>
-                          {tag.name}
-                        </Tag>
-                      ))}
-                    </Tags>
+                    <NewBadge createdAt={post?.created_at} />
+                    {post?.tags && (
+                      <Tags>
+                        {post?.tags?.map((tag: TagType) => (
+                          <Tag key={tag.id} to={`/posts?tag=${tag.id}`}>
+                            {tag.name}
+                          </Tag>
+                        ))}
+                      </Tags>
+                    )}
                   </Post>
                 ))}
             </PostList>
@@ -81,13 +85,16 @@ const AllPosts = (props: AllPostsProps) => {
               {posts.map((post: PostType) => (
                 <Post key={post?.id} to={`/posts/${post?.id}`}>
                   <h4>{post?.title}</h4>
-                  <Tags>
-                    {post?.tags?.map((tag: TagType) => (
-                      <Tag key={tag.id} to={`/posts?tag=${tag.id}`}>
-                        {tag.name}
-                      </Tag>
-                    ))}
-                  </Tags>
+                  <NewBadge createdAt={post?.created_at} />
+                  {post?.tags && (
+                    <Tags>
+                      {post?.tags?.map((tag: TagType) => (
+                        <Tag key={tag.id} to={`/posts?tag=${tag.id}`}>
+                          {tag.name}
+                        </Tag>
+                      ))}
+                    </Tags>
+                  )}
                 </Post>
               ))}
             </PostList>

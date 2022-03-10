@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { PostType } from '../../types/post';
 
-import { Body, Header, Content, Footer, LinkToPost, Author } from './styles';
+import {
+  Body,
+  Header,
+  Content,
+  Footer,
+  LinkToPost,
+  Author,
+} from './styles';
 
 import Placeholder from '../../components/Placeholder';
 import Reactions from '../../components/Reactions';
@@ -13,6 +20,8 @@ import api from '../../services/api';
 import { User } from '../../types/user';
 
 import { getPostAuthor } from '../../services/callsApi';
+
+import NewBadge from '../NewBadge';
 
 type PostProps = {
   post: PostType;
@@ -42,7 +51,7 @@ const SinglePost = (props: PostProps) => {
         {loaded ? (
           <>
             <Header>
-              <LinkToPost to={`/posts/${post?.id}`}>{post?.title}</LinkToPost>
+              <LinkToPost to={`/posts/${post?.id}`}>{post?.title}</LinkToPost><NewBadge createdAt={post?.created_at}/>
             </Header>
             <Content>{post?.content}</Content>
             <Footer>

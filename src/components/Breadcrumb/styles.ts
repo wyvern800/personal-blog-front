@@ -35,7 +35,7 @@ export const CrumbLink = styled(Link)`
     color: gray;
 
     &:hover {
-     color: black;
+     color: lightgray;
     }
   }
 `;

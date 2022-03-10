@@ -50,7 +50,6 @@ export const Main = styled.div`
         text-decoration: none;
       }
     }
-
   }
 
   aside {
@@ -106,9 +105,17 @@ export const Post = styled(Link)`
   justify-content: space-between;
   background-color: rgba(124, 131, 128, 0.2);
   width: 100%;
+  height: fit-content;
+  min-height: 70px;
+  max-height: 70px;
 
-  justify-items: center;
+  @media only screen and (max-width: 600px) {
+    min-height: 50px;
+    max-height: 50px;
+  }
+
   align-items: center;
+  justify-content: space-between;
 
   padding: 1.5%;
 
@@ -131,10 +138,19 @@ export const Post = styled(Link)`
   &:not(:first-child) {
     margin-top: 1%;
   }
+
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 export const PostList = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  margin-top: 5px;
 `;

@@ -7,7 +7,7 @@ export type PostType = {
   tags?: TagType[];
   userid: number;
   likes?: number;
-  dateInsert: Date;
-  dateUpdate: Date;
+  created_at: Date;
+  updated_at: Date;
 
 } | undefined;
