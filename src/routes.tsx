@@ -10,9 +10,10 @@ import Logout from './pages/Logout';
 
 import Main from './components/Main';
 import Profile from './pages/Profile';
-import AdminArea from './pages/AdminArea';
+import Overview from './pages/AdminArea/Overview';
+import NewPost from './pages/AdminArea/NewPost';
 import NotFound from './pages/NotFound';
-import ProfileOther from './pages/ProfileOther'
+import ProfileOther from './pages/ProfileOther';
 
 const PrivateRoute = ({ component: Component, ...rest }: any) => {
   const isAuthenticate = localStorage.getItem('token');
@@ -48,6 +49,7 @@ const Routes = () => (
     {/* Rotas privadas */}
     <PrivateRoute path="/profile" component={Main} />
     <PrivateRoute path="/admin" component={Main} />
+    <PrivateRoute exact path="/post/add" component={Main} />
 
     <Route component={NotFound} />
   </Switch>
@@ -56,7 +58,10 @@ const Routes = () => (
 export const PrivateRoutes = ({ userObjectData }: any) => (
   <>
     {userObjectData['type_user'] === 'admin' && (
-      <PrivateRoute exact path="/admin" component={AdminArea} />
+      <>
+        <PrivateRoute exact path="/admin" component={Overview} />
+        <PrivateRoute exact path="/post/add" component={NewPost} />
+      </>
     )}
     <PrivateRoute exact path="/profile" component={Profile} />
   </>

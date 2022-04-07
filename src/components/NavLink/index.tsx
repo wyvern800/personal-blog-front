@@ -23,6 +23,12 @@ const NavLink = ({
   // Creates the icon and change the color based on its status
   const Icon = styled(icon)`
     fill: ${(props) => props.active && '#fb0'};
+    margin-right: 1.5%;
+
+    &:hover {
+    fill: #fb0;
+    cursor: pointer;
+  }
   `;
 
   return (

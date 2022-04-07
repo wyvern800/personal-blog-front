@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
+  margin: 0.1%;
 
   @media (max-width: 600px) {
     flex-direction: column;
@@ -10,8 +11,10 @@ export const Container = styled.div`
 `;
 
 export const Body = styled.div`
-  border: 1px solid yellow;
   width: 100%;
+  margin: 0.5%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
 export const Footer = styled.div`

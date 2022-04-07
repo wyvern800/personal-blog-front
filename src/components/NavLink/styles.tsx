@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import { NavLinkType } from '../../types/navlink';
 
 export const Navlink = styled.a<NavLinkType>`
-  color: ${(props) => props.active ?  '#fb0' : 'gray'};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${(props) => (props.active ? '#fb0' : 'gray')};
   width: 100%;
   align-items: center;
   height: 10%;
@@ -23,14 +26,17 @@ export const Navlink = styled.a<NavLinkType>`
   &:hover {
     color: #fb0;
     cursor: pointer;
+    background-color: rgba(31, 30, 30, 0.63);
   }
 
   &&:not(:first-child) {
-    border-top: 1px solid gray;
+    margin-top: 0.5%;
   }
 
   @media (max-width: 600px) {
-    margin-left: 0.5%;
-    margin-right: 0.5%;
+    &&:not(:first-child) {
+      margin: 0;
+      margin-left: 0.5%;
+    }
   }
 `;
