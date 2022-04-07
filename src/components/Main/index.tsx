@@ -5,15 +5,18 @@ import { useHistory } from 'react-router-dom';
 
 import { PrivateRoutes } from '../../routes';
 
-import { Container, Body, Navbar, Footer, TextFooter } from './styles';
+import { Container, Body, Footer, TextFooter } from './styles';
 
 import auth from '../../services/authService';
-import NavLinkCustom from '../NavLinkCustom';
+
+import { navLinks_admin } from '../../constants/navLinks_admin';
+
+import Navbar from '../Navbar';
 
 const Dashboard = () => {
   const { userObjectData, setUserObjectData } = useUserObjectData();
   const history = useHistory();
-  const [ active, setActive ] = useState("/posts/add");
+  const [active, setActive] = useState('/posts/add');
 
   // Effect that authenticates the user
   useEffect(() => {
@@ -41,10 +44,7 @@ const Dashboard = () => {
       {userObjectData && (
         <>
           <Container>
-            <Navbar>
-              <NavLinkCustom title={'Posts'} linkTo={'/posts/add'} active={active} setActive={setActive}/>
-              <NavLinkCustom title={'Deslogar'} linkTo={'/logout'} active={active} setActive={setActive}/>
-            </Navbar>
+            <Navbar navigationLinks={navLinks_admin} active={active} setActive={setActive}/>
             <Body>
               <PrivateRoutes userObjectData={userObjectData} />
             </Body>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLinkType } from '../../types/navlink';
 
-export const NavLinkStyle = styled.a<NavLinkType>`
+export const Navlink = styled.a<NavLinkType>`
   color: ${(props) => props.active ?  '#fb0' : 'gray'};
   width: 100%;
   align-items: center;

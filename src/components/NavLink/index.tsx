@@ -1,15 +1,18 @@
 import React from 'react';
-import { NavLinkStyle } from './styles';
+import { Navlink } from './styles';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 
 type NavLinkCustomProps = {
+  icon: any;
   title: string;
   linkTo: string;
   active: string;
   setActive: any;
 };
 
-const NavLinkCustom = ({
+const NavLink = ({
+  icon,
   title,
   linkTo,
   active,
@@ -17,19 +20,24 @@ const NavLinkCustom = ({
 }: NavLinkCustomProps) => {
   const history = useHistory();
 
+  // Creates the icon and change the color based on its status
+  const Icon = styled(icon)`
+    fill: ${(props) => props.active && '#fb0'};
+  `;
+
   return (
-    <NavLinkStyle
+    <Navlink
       onClick={() => {
         if (active !== linkTo) {
           setActive(linkTo);
-          history.push('/posts/add');
+          history.push(linkTo);
         }
       }}
       active={active === linkTo}
     >
-      {title}
-    </NavLinkStyle>
+      <Icon active={active === linkTo} size={'1.1rem'} /> {title}
+    </Navlink>
   );
 };
 
-export default NavLinkCustom;
+export default NavLink;
