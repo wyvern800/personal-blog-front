@@ -14,6 +14,9 @@ import NewBadge from '../../components/NewBadge';
 
 import { getAllPosts } from '../../services/callsApi';
 
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 type AllPostsProps = {
   firstSeparated?: Boolean;
   width?: string | undefined;
@@ -58,7 +61,6 @@ const AllPosts = (props: AllPostsProps) => {
             })}
         </>
       )}
-      {loaded ? (
         <>
           {firstSeparated ? (
             <PostList>
@@ -66,7 +68,7 @@ const AllPosts = (props: AllPostsProps) => {
                 .filter((_, index: number) => index !== 0)
                 .map((post: PostType) => (
                   <Post key={post?.id} to={`/posts/${post?.id}`}>
-                    <h4>{post?.title}</h4>
+                    <h4>{post?.title || <Skeleton/>}</h4>
                     <NewBadge createdAt={post?.created_at} />
                     {post?.tags && (
                       <Tags>
@@ -100,9 +102,6 @@ const AllPosts = (props: AllPostsProps) => {
             </PostList>
           )}
         </>
-      ) : (
-        <PlaceholderPosts />
-      )}
     </>
   );
 };
