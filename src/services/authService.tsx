@@ -9,7 +9,6 @@ const isUserLogged = () => {
   return localStorage.getItem(tokenKey) === null ? false : true;
 };
 
-
 /**
  * Function used to get the logged in user's informations
  */

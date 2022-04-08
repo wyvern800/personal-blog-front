@@ -34,7 +34,7 @@ const ViewPost = () => {
     <>
       <Title name={post?.title} />
       <Breadcrumb
-        previous={[{ name: 'Posts', linkTo: '/posts' }]}
+        previous={[{ name: 'Home', linkTo: '/' }, { name: 'Posts', linkTo: '/posts' }]}
         currentAt={{ name: post?.title, linkTo: `/posts/${post?.id}` }}
       />
       <Container>

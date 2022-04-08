@@ -11,7 +11,9 @@ import Logout from './pages/Logout';
 import Main from './components/Main';
 import Profile from './pages/Profile';
 import Overview from './pages/AdminArea/Overview';
-import NewPost from './pages/AdminArea/NewPost';
+import PostsList from './pages/AdminArea/Posts/List';
+import PostsNew from './pages/AdminArea/Posts/New';
+import PostsEdit from './pages/AdminArea/Posts/Edit';
 import NotFound from './pages/NotFound';
 import ProfileOther from './pages/ProfileOther';
 
@@ -49,7 +51,6 @@ const Routes = () => (
     {/* Rotas privadas */}
     <PrivateRoute path="/profile" component={Main} />
     <PrivateRoute path="/admin" component={Main} />
-    <PrivateRoute exact path="/post/add" component={Main} />
 
     <Route component={NotFound} />
   </Switch>
@@ -60,7 +61,9 @@ export const PrivateRoutes = ({ userObjectData }: any) => (
     {userObjectData['type_user'] === 'admin' && (
       <>
         <PrivateRoute exact path="/admin" component={Overview} />
-        <PrivateRoute exact path="/post/add" component={NewPost} />
+        <PrivateRoute exact path="/admin/posts" component={PostsList} />
+        <PrivateRoute exact path="/admin/posts/new" component={PostsNew} />
+        <PrivateRoute exact path="/admin/posts/edit/:postId" component={PostsEdit} />
       </>
     )}
     <PrivateRoute exact path="/profile" component={Profile} />

@@ -14,10 +14,6 @@ const Breadcrumb = (props: BreadcrumbProps) => {
     <>
       <Wrapper>
         <div className="ui huge breadcrumb">
-          <CrumbLink to={'/'} className="section">
-          <span>Home</span>
-          </CrumbLink>
-          {previous && <i className="right chevron icon divider"></i>}
           {previous !== undefined &&
             previous.map((crumb: CrumbType, index) => (
               <>

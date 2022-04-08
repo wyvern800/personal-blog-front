@@ -11,7 +11,7 @@ export const navLinks_admin = [
   {
     icon: FaBuffer,
     title: 'Posts',
-    linkTo: '/post/add',
+    linkTo: '/admin/posts',
   },
   {
     icon: BiExit,

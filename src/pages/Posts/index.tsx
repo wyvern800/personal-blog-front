@@ -14,7 +14,7 @@ const Posts = () => {
   return (
     <>
       <Title name="All posts" />
-      <Breadcrumb currentAt={currentAt} />
+      <Breadcrumb previous={[{ name: 'Home', linkTo: '/' }]} currentAt={currentAt} />
       <Container>
         <Main>
           <AllPosts firstSeparated={false} width={'80%'} />

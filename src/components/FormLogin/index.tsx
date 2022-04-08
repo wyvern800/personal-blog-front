@@ -13,8 +13,6 @@ import { useLocation, useHistory } from 'react-router-dom';
 
 import auth from '../../services/authService';
 
-import { useUserObjectData } from '../../hooks/UserObjectData';
-
 const FormLogin = () => {
 
   const history = useHistory();
