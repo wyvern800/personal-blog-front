@@ -30,6 +30,7 @@ const FormLogin = () => {
     handleSubmit,
     formState: { errors },
     setError,
+    setValue,
   } = useForm({ resolver: yupResolver(validationSchema) });
 
   const { state } = useLocation();
@@ -64,6 +65,7 @@ const FormLogin = () => {
         label="E-mail"
         register={register}
         error={errors.email?.message}
+        setValueFormState={setValue}
       />
       <FormField
         name="password"
@@ -71,6 +73,7 @@ const FormLogin = () => {
         label="Senha"
         register={register}
         error={errors.password?.message}
+        setValueFormState={setValue}
       />
       <Login type="submit">Login</Login>
     </Form>

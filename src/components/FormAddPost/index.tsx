@@ -15,6 +15,8 @@ import { createPost, editPost } from '../../services/callsApi';
 
 import { PostType } from '../../types/post';
 
+import FormFieldTinyMCE from '../FormFieldTinyMCE';
+
 type FormAddPostProps = {
   defaultValues?: PostType;
   editing?: boolean;
@@ -49,6 +51,7 @@ const FormAddPost = ({ defaultValues, editing }: FormAddPostProps) => {
     handleSubmit,
     formState: { errors },
     setError,
+    setValue,
     reset,
   } = useForm({
     resolver: yupResolver(validationSchema),
@@ -96,14 +99,16 @@ const FormAddPost = ({ defaultValues, editing }: FormAddPostProps) => {
           register={register}
           error={errors.title?.message}
           defaultValue={defaultValues?.title}
+          setValueFormState={setValue}
         />
-        <FormField
+        <FormFieldTinyMCE
           name="content"
           type="text"
           label="Content"
           register={register}
           error={errors.content?.message}
           defaultValue={defaultValues?.content}
+          setValueFormState={setValue}
         />
         <Login type="submit">{editing ? 'Edit' : 'Create'} Post</Login>
       </Form>

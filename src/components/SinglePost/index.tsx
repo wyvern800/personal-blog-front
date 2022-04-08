@@ -23,6 +23,8 @@ import { getPostAuthor } from '../../services/callsApi';
 
 import NewBadge from '../NewBadge';
 
+import parse from "html-react-parser";
+
 type PostProps = {
   post: PostType;
   loaded: Boolean;
@@ -53,7 +55,7 @@ const SinglePost = (props: PostProps) => {
             <Header>
               <LinkToPost to={`/posts/${post?.id}`}>{post?.title}</LinkToPost><NewBadge createdAt={post?.created_at}/>
             </Header>
-            <Content>{post?.content}</Content>
+            <Content>{post !== undefined && parse(post?.content)}</Content>
             <Footer>
               <Reactions post={post} />
               <div className="author">
