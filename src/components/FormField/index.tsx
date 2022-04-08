@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-import { Field, Label, Input, ErrorMessage } from './styles';
+import { Wrapper, LabelInput, Input, ErrorMessage } from './styles';
 
 const FormField = ({
   type = 'text',
   name,
   label,
+  width,
   defaultValue = '',
   register,
   setValueFormState = () => {},
@@ -25,18 +26,17 @@ const FormField = ({
   };
 
   return (
-    <>
-      <Label>
-        <Field>{label ?? ''}:</Field>
-        <Input
-          type={type}
-          {...register(name)}
-          value={value}
-          onChange={onChange}
-        />
-      </Label>
+    <Wrapper width={width}>
+      <LabelInput>{label ?? ''}</LabelInput>
+      <Input
+        width={width}
+        type={type}
+        {...register(name)}
+        value={value}
+        onChange={onChange}
+      />
       <ErrorMessage>{error ?? ''}</ErrorMessage>
-    </>
+    </Wrapper>
   );
 };
 

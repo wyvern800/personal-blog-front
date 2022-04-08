@@ -22,6 +22,7 @@ export const LabelInput = styled.label`
   margin-bottom: 10px;
   font-size: 1.2rem;
   font-family: 'Inconsolata-Bold', monospace;
+  font-weight: bold;
 
   @media (max-width: 920px) {
     font-size: 1.2rem;

@@ -96,6 +96,7 @@ const FormAddPost = ({ defaultValues, editing }: FormAddPostProps) => {
         <FormField
           name="title"
           label="Title"
+          width="100%"
           register={register}
           error={errors.title?.message}
           defaultValue={defaultValues?.title}
@@ -106,6 +107,7 @@ const FormAddPost = ({ defaultValues, editing }: FormAddPostProps) => {
           type="text"
           label="Content"
           register={register}
+          margin_top={'20px'}
           error={errors.content?.message}
           defaultValue={defaultValues?.content}
           setValueFormState={setValue}
