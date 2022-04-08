@@ -8,7 +8,7 @@ import FormField from '../../components/FormField';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { useLocation, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import auth from '../../services/authService';
 import { createPost, editPost } from '../../services/callsApi';
@@ -64,6 +64,7 @@ const FormAddPost = ({ defaultValues, editing }: FormAddPostProps) => {
       await editPost(data.id, data)
         .then(() => {
           alert('Post editado com sucesso');
+          history.push('/admin/posts');
         })
         .catch((err) => {
           console.log(err);
@@ -76,6 +77,7 @@ const FormAddPost = ({ defaultValues, editing }: FormAddPostProps) => {
       })
         .then(() => {
           alert('Post criado com sucesso');
+          history.push('/admin/posts');
           reset({});
         })
         .catch((err) => {

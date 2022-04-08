@@ -19,6 +19,7 @@ import auth from '../../../../services/authService';
 
 const List = () => {
   const history = useHistory();
+  const [response, setResponse] = useState({});
   const [posts, setPosts] = useState<PostType[]>([]);
   const [loaded, setLoaded] = useState(false);
 
@@ -40,7 +41,7 @@ const List = () => {
       }
     };
     get();
-  }, []);
+  }, [response]);
 
   /**
    * Deletes the post
@@ -53,6 +54,7 @@ const List = () => {
           console.log(response)
           if (response.status === 200) {
             alert('post deletado');
+            setResponse(response)
           }
         })
         .catch((error) => {
