@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import authService from '../../services/authService';
+import auth from '../../services/authService';
+import { useLocation } from 'react-router-dom';
+
 import {
   Container,
   FooterBar,
@@ -6,9 +10,26 @@ import {
   Credit,
   Links,
   FooterColumn,
+  LinkToAdminDashboard
 } from './styles';
 
 const Footer = () => {
+  const location = useLocation();
+  const [logged, setLogged] = useState(false);
+  const [adminUser, setAdminUser] = useState(false);
+
+  // Spawns an admin link to the footer if the logged user is one
+  useEffect(() => {
+    setLogged(auth.isUserLogged())
+    const get = async () => {
+      await auth.isUserAdmin().then((response) => {
+          const { isAdmin } = response?.data;
+          setAdminUser(isAdmin)
+      });
+    }
+    get();
+  }, [location])
+
   return (
     <>
       <Container>
@@ -54,6 +75,7 @@ const Footer = () => {
         <Credit>
           © 2021-2022 Primatas - Seu universo da programação web. Todos os
           direitos reservados.
+          {adminUser && logged && <LinkToAdminDashboard to="/admin">Go to admins dashboard</LinkToAdminDashboard>}
         </Credit>
       </Container>
     </>

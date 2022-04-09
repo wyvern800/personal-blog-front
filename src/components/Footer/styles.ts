@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   font-family: 'Roboto', sans-serif;
@@ -100,9 +101,30 @@ export const FooterLink = styled.a`
 `;
 
 export const Credit = styled.div`
+  display: flex;
+  justify-content: space-between;
   border: 1px solid #2d2d2d;
   color: gray;
   padding: 5px;
   background-color: rgba(45, 45, 45);
   font-family: 'Roboto', sans-serif;
+`;
+
+export const LinkToAdminDashboard = styled(Link)`
+  text-decoration: none;
+  color: gray;
+  padding: 0.2%;
+  margin-left: 1%;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: #fb0;
+  }
 `;
