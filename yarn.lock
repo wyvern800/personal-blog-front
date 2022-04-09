@@ -1661,6 +1661,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-power-tooltip@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@types/react-power-tooltip/-/react-power-tooltip-1.0.2.tgz#691a56c02bfdbac2a5815e5bf93d6e9690e3b093"
+  integrity sha512-2UdP3deKdWex4PT7wZWkbR8j3oJ7OZH797zCN2m+zDfyTn2ttnYcqTW3HRaTQJFAC7vgoheU35ssxOX0cpajzg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-router-dom@^5.3.3":
   version "5.3.3"
   resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-5.3.3.tgz#e9d6b4a66fcdbd651a5f106c2656a30088cc1e83"
@@ -7586,6 +7593,11 @@ react-popper@^2.2.4:
   dependencies:
     react-fast-compare "^3.0.1"
     warning "^4.0.2"
+
+react-power-tooltip@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-power-tooltip/-/react-power-tooltip-1.0.2.tgz#1a7c9821542ea84ddcbf1168a09bff4fcb75fe07"
+  integrity sha512-c/aCR92wxOPj+mYp3X3WPOEafIEZCEdjXQJzY72SXaVfCp7lhoaBi0UZcJnqMPcWVwFmtDbhQykqhkBlBsGA4A==
 
 react-property@2.0.0:
   version "2.0.0"

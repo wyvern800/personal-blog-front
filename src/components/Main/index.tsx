@@ -20,7 +20,10 @@ const Dashboard = () => {
   const location = useLocation();
 
   // Remove last slash from url to set it as active
-  const currentUrl = location.pathname?.slice(0, location.pathname.lastIndexOf('/'))
+  const currentUrl = location.pathname?.slice(
+    0,
+    location.pathname.lastIndexOf('/')
+  );
   const [active, setActive] = useState(currentUrl);
 
   // Effect that authenticates the user
@@ -49,7 +52,11 @@ const Dashboard = () => {
       {userObjectData && (
         <>
           <Container>
-            <Navbar navigationLinks={navLinks_admin} active={active} setActive={setActive}/>
+            <Navbar
+              navigationLinks={navLinks_admin}
+              active={active}
+              setActive={setActive}
+            />
             <Body>
               <PrivateRoutes userObjectData={userObjectData} />
             </Body>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, NavigationBar } from './styles';
 import { NavLink } from 'react-router-dom';
+import LoggedUser from '../LoggedUser';
 
 const Header = () => {
     return (
@@ -21,7 +22,9 @@ const Header = () => {
           </ul>
           <div></div>
         </NavigationBar>
-        <div className="empty-element">pessoaJuridicas</div>
+        <div>
+          <LoggedUser />
+        </div>
       </Container>
     );
 }
