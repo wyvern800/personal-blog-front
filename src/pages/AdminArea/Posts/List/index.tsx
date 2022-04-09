@@ -17,7 +17,6 @@ import { PostType } from '../../../../types/post';
 import {
   getAllPostsByAuthor,
   deletePost,
-  editPost,
 } from '../../../../services/callsApi';
 import auth from '../../../../services/authService';
 
@@ -55,7 +54,6 @@ const List = () => {
     if (postId !== undefined) {
       await deletePost(postId)
         .then((response) => {
-          console.log(response);
           if (response.status === 200) {
             alert('post deletado');
             setResponse(response);
