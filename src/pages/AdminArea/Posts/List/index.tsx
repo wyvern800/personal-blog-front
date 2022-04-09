@@ -14,7 +14,11 @@ import {
 } from './styles';
 import { useHistory } from 'react-router-dom';
 import { PostType } from '../../../../types/post';
-import { getAllPostsByAuthor, deletePost, editPost } from '../../../../services/callsApi';
+import {
+  getAllPostsByAuthor,
+  deletePost,
+  editPost,
+} from '../../../../services/callsApi';
 import auth from '../../../../services/authService';
 
 const List = () => {
@@ -51,10 +55,10 @@ const List = () => {
     if (postId !== undefined) {
       await deletePost(postId)
         .then((response) => {
-          console.log(response)
+          console.log(response);
           if (response.status === 200) {
             alert('post deletado');
-            setResponse(response)
+            setResponse(response);
           }
         })
         .catch((error) => {
@@ -67,26 +71,28 @@ const List = () => {
    * Edits the post
    * @param postId The post id
    */
-   const processPostEdit = async (postId: string | undefined) => {
+  const processPostEdit = async (postId: string | undefined) => {
     if (postId !== undefined) {
       history.push(`/admin/posts/edit/${postId}`);
     }
   };
 
   return (
-    loaded && (
-      <Wrapper>
-        <Header>
-          <Button onClick={() => history.push('/admin/posts/new')}>
-            Add Post
+    <Wrapper>
+      <Header>
+        <Button onClick={() => history.push('/admin/posts/new')}>
+          Add Post
+        </Button>
+        <Search>
+          <Input disabled id="search" type="text" />
+          <Button disabled type="submit">
+            Search
           </Button>
-          <Search>
-            <Input disabled id="search" type="text" />
-            <Button disabled type="submit">
-              Search
-            </Button>
-          </Search>
-        </Header>
+        </Search>
+      </Header>
+      {!loaded ? (
+        <>Loading...</>
+      ) : (
         <PostsList>
           {posts.map((post: PostType) => (
             <Post key={post?.id}>
@@ -104,8 +110,8 @@ const List = () => {
             </Post>
           ))}
         </PostsList>
-      </Wrapper>
-    )
+      )}
+    </Wrapper>
   );
 };
 
