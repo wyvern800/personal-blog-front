@@ -44,3 +44,9 @@ export const HiddenMenu = styled.div<ArrowDropdownProps>`
       `}
   }
 `;
+
+export const Separator = styled.span`
+  margin-left: 2%;
+  margin-right: 2%;
+  color: gray;
+`;

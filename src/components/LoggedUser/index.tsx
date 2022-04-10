@@ -3,7 +3,7 @@ import { User as UserType } from '../../types/user';
 import auth from '../../services/authService';
 import Tooltip from 'react-power-tooltip';
 import { useLocation, useHistory } from 'react-router-dom';
-import { LinkLogin, ArrowDropdown, HiddenMenu } from './styles';
+import { LinkLogin, ArrowDropdown, HiddenMenu, Separator } from './styles';
 import menuData from '../../constants/menuLinks';
 
 const LoggedUser = () => {
@@ -58,6 +58,8 @@ const LoggedUser = () => {
   ) : (
     <>
       <LinkLogin to={'/login'}>Login</LinkLogin>
+      <Separator>|</Separator>
+      <LinkLogin to={'/register'}>Register</LinkLogin>
     </>
   );
 };
