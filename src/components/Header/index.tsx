@@ -2,31 +2,29 @@ import React from 'react';
 import { Container, NavigationBar } from './styles';
 import { NavLink } from 'react-router-dom';
 import LoggedUser from '../LoggedUser';
+import headerData from '../../constants/headerLinks';
 
 const Header = () => {
-    return (
-      <Container>
-        <div className="empty-element">Buiu Richards</div>
-        <NavigationBar>
-          <ul>
+  return (
+    <Container>
+      <div className="empty-element">Buiu Richards</div>
+      <NavigationBar>
+        <ul>
+          {headerData.headerLinks.map((link: any) => (
             <li>
-              <NavLink exact to="/" activeClassName="nav-link-active">
-                Home
+              <NavLink key={link.id} exact to={link.linkTo} activeClassName="nav-link-active">
+                {link.title}
               </NavLink>
             </li>
-            <li>
-              <NavLink exact to="/about" activeClassName="nav-link-active">
-                About
-              </NavLink>
-            </li>
-          </ul>
-          <div></div>
-        </NavigationBar>
-        <div>
-          <LoggedUser />
-        </div>
-      </Container>
-    );
-}
+          ))}
+        </ul>
+        <div></div>
+      </NavigationBar>
+      <div>
+        <LoggedUser />
+      </div>
+    </Container>
+  );
+};
 
 export default Header;
