@@ -4,12 +4,14 @@ import { NavBar } from './styles';
 import { LinkType } from '../../types/link';
 import NavLink from '../NavLink';
 import { NavBarType } from '../../types/navbar';
+import linksData from '../../constants/navLinks';
 
-const Navbar = ({ navigationLinks, active, setActive }: NavBarType) => {
+const Navbar = ({ type_user, active, setActive }: NavBarType) => {
   return (
     <NavBar>
-      {navigationLinks.map((link: LinkType) => (
+      { linksData.navLinks[0][type_user].map((link: LinkType) => (
         <NavLink
+          key={link.id}
           icon={link.icon}
           title={link.title}
           linkTo={link.linkTo}
