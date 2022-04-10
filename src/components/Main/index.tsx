@@ -53,7 +53,7 @@ const Dashboard = () => {
         <>
           <Container>
             <Navbar
-              navigationLinks={navLinks_admin}
+              userObjectData={userObjectData}
               active={active}
               setActive={setActive}
             />
