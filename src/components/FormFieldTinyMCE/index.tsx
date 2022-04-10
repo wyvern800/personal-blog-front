@@ -52,7 +52,7 @@ const FormFieldTinyMCE = ({
       {label && <LabelInput>{label}</LabelInput>}
       <ContainerInput error={error !== ''}>
         <Editor
-          apiKey={process.env.REACT_APP_TINYMCE}
+          apiKey={process.env.TINY_MCE_TOKEN}
           {...register(name)}
           initialValue={defaultValue}
           value={value}
