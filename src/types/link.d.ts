@@ -1,6 +1,6 @@
 export type LinkType = {
   id: string,
-  icon: any,
+  icon?: any,
   title: string,
   linkTo: string,
 }

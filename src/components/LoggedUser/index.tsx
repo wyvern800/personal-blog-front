@@ -3,7 +3,9 @@ import { User as UserType } from '../../types/user';
 import auth from '../../services/authService';
 import Tooltip from 'react-power-tooltip';
 import { useLocation, useHistory } from 'react-router-dom';
-import { LinkLogin } from './styles';
+import { LinkLogin, ArrowDropdown, HiddenMenu } from './styles';
+import { LinkType } from '../../types/link';
+import menuData from '../../constants/menuLinks';
 
 const LoggedUser = () => {
   const history = useHistory();
@@ -25,10 +27,11 @@ const LoggedUser = () => {
   }, [location]);
 
   return isUserLogged ? (
-    <div
-      style={{ position: 'relative' }}
-      onMouseOver={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
+    <HiddenMenu
+      open={showTooltip}
+      onClick={() => setShowTooltip(!showTooltip)}
+      /*onMouseOver={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}*/
     >
       <Tooltip
         color="white"
@@ -40,11 +43,19 @@ const LoggedUser = () => {
         hoverColor="#fb0"
         moveRight="20px"
       >
-        <span onClick={() => history.push('/profile')}>My Profile</span>
-        <span onClick={() => history.push('/logout')}>Logout</span>
+        {menuData.menuLinks.map((link: LinkType) => (
+          <span key={link.id} onClick={() => history.push(link.linkTo)}>
+            {link.title}
+          </span>
+        ))}
       </Tooltip>
-      Olá, <b>{loggedUser?.username}</b>
-    </div>
+      Hello, <b>{loggedUser?.username}</b>
+      <ArrowDropdown
+        className={'dropdown-arow'}
+        open={showTooltip}
+        size={'28px'}
+      />
+    </HiddenMenu>
   ) : (
     <>
       <LinkLogin to={'/login'}>Login</LinkLogin>
