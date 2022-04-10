@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { Editor } from '@tinymce/tinymce-react';
 
 import { Container, LabelInput, ContainerInput, LabelError } from './styles';
@@ -65,10 +64,10 @@ const FormFieldTinyMCE = ({
               'advlist autolink lists link paste',
               'charmap print preview anchor help',
               'searchreplace visualblocks',
-              'insertdatetime textcolor',
+              'insertdatetime textcolor codesample',
             ],
             toolbar:
-              'undo redo | fontsizeselect | forecolor backcolor | bold strikethrough italic | bullist numlist | link | help',
+              'undo redo | fontsizeselect | forecolor backcolor | bold strikethrough italic | bullist numlist | link | codesample | help',
             content_style:
               'body { font-family: Inconsolata, monospace; font-size: 1.2rem;}',
             branding: false,
