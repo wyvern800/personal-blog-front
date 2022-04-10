@@ -1,11 +1,12 @@
 export type NavigationLinksType = {
+  id: string,
   icon: any,
   title: string,
   linkTo: string,
 }
 
 export type NavBarType = {
-  userObjectData: any;
+  type_user: string;
   active: string;
   setActive: any;
 }
