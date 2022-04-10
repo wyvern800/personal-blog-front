@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 type WrapperProps = {
   width?: string;
-}
+  margin_left?: string;
+};
 
 export const Field = styled.div`
   display: flex;
@@ -17,13 +18,12 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  margin: 5px;
   display: flex;
   text-align: left;
 
   width: 100%;
 
-  padding: 1%;
+  padding: 10px;
 
   border: 0;
   margin: 0;
@@ -40,14 +40,10 @@ export const ErrorMessage = styled.div`
 `;
 
 export const LabelInput = styled.label`
-  margin-bottom: 10px;
+  margin-top: 15px;
   font-size: 1.2rem;
   font-family: 'Inconsolata-Bold', monospace;
   font-weight: bold;
-
-  &:not(:first-child) {
-    margin-top: 1%;
-  }
 
   @media (max-width: 920px) {
     font-size: 1.2rem;
@@ -58,5 +54,14 @@ export const LabelInput = styled.label`
 export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   flex-direction: column;
-  width: ${props => props.width && props.width};
+  width: ${(props) => props.width && props.width};
+  margin-left: ${(props) => props.margin_left && props.margin_left};
+
+  @media (max-width: 600px) {
+    width: 100%;
+
+    &:not(:first-child) {
+      margin: 0;
+    }
+  }
 `;

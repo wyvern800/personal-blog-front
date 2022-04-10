@@ -7,6 +7,7 @@ const FormField = ({
   name,
   label,
   width,
+  margin_left,
   defaultValue = '',
   register,
   setValueFormState = () => {},
@@ -26,10 +27,9 @@ const FormField = ({
   };
 
   return (
-    <Wrapper width={width}>
-      <LabelInput>{label ?? ''}</LabelInput>
+    <Wrapper width={width} margin_left={margin_left}>
+      <LabelInput>{label ?? ''}:</LabelInput>
       <Input
-        width={width}
         type={type}
         {...register(name)}
         value={value}
