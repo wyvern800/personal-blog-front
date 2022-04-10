@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { MdDelete } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { IoMdAddCircleOutline } from 'react-icons/io';
 
 export const Search = styled.form`
   display: flex;
@@ -15,6 +16,7 @@ export const Button = styled.button`
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: 40px;
   background-color: rgba(26, 27, 31);
   border-radius: 5px;
@@ -93,7 +95,6 @@ export const LinkToPost = styled(Link)`
 
   text-decoration: none;
 
-
   &:focus,
   &:hover,
   &:visited,
@@ -120,6 +121,17 @@ export const Edit = styled(FiEdit)`
 
   &:hover {
     fill: rgba(255, 184, 51, 0.3);
+    cursor: pointer;
+  }
+`;
+
+export const AddButton = styled(IoMdAddCircleOutline)`
+  margin-left: 0.5%;
+  font-size: 25px;
+  fill: rgba(0, 158, 0, 1);
+
+  &:hover {
+    fill: rgba(0, 158, 0, 0.3);
     cursor: pointer;
   }
 `;

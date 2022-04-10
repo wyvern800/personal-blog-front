@@ -11,6 +11,7 @@ import {
   Delete,
   Edit,
   LinkToPost,
+  AddButton
 } from './styles';
 import { useHistory } from 'react-router-dom';
 import { PostType } from '../../../../types/post';
@@ -78,9 +79,7 @@ const List = () => {
   return (
     <Wrapper>
       <Header>
-        <Button onClick={() => history.push('/admin/posts/new')}>
-          Add Post
-        </Button>
+          <AddButton onClick={() => history.push('/admin/posts/new')}/>
         <Search>
           <Input disabled id="search" type="text" />
           <Button disabled type="submit">
