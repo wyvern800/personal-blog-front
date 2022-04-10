@@ -7,6 +7,7 @@ import About from './pages/About';
 import Posts from './pages/Posts';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
+import Register from './pages/Register';
 
 import Main from './components/Main';
 import Profile from './pages/Profile';
@@ -40,6 +41,7 @@ const Routes = () => (
     <Route exact path="/" component={Home} />
 
     <Route exact path="/login" component={Login} />
+    <Route exact path="/register" component={Register} />
     <Route exact path="/logout" component={Logout} />
 
     <Route exact path="/posts" component={Posts} />

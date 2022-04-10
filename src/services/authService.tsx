@@ -1,4 +1,5 @@
 import api from './api';
+import { User } from '../types/user';
 
 const tokenKey = 'token';
 
@@ -85,6 +86,21 @@ const login = async (email: string, password: string) => {
   return response;
 };
 
+/**
+ * Registers an user
+ */
+const registerUser = async (data: User) => {
+  const response = await api
+    .post('/users', data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+      }
+    }).catch((response) => {
+      throw response;
+    })
+    return response;
+}
+
 export default {
   login,
   clearToken,
@@ -92,5 +108,6 @@ export default {
   getCurrentUser,
   getProfileByUsername,
   isUserLogged,
-  isUserAdmin
+  isUserAdmin,
+  registerUser
 };
