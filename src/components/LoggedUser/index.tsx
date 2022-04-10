@@ -4,7 +4,6 @@ import auth from '../../services/authService';
 import Tooltip from 'react-power-tooltip';
 import { useLocation, useHistory } from 'react-router-dom';
 import { LinkLogin, ArrowDropdown, HiddenMenu } from './styles';
-import { LinkType } from '../../types/link';
 import menuData from '../../constants/menuLinks';
 
 const LoggedUser = () => {
@@ -43,7 +42,7 @@ const LoggedUser = () => {
         hoverColor="#fb0"
         moveRight="20px"
       >
-        {menuData.menuLinks.map((link: LinkType) => (
+        {menuData.menuLinks.map((link: any) => (
           <span key={link.id} onClick={() => history.push(link.linkTo)}>
             {link.title}
           </span>
