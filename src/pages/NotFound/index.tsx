@@ -6,8 +6,8 @@ const NotFound = () => {
   return (
     <Wrapper>
       <Notfound>404</Notfound>
-      <Msg>Essa página não existe.</Msg>
-      <Button to="/">Voltar</Button>
+      <Msg>This page does not exist.</Msg>
+      <Button to="/">Go back</Button>
     </Wrapper>
   );
 };
