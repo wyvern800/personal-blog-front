@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 type NavLinkCustomProps = {
+  id?: any;
   icon: any;
   title: string;
   linkTo: string;
@@ -12,6 +13,7 @@ type NavLinkCustomProps = {
 };
 
 const NavLink = ({
+  id,
   icon,
   title,
   linkTo,

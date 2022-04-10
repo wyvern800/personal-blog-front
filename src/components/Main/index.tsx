@@ -53,7 +53,7 @@ const Dashboard = () => {
         <>
           <Container>
             <Navbar
-              userObjectData={userObjectData}
+              type_user={userObjectData.type_user}
               active={active}
               setActive={setActive}
             />
