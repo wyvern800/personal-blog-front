@@ -7,11 +7,11 @@ import FormField from '../../components/FormField';
 
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-
-
 import { useLocation, useHistory } from 'react-router-dom';
-
 import auth from '../../services/authService';
+
+import Link from '../Link';
+
 
 const FormLogin = () => {
 
@@ -62,7 +62,7 @@ const FormLogin = () => {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormField
         name="email"
-        label="E-mail"
+        label="E-mail/Username"
         register={register}
         error={errors.email?.message}
         setValueFormState={setValue}
@@ -70,11 +70,12 @@ const FormLogin = () => {
       <FormField
         name="password"
         type="password"
-        label="Senha"
+        label="Password"
         register={register}
         error={errors.password?.message}
         setValueFormState={setValue}
       />
+      <Link text="Not registered yet? click to register" linkTo="/register"/>
       <Login type="submit">Login</Login>
     </Form>
   );
