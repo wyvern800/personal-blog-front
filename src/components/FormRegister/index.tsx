@@ -11,26 +11,27 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import auth from '../../services/authService';
 
 import Link from '../Link';
+import { useHistory } from 'react-router-dom';
 
 const FormRegister = () => {
+  const history = useHistory();
   const validationSchema = yup.object().shape({
     username: yup
       .string()
       .required('Invalid username')
       .max(12, "Your username can't have more than 12 characters!"),
-    email: yup.string().email().required('E-mail/login inválido'),
+    email: yup.string().email().required('E-mail inválido'),
     emailConfirmation: yup
       .string()
-      .required('Please re-enter your email.')
+      .email()
       .oneOf([yup.ref('email'), null], 'Emails must match'),
     password: yup
       .string()
       .required('Please enter your password.')
-      .max(32, 'Sua senha só pode ter no máximo 32 caracteres!')
-      .required(),
+      .max(15, 'Sua senha só pode ter no máximo 32 caracteres!'),
     passwordConfirmation: yup
       .string()
-      .required('Please re-enter your password.')
+      .max(15, 'Sua senha só pode ter no máximo 32 caracteres!')
       .oneOf([yup.ref('password'), null], 'Passwords must match'),
   });
 
@@ -40,6 +41,7 @@ const FormRegister = () => {
     formState: { errors },
     setError,
     setValue,
+    reset,
   } = useForm({ resolver: yupResolver(validationSchema) });
 
   /**
@@ -56,6 +58,7 @@ const FormRegister = () => {
       .registerUser(formattedData)
       .then(() => {
         alert('User successfully registered');
+        history.push('/login');
       })
       .catch((err) => {
         const errorMessage = err?.response.data.message;
@@ -102,7 +105,7 @@ const FormRegister = () => {
           width={'45%'}
         />
         <FormField
-          name="confirmationEmail"
+          name="emailConfirmation"
           label="Confirm E-mail"
           register={register}
           error={errors.emailConfirmation?.message}
@@ -132,7 +135,7 @@ const FormRegister = () => {
           margin_left={'20px'}
         />
       </FormFieldContainer>
-      <Link text="Already registered? click to login" linkTo="/login"/>
+      <Link text="Already registered? click to login" linkTo="/login" />
       <Login type="submit">Register</Login>
     </Form>
   );
