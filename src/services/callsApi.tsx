@@ -1,5 +1,6 @@
 import api from '../services/api';
 import { PostType } from '../types/post';
+import { tokenKey } from './authService';
 
 /**
  * Gets a specific post by id or slug
@@ -71,6 +72,33 @@ const editPost = async (postId: string, data: PostType): Promise<any> => {
   return response;
 };
 
+/**
+ * Check if user has liked the post
+ * @param postId The post id
+ * @returns true if user liked post | false if not
+ */
+const hasUserLikedPost = async (postId: string): Promise<any> => {
+  const response = await api.get(`/posts/hasuserliked/${postId}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  });
+  return response;
+}
+
+/**
+ * Process the like or dislike action
+ * @param postId The post id
+ */
+const likeDislikePost = async (postId: string): Promise<any> => {
+  const response = await api.get(`/posts/like/${postId}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  });
+  return response;
+}
+
 export {
   getAllPosts,
   getPost,
@@ -80,4 +108,6 @@ export {
   deletePost,
   editPost,
   getPostById,
+  hasUserLikedPost,
+  likeDislikePost
 };
