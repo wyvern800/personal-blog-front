@@ -10,8 +10,17 @@ export const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export const Likes = styled.div`
+type LikesProps = {
+  userLogged: boolean;
+}
+export const Likes = styled.div<LikesProps>`
   font-size: 14px;
+
+  ${(props) =>
+    !props.userLogged &&
+    css`
+      margin-left: 15px;
+    `}
 `;
 
 export const LikeButton = styled.div`
@@ -19,7 +28,6 @@ export const LikeButton = styled.div`
   font-size: 1.5rem;
   align-items: center;
 `;
-
 
 export const LikeIcon = styled(IoHeart)<IconProps>`
   font-size: 2rem;
@@ -47,8 +55,7 @@ export const DislikeIcon = styled(IoHeart)<IconProps>`
   padding: 5%;
   margin-right: 3px;
 
-  fill: ${(props) =>
-    props.statusLike && '#fd5a44'};
+  fill: ${(props) => props.statusLike && '#fd5a44'};
 
   // Animatin when we move our mouse out
   &:not(:hover) {

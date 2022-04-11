@@ -4,6 +4,7 @@ import { Wrapper, LikeButton, LikeIcon, DislikeIcon, Likes } from './styles';
 import { PostType } from '../../types/post';
 import { hasUserLikedPost, likeDislikePost } from '../../services/callsApi';
 import { ImSad } from 'react-icons/im';
+import auth from '../../services/authService';
 
 // Post Props
 type PostProps = {
@@ -40,14 +41,16 @@ const Reactions = (props: PostProps) => {
   return (
     post && (
       <Wrapper>
-        <LikeButton onClick={() => processLikeBehavior(likeStatus)}>
-          {!likeStatus ? (
-            <LikeIcon statusLike={likeStatus} />
-          ) : (
-            <DislikeIcon statusLike={likeStatus} />
-          )}
-        </LikeButton>
-        <Likes>
+        {auth.isUserLogged() && (
+          <LikeButton onClick={() => processLikeBehavior(likeStatus)}>
+            {!likeStatus ? (
+              <LikeIcon statusLike={likeStatus} />
+            ) : (
+              <DislikeIcon statusLike={likeStatus} />
+            )}
+          </LikeButton>
+        )}
+        <Likes userLogged={auth.isUserLogged()}>
           {post?.likes_quantity !== undefined && post?.likes_quantity > 0
             ? post?.likes_quantity + ' likes'
             : 'Nobody has liked this post yet '}
