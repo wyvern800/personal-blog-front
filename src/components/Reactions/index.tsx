@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Wrapper, LikeButton, LikeIcon, DislikeIcon, Likes } from './styles';
 import { PostType } from '../../types/post';
 import { hasUserLikedPost, likeDislikePost } from '../../services/callsApi';
+import { ImSad } from 'react-icons/im';
 
 // Post Props
 type PostProps = {
@@ -17,22 +18,21 @@ const Reactions = (props: PostProps) => {
   // Changes the like status of the post
   useEffect(() => {
     const get = async () => {
-        await hasUserLikedPost(post.id).then((response) => {
-          setLikeStatus(response.data)
-          setResponse(response.data)
-        })
-    }
+      await hasUserLikedPost(post.id).then((response) => {
+        setLikeStatus(response.data);
+        setResponse(response.data);
+      });
+    };
     get();
   }, [likeStatus, post]);
 
   // Processes the liking
   const processLikeBehavior = async (status: Boolean): Promise<void> => {
-
     // Process the like / dislike action
     await likeDislikePost(post.id).then((response) => {
-      setLikeStatus(!response.data)
-      setResponse(response.data)
-    })
+      setLikeStatus(!response.data);
+      setResponse(response.data);
+    });
 
     setLikeStatus(!status);
   };
@@ -47,7 +47,14 @@ const Reactions = (props: PostProps) => {
             <DislikeIcon statusLike={likeStatus} />
           )}
         </LikeButton>
-        <Likes>{post?.likes_quantity} likes</Likes>
+        <Likes>
+          {post?.likes_quantity !== undefined && post?.likes_quantity > 0
+            ? post?.likes_quantity + ' likes'
+            : 'Nobody has liked this post yet '}
+          {post?.likes_quantity !== undefined && post?.likes_quantity <= 0 && (
+            <ImSad />
+          )}
+        </Likes>
       </Wrapper>
     )
   );
