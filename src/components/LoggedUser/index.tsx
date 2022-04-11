@@ -29,8 +29,8 @@ const LoggedUser = () => {
     <HiddenMenu
       open={showTooltip}
       onClick={() => setShowTooltip(!showTooltip)}
-      /*onMouseOver={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}*/
+      //onMouseOver={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
     >
       <Tooltip
         color="white"
