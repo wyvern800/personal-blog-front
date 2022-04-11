@@ -26,6 +26,7 @@ const AllPosts = (props: AllPostsProps) => {
   const { firstSeparated, width } = props;
   const [posts, setPosts] = useState<PostType[]>([]);
   const [loaded, setLoaded] = useState<Boolean>(false);
+  const [response, setResponse] = useState({});
 
   // Gets a list of all posts
   useEffect(() => {
@@ -41,7 +42,7 @@ const AllPosts = (props: AllPostsProps) => {
         }, 1000);
       }
     });
-  }, []);
+  }, [response]);
 
   return (
     <>
@@ -56,6 +57,7 @@ const AllPosts = (props: AllPostsProps) => {
                   post={post}
                   loaded={loaded}
                   width={width ?? '100%'}
+                  setResponse={setResponse}
                 />
               );
             })}

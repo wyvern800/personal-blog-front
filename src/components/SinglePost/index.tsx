@@ -29,10 +29,11 @@ type PostProps = {
   post: PostType;
   loaded: Boolean;
   width?: string;
+  setResponse: any;
 };
 
 const SinglePost = (props: PostProps) => {
-  const { post, loaded, width } = props;
+  const { post, loaded, width, setResponse } = props;
 
   const [author, setAuthor] = useState<User>();
 
@@ -57,7 +58,7 @@ const SinglePost = (props: PostProps) => {
             </Header>
             <Content>{post !== undefined && parse(post?.content)}</Content>
             <Footer>
-              <Reactions post={post} />
+              <Reactions post={post} setResponse={setResponse}/>
               <div className="author">
                 <Author to={`/profile/${author?.username}`}>
                   {author?.username}

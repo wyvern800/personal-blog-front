@@ -17,6 +17,7 @@ const ViewPost = () => {
   const [post, setPost] = useState<PostType>();
   const { id } = useParams<PostParams>();
   const [loaded, setLoaded] = useState<Boolean>(false);
+  const [response, setResponse] = useState({});
 
   useEffect(() => {
     const get = async (): Promise<void> => {
@@ -28,7 +29,7 @@ const ViewPost = () => {
       });
     };
     get();
-  }, []);
+  }, [response]);
 
   return (
     <>
@@ -39,7 +40,7 @@ const ViewPost = () => {
       />
       <Container>
         <Main>
-          <SinglePost post={post} loaded={loaded} width={'70%'} />
+          <SinglePost post={post} loaded={loaded} width={'70%'} setResponse={setResponse}/>
         </Main>
       </Container>
     </>
