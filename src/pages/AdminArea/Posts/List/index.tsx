@@ -20,6 +20,7 @@ import {
   deletePost,
 } from '../../../../services/callsApi';
 import auth from '../../../../services/authService';
+import Loading from '../../../../components/Loading';
 
 const List = () => {
   const history = useHistory();
@@ -88,7 +89,7 @@ const List = () => {
         </Search>
       </Header>
       {!loaded ? (
-        <>Loading...</>
+        <Loading />
       ) : (
         <PostsList>
           {posts.map((post: PostType) => (
