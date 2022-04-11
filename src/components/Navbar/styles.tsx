@@ -9,6 +9,6 @@ export const NavBar = styled.div`
   @media (max-width: 600px) {
     height: auto;
     width: 100%;
-    flex-direction: row;
+
   }
 `;
