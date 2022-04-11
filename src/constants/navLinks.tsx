@@ -1,13 +1,14 @@
 import { AiOutlineHome } from 'react-icons/ai';
 import { FaBuffer } from 'react-icons/fa';
 import { BiExit } from 'react-icons/bi';
+import { CgProfile } from 'react-icons/cg';
 
 const navLinks = [
   {
     user: [
       {
         id: 1,
-        icon: AiOutlineHome,
+        icon: CgProfile,
         title: 'My Profile',
         linkTo: '/profile',
       },
@@ -34,6 +35,12 @@ const navLinks = [
       },
       {
         id: 3,
+        icon: CgProfile,
+        title: 'My Profile',
+        linkTo: '/profile',
+      },
+      {
+        id: 4,
         icon: BiExit,
         title: 'Logout',
         linkTo: '/logout',
