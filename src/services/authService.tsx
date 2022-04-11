@@ -1,7 +1,7 @@
 import api from './api';
 import { User } from '../types/user';
 
-const tokenKey = 'token';
+export const tokenKey = 'token';
 
 /**
  * Function used to check if user is logged in or not
