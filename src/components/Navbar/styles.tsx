@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// Navbar
 export const NavBar = styled.div`
   display: flex;
   flex-direction: column;
