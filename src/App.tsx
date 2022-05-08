@@ -12,7 +12,6 @@ import UserObjectDataProvider from './hooks/UserObjectData';
 function App() {
   return (
     <>
-      {/*<ScrollToTop>*/}
       <UserObjectDataProvider>
         <Header />
         <Wrapper>
@@ -21,7 +20,6 @@ function App() {
         </Wrapper>
         <Footer />
       </UserObjectDataProvider>
-      {/*</ScrollToTop>*/}
     </>
   );
 }
