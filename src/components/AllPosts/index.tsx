@@ -119,7 +119,7 @@ const AllPosts = (props: AllPostsProps) => {
             </PostList>
           )}
         </>
-        {totalPagesPagination > 1 && (
+        {loaded && totalPagesPagination > 1 && (
           <Pagination
             numberPages={totalPagesPagination}
             handlePageClick={handlePageClick}
