@@ -32,6 +32,8 @@ const List = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPagesPagination, setTotalPagesPagination] = useState(1)
 
+  const [postsCopy, setPostsCopy] = useState([]);
+
   // Get all posts
   useEffect(() => {
     const get = async () => {
@@ -43,6 +45,7 @@ const List = () => {
           .then((response) => {
             setLoaded(true);
             setPosts(response.data.userPosts.data);
+            setPostsCopy(response.data.userPosts.data)
 
             const total_pages = response.data.totalPages;
             if (totalPagesPagination !== total_pages)
@@ -93,15 +96,22 @@ const List = () => {
     setCurrentPage(data.selected +1)
   }
 
+  /**
+   * Processes the search event
+   * @param e The event
+   */
+  const processSearch = (e: any) => {
+      const val = e.target.value;
+      const filtered = posts.filter(p=> p.title.toLowerCase().includes(val));
+      setPosts(val !== '' ? filtered : postsCopy)
+  }
+
   return (
     <Wrapper>
       <Header>
           <AddButton onClick={() => history.push('/admin/posts/new')}/>
         <Search>
-          <Input disabled id="search" type="text" />
-          <Button disabled type="submit">
-            Search
-          </Button>
+          <Input id="search" type="text" onChange={(e) => processSearch(e)}/>
         </Search>
       </Header>
       {!loaded ? (
