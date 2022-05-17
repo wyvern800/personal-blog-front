@@ -14,16 +14,26 @@ const getPost = async (postIdOrSlug: any) => {
 /**
  * Gets a list with all posts
  */
-const getAllPosts = async () => {
-  const response = await api.get('/posts');
+const getAllPosts = async (currentPage: number) => {
+  const response = await api.get('/posts', {
+    params: {
+      page: currentPage,
+      "per_page": 5
+    }
+  });
   return response;
 };
 
 /**
  * Gets a list with all posts
  */
-const getAllPostsByAuthor = async (userId: number) => {
-  const response = await api.get(`/posts/byuser/${userId}`);
+const getAllPostsByAuthor = async (userId: number, currentPage: number) => {
+  const response = await api.get(`/posts/byuser/${userId}`, {
+    params: {
+      page: currentPage,
+      "per_page": 5
+    }
+  });
   return response;
 };
 

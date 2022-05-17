@@ -21,12 +21,16 @@ import {
 } from '../../../../services/callsApi';
 import auth from '../../../../services/authService';
 import Loading from '../../../../components/Loading';
+import Pagination from '../../../../components/Pagination';
 
 const List = () => {
   const history = useHistory();
   const [response, setResponse] = useState({});
   const [posts, setPosts] = useState<PostType[]>([]);
   const [loaded, setLoaded] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPagesPagination, setTotalPagesPagination] = useState(1)
 
   // Get all posts
   useEffect(() => {
@@ -35,10 +39,14 @@ const List = () => {
       console.log(loggedUserData);
       if (loggedUserData) {
         const { userid } = loggedUserData?.data;
-        await getAllPostsByAuthor(userid)
+        await getAllPostsByAuthor(userid, currentPage)
           .then((response) => {
             setLoaded(true);
-            setPosts(response.data);
+            setPosts(response.data.userPosts.data);
+
+            const total_pages = response.data.totalPages;
+            if (totalPagesPagination !== total_pages)
+            setTotalPagesPagination(total_pages)
           })
           .catch((error) => {
             console.error(error);
@@ -46,7 +54,7 @@ const List = () => {
       }
     };
     get();
-  }, [response]);
+  }, [response, currentPage]);
 
   /**
    * Deletes the post
@@ -76,6 +84,14 @@ const List = () => {
       history.push(`/admin/posts/edit/${postId}`);
     }
   };
+
+  /**
+   * Handles the click on pagination to change pages
+   * @param data The data
+   */
+  const handlePageClick = (data: any) => {
+    setCurrentPage(data.selected +1)
+  }
 
   return (
     <Wrapper>
@@ -107,6 +123,12 @@ const List = () => {
               </Controls>
             </Post>
           ))}
+          {totalPagesPagination > 1 && (
+          <Pagination
+            numberPages={totalPagesPagination}
+            handlePageClick={handlePageClick}
+          />
+        )}
         </PostsList>
       )}
     </Wrapper>
