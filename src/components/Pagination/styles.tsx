@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  display: flex;
   justify-content: center;
   ul {
     margin: 0;
@@ -25,10 +26,10 @@ export const Wrapper = styled.div`
   .pagination > .active > a {
     background-color: #000000;
     border-color: #000000;
-    color: #fff;
+    color: #fb0;
   }
   .pagination > li > a {
-    border: 1px solid #000000;
+    border: 1px solid #444242;
     padding: 5px 10px;
     outline: none;
     cursor: pointer;
@@ -39,13 +40,13 @@ export const Wrapper = styled.div`
   .pagination > .active > span:hover,
   .pagination > .active > a:focus,
   .pagination > .active > span:focus {
-    background-color: #000000;
-    border-color: #000000;
+    background-color: #1f1f1e;
+    border-color: #1f1f1e;
     outline: none;
   }
   .pagination > li > a,
   .pagination > li > span {
-    color: #000000;
+    color: gray;
   }
   .pagination > li:first-child > a,
   .pagination > li:first-child > span,
