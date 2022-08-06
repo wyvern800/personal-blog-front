@@ -20,6 +20,15 @@ const LoggedUser = () => {
       setIsUserLogged(isUserLogged);
       await auth.getCurrentUser().then((response) => {
         setLoggedUser(response.data);
+        setIsUserLogged(true);
+      }).catch((error) => {
+        const errorMessage = error?.response?.data?.errors[0]?.message;
+
+        // If token is invalid, then user is not logged
+        if (errorMessage === 'E_INVALID_API_TOKEN: Invalid API token') {
+          setIsUserLogged(false);
+          auth.clearToken();
+        }
       });
     };
     getLoggedUserData();
