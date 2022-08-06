@@ -50,3 +50,7 @@ export const Separator = styled.span`
   margin-right: 2%;
   color: gray;
 `;
+
+export const Wrapper = styled.div`
+  cursor: pointer;
+`;
