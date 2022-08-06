@@ -38,7 +38,6 @@ const List = () => {
   useEffect(() => {
     const get = async () => {
       const loggedUserData = await auth.getCurrentUser();
-      console.log(loggedUserData);
       if (loggedUserData) {
         const { userid } = loggedUserData?.data;
         await getAllPostsByAuthor(userid, currentPage)
