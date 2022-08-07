@@ -25,7 +25,7 @@ const Reactions = (props: PostProps) => {
       });
     };
     get();
-  }, [likeStatus, post]);
+  }, [likeStatus, setResponse]);
 
   // Processes the liking
   const processLikeBehavior = async (status: Boolean): Promise<void> => {
