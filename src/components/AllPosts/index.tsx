@@ -84,7 +84,7 @@ const AllPosts = (props: AllPostsProps) => {
               {posts
                 .filter((_, index: number) => index !== 0)
                 .map((post: PostType) => (
-                  <Post key={post?.id} to={`/posts/${post?.id}`}>
+                  <Post key={post?.id} to={`/posts/${post?.slug}`}>
                     <h4>{post?.title || <Skeleton/>}</h4>
                     <NewBadge createdAt={post?.created_at} />
                     {post?.tags && (
@@ -102,7 +102,7 @@ const AllPosts = (props: AllPostsProps) => {
           ) : (
             <PostList>
               {posts.map((post: PostType) => (
-                <Post key={post?.id} to={`/posts/${post?.id}`}>
+                <Post key={post?.id} to={`/posts/${post?.slug}`}>
                   <h4>{post?.title}</h4>
                   <NewBadge createdAt={post?.created_at} />
                   {post?.tags && (

@@ -120,14 +120,14 @@ const List = () => {
           {posts.map((post: PostType) => (
             <Post key={post?.id}>
               <LinkToPost
-                to={`/posts/${post?.id}`}
+                to={`/posts/${post?.slug}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {post?.title}
               </LinkToPost>
               <Controls>
-                <Edit onClick={() => processPostEdit(post?.id)} />
+                <Edit onClick={() => processPostEdit(post?.slug)} />
                 <Delete onClick={() => processPostDeletion(post?.id)} />
               </Controls>
             </Post>

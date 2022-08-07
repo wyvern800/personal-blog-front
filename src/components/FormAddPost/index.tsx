@@ -75,6 +75,7 @@ const FormAddPost = ({ defaultValues, editing }: FormAddPostProps) => {
     } else {
       await createPost({
         title: data.title,
+        slug: data.title,
         content: data.content,
         userid: postAuthor,
       })
@@ -84,6 +85,14 @@ const FormAddPost = ({ defaultValues, editing }: FormAddPostProps) => {
           reset({});
         })
         .catch((err) => {
+          const error = err.response.data;
+
+          // Check if slug exists
+          if (error.message === 'E_ROW_NOT_FOUND: Row not found') {
+            alert('Post já existe com esse titulo, use outro!')
+          } else if (error.code === '23505') { // Titulo já existe
+            alert('Post já existe com esse título')
+          }
           console.log(err);
         });
     }

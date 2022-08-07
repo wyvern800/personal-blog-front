@@ -54,7 +54,7 @@ const SinglePost = (props: PostProps) => {
         {loaded ? (
           <>
             <Header>
-              <LinkToPost to={`/posts/${post?.id}`}>{post?.title}</LinkToPost><NewBadge createdAt={post?.created_at}/>
+              <LinkToPost to={`/posts/${post?.slug}`}>{post?.title}</LinkToPost><NewBadge createdAt={post?.created_at}/>
             </Header>
             <Content>{post !== undefined && parse(post?.content)}</Content>
             <Footer>

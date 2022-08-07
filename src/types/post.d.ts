@@ -1,8 +1,9 @@
-import TagType from './tag'
+import TagType from './tag';
 
 export type PostType = {
-  id: string;
+  id?: string;
   title: string;
+  slug: string;
   content: string;
   tags?: TagType[];
   userid: number;
