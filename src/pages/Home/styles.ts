@@ -1,7 +1,9 @@
-import styled, { keyframes, css } from 'styled-components';
+import styled from 'styled-components';
 
 // Celular
 export const Container = styled.div`
+  margin: 0.1%;
+
   @media (max-width: 600px) {
     * {
       font-size: 11px;
@@ -25,13 +27,15 @@ export const Container = styled.div`
 export const Main = styled.div`
   display: flex;
   justify-content: space-around;
-  border: 1px solid purple;
 
   section {
     margin-top: 10px;
     margin-bottom: 10px;
-    border: 1px solid red;
-    width: 60%;
+    //border: 1px solid red;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     a:visited,
     a:link {
@@ -45,35 +49,16 @@ export const Main = styled.div`
         text-decoration: none;
       }
     }
-
-    .article-card {
-      padding-top: 20px;
-      padding-bottom: 20px;
-      border: 0.1em dashed #3c3c3c;
-      box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
-      border-radius: 10px;
-    }
-
-    .article-card:hover {
-      transition: background-color 0.3s ease-in-out;
-      background-color: rgba(54, 54, 54, 0.24);
-      cursor: pointer;
-    }
-
-    // Animatin when we move our mouse out
-    .article-card:not(:hover) {
-      transition: background-color 0.3s ease-in-out;
-    }
-
-    .article-card:not(:first-child) {
-      border-top: 1px solid rgba(196, 196, 196, 0.2);
-    }
   }
 
   aside {
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 35%;
-    border: 1px solid green;
+    width: 25%;
+    border: 1px dashed #4d4d4d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
   }
 `;

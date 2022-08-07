@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+type TitleProps = {
+  name?: string | undefined;
+};
 
-export default class Title extends Component {
+const Title = (props: TitleProps) => {
+  const { name } = props;
 
-  componentDidMount() {
-    const defaultTitle = "Personal Blog";
+  const defaultTitle = "Personal Blog";
+  document.title = `${defaultTitle} - ${name}`;
 
-    const { name } = this.props;
-
-    document.title = `${defaultTitle} - ${name}`;
-  }
-  render() {
-    return(<></>);
-  }
+  return null;
 }
+
+export default Title;

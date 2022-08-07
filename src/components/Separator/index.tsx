@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 
 import { SeparatorDiv } from './styles';
 
-export default class Separator extends Component {
-  render() {
-    const { height } = this.props;
+type SeparatorProps = {
+  height: number;
+};
 
-    return (
-      <SeparatorDiv>
-        <div style={{ height: height + 'px' }} />
-      </SeparatorDiv>
-    );
-  }
-}
+const Separator = (props: SeparatorProps) => {
+  const { height } = props;
+
+  return (
+    <SeparatorDiv>
+      <div style={{ height: height + 'px' }} />
+    </SeparatorDiv>
+  );
+};
+
+export default Separator;

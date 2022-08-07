@@ -5,20 +5,21 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Routes from './routes';
-import { Container } from 'react-bootstrap';
 import GlobalStyle from './styles/global';
+import { Wrapper } from './styles/global';
+import UserObjectDataProvider from './hooks/UserObjectData';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <ScrollToTop>
-          <Header />
-            <Routes />
-            <GlobalStyle />
-          <Footer />
-        </ScrollToTop>
-      </BrowserRouter>
+      <UserObjectDataProvider>
+        <Header />
+        <Wrapper>
+          <Routes />
+          <GlobalStyle />
+        </Wrapper>
+        <Footer />
+      </UserObjectDataProvider>
     </>
   );
 }

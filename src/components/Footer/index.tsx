@@ -1,35 +1,85 @@
-import React, { Component } from 'react';
-import { Container, FooterBar, FooterLink } from './styles';
-import myCaco from '../../assets/images/logo.png';
+import React, { useEffect, useState } from 'react';
+import authService from '../../services/authService';
+import auth from '../../services/authService';
+import { useLocation } from 'react-router-dom';
 
-export default class Footer extends Component {
-  render() {
-    return (
+import {
+  Container,
+  FooterBar,
+  FooterLink,
+  Credit,
+  Links,
+  FooterColumn,
+  LinkToAdminDashboard
+} from './styles';
+
+const Footer = () => {
+  const location = useLocation();
+  const [logged, setLogged] = useState(false);
+  const [adminUser, setAdminUser] = useState(false);
+
+  // Spawns an admin link to the footer if the logged user is one
+  useEffect(() => {
+    setLogged(auth.isUserLogged())
+    const get = async () => {
+      await auth.isUserAdmin().then((response) => {
+          const { isAdmin } = response?.data;
+          setAdminUser(isAdmin)
+      });
+    }
+    get();
+  }, [location])
+
+  return (
+    <>
       <Container>
-        <div className="links">
-          <dl>
+        <Links>
+          <FooterColumn>
             <dt>Sobre o projeto</dt>
-            <dd><FooterLink href="https://github.com/wyvern800/personal-blog-front">Repositório</FooterLink></dd>
-            <dd><FooterLink href="https://reactjs.org/">ReactJS</FooterLink></dd>
-            <dd><FooterLink href="https://adonisjs.com/">AdonisJS</FooterLink></dd>
-          </dl>
-          <dl>
-            <dt>Titulo</dt>
+            <dd>
+              <FooterLink href="https://github.com/wyvern800/personal-blog-front">
+                Repository (this)
+              </FooterLink>
+            </dd>
+            <dd>
+              <FooterLink href="https://github.com/Terrible-Developer/personal-blog-back">
+                Repository (back-end)
+              </FooterLink>
+            </dd>
+            <dd>
+              <FooterLink href="https://reactjs.org/">ReactJS</FooterLink>
+            </dd>
+            <dd>
+              <FooterLink href="https://adonisjs.com/">AdonisJS</FooterLink>
+            </dd>
+          </FooterColumn>
+          <FooterColumn>
+            <dt>Informations</dt>
             <dd>Info 1</dd>
             <dd>Info 2</dd>
-          </dl>
-          <dl>
-            <dt>Titulo</dt>
+          </FooterColumn>
+          <FooterColumn>
+            <dt>Important Links</dt>
             <dd>Info 1</dd>
             <dd>Info 2</dd>
-          </dl>
-        </div>
+          </FooterColumn>
+        </Links>
         <FooterBar>
-          <a href="#"><img src={ myCaco }/></a>
-          <div className="social-links">Social Links</div>
+          <a href="#">
+            Copyright © 2021-2022 Primatas Ltd. All rights reserved.
+          </a>
+          <div className="social-links">
+            <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a>
+          </div>
         </FooterBar>
-        <p className="credit">© 2021 Primatas - Seu universo da programação web. Todos os direitos reservados.</p>
+        <Credit>
+          © 2021-2022 Primatas - Seu universo da programação web. Todos os
+          direitos reservados.
+          {adminUser && logged && <LinkToAdminDashboard to="/admin">Go to admins dashboard</LinkToAdminDashboard>}
+        </Credit>
       </Container>
-    );
-  }
-}
+    </>
+  );
+};
+
+export default Footer;

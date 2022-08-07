@@ -1,10 +1,13 @@
+import TagType from './tag';
+
 export type PostType = {
-  id: string;
+  id?: string;
   title: string;
+  slug: string;
   content: string;
-  tags?: string;
-  author: string;
-  likes?: number;
-  dateInsert: Date;
-  dateUpdate: Date;
-}
+  tags?: TagType[];
+  userid: number;
+  likes_quantity?: number;
+  created_at?: Date;
+  updated_at?: Date;
+};

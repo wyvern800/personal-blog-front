@@ -6,26 +6,72 @@
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vestibulum a eros non laoreet. Vestibulum et nisi velit. Proin lorem velit, elementum at dolor ut, viverra eleifend augue. Praesent vitae porttitor augue, a ultrices leo. Donec aliquam velit eget magna consequat laoreet. Nunc vel dui sit amet metus consequat ultrices. Suspendisse feugiat in turpis eu mollis. Nam non nisi non neque euismod vestibulum sit amet ac tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin faucibus a turpis eu egestas.",
       "author": "wyvern800",
       "likes": 20,
+      "tags" : [
+        {
+          "id": 1,
+          "name": "Secco"
+        }
+      ],
       "dateInsert": "2021-05-21T01:14:00.221Z",
       "dateUpdate": "2021-06-26T16:01:12.442Z"
     },
     {
       "id": 2,
-      "title": "A extreme important post",
+      "title": "An extremely important post",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vestibulum a eros non laoreet. Vestibulum et nisi velit. Proin lorem velit, elementum at dolor ut, viverra eleifend augue. Praesent vitae porttitor augue, a ultrices leo. Donec aliquam velit eget magna consequat laoreet. Nunc vel dui sit amet metus consequat ultrices. Suspendisse feugiat in turpis eu mollis. Nam non nisi non neque euismod vestibulum sit amet ac tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin faucibus a turpis eu egestas.",
       "author": "Terrible-Developer",
       "likes": 14,
+      "tags" : [
+        {
+          "id": 1,
+          "name": "Tops"
+        }
+      ],
       "dateInsert": "2021-05-21T01:14:00.221Z",
       "dateUpdate": "2021-06-26T16:01:12.442Z"
     },
     {
       "id": 3,
-      "title": "Pharophinha online",
+      "title": "Online",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vestibulum a eros non laoreet. Vestibulum et nisi velit. Proin lorem velit, elementum at dolor ut, viverra eleifend augue. Praesent vitae porttitor augue, a ultrices leo. Donec aliquam velit eget magna consequat laoreet. Nunc vel dui sit amet metus consequat ultrices. Suspendisse feugiat in turpis eu mollis. Nam non nisi non neque euismod vestibulum sit amet ac tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin faucibus a turpis eu egestas.",
       "author": "Terrible-Developer",
       "likes": 1,
+      "tags" : [
+        {
+          "id": 1,
+          "name": "Noticias"
+        },
+        {
+          "id": 2,
+          "name": "Games"
+        }
+      ],
       "dateInsert": "2021-05-21T01:14:00.221Z",
       "dateUpdate": "2021-06-26T16:01:12.442Z"
+    },
+    {
+      "id": 4,
+      "title": "Bdo lançou hoje!",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vestibulum a eros non laoreet. Vestibulum et nisi velit. Proin lorem velit, elementum at dolor ut, viverra eleifend augue. Praesent vitae porttitor augue, a ultrices leo. Donec aliquam velit eget magna consequat laoreet. Nunc vel dui sit amet metus consequat ultrices. Suspendisse feugiat in turpis eu mollis. Nam non nisi non neque euismod vestibulum sit amet ac tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin faucibus a turpis eu egestas.",
+      "author": "Terrible-Developer",
+      "likes": 1,
+      "tags" : [
+        {
+          "id": 1,
+          "name": "Games"
+        }
+      ],
+      "dateInsert": "2021-05-21T01:14:00.221Z",
+      "dateUpdate": "2021-06-26T16:01:12.442Z"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "uid": "wyvern800",
+      "password": "newwindow",
+      "name": "wyvern800",
+      "isAdmin": true
     }
   ]
 }
