@@ -1,8 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div``;
+
+type ContentProps = {
+  firstSeparated?: Boolean;
+};
 
 export const Main = styled.div`
   // Celular
@@ -40,13 +44,22 @@ export const Header = styled.div`
   font-size: 1.3rem;
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<ContentProps>`
   margin: 5%;
 
   text-align: justify;
   text-indent: 50px;
 
   word-wrap: break-word;
+
+  ${(props) =>
+    props.firstSeparated &&
+    css`
+      overflow: hidden;
+      text-overflow: ellipsis;
+      overflow-wrap: break-word;
+      max-height: 150px;
+    `};
 `;
 
 export const Footer = styled.div`
@@ -116,5 +129,29 @@ export const Author = styled(Link)`
 
   &:hover {
     color: #fb0;
+  }
+`;
+
+export const ReadMore = styled.div`
+  display: flex;
+  margin: 5%;
+  margin-bottom: 0;
+  justify-content: flex-end;
+
+  a {
+    text-decoration: none;
+    color: gray;
+
+    &:focus,
+    &:hover,
+    &:visited,
+    &:link,
+    &:active {
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: #fb0;
+    }
   }
 `;

@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PostType } from '../../types/post';
 
-import {
-  Body,
-  Header,
-  Content,
-  Footer,
-  LinkToPost,
-  Author,
-} from './styles';
+import { Body, Header, Content, Footer, LinkToPost, Author, ReadMore } from './styles';
 
 import Placeholder from '../../components/Placeholder';
 import Reactions from '../../components/Reactions';
@@ -29,11 +22,12 @@ type PostProps = {
   post: PostType;
   loaded: Boolean;
   width?: string;
+  firstSeparated?: Boolean;
   setResponse: any;
 };
 
 const SinglePost = (props: PostProps) => {
-  const { post, loaded, width, setResponse } = props;
+  const { post, loaded, width, firstSeparated, setResponse } = props;
 
   const [author, setAuthor] = useState<User>();
 
@@ -56,7 +50,8 @@ const SinglePost = (props: PostProps) => {
             <Header>
               <LinkToPost to={`/posts/${post?.slug}`}>{post?.title}</LinkToPost><NewBadge createdAt={post?.created_at}/>
             </Header>
-            <Content>{post !== undefined && parse(post?.content)}</Content>
+            <Content firstSeparated={firstSeparated} >{post !== undefined && parse(post?.content)} </Content>
+            {firstSeparated && <ReadMore><LinkToPost to={`/posts/${post?.slug}`}>Read more »</LinkToPost></ReadMore>}
             <Footer>
               <Reactions post={post} setResponse={setResponse}/>
               <div className="author">

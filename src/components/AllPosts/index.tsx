@@ -72,6 +72,7 @@ const AllPosts = (props: AllPostsProps) => {
                   post={post}
                   loaded={loaded}
                   width={width ?? '100%'}
+                  firstSeparated={firstSeparated}
                   setResponse={setResponse}
                 />
               );

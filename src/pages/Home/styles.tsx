@@ -58,7 +58,7 @@ export const Main = styled.div`
     border: 1px dashed #4d4d4d;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     text-transform: uppercase;
   }
 `;
