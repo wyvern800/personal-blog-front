@@ -1,27 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { requestFront, requestBack } from '../../services/githubApi';
-import { Wrapper, Link, AuthorImg, Commit, Repository, DateBox, Date } from './styles';
+import {
+  Wrapper,
+  Link,
+  AuthorImg,
+  Commit,
+  Repository,
+  DateBox,
+  Date,
+} from './styles';
 import { parseISO, format } from 'date-fns';
 import { pt } from 'date-fns/locale';
+import { CommitsType } from '../../types/commits';
 
 const Commits = () => {
   const repository = {
     name: 'personal-blog-front',
-    link: 'https://github.com/wyvern800/personal-blog-front'
-  }
-
-  type AuthorType = {
-    login: string;
-    name: string;
-    email: string;
-    date: string;
-    avatar_url: string;
-  };
-
-  type CommitsType = {
-    author: AuthorType;
-    message: string;
-    url: string;
+    link: 'https://github.com/wyvern800/personal-blog-front',
   };
 
   const [commitsFront, setCommitsFront] = useState<CommitsType[]>();
@@ -78,7 +73,11 @@ const Commits = () => {
   return (
     <Wrapper>
       <Repository>
-        <strong><Link href={repository.link} target="_blank">{repository.name}</Link></strong>
+        <strong>
+          <Link href={repository.link} target="_blank">
+            {repository.name}
+          </Link>
+        </strong>
       </Repository>
       <ul>
         {commitsFront &&
@@ -89,7 +88,13 @@ const Commits = () => {
                 {commit.message}
               </Link>
               <DateBox>
-                <Date>{format(parseISO(commit.author.date), "'Dia' dd 'de' MMMM', às ' HH:mm'h'", {locale: pt})}</Date>
+                <Date>
+                  {format(
+                    parseISO(commit.author.date),
+                    "'Dia' dd 'de' MMMM', às ' HH:mm'h'",
+                    { locale: pt }
+                  )}
+                </Date>
               </DateBox>
             </Commit>
           ))}
