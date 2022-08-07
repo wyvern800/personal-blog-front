@@ -78,6 +78,7 @@ const Commits = () => {
             {repository.name}
           </Link>
         </strong>
+        <span>(Recent Commits)</span>
       </Repository>
       <ul>
         {commitsFront &&

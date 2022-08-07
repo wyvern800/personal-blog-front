@@ -48,6 +48,11 @@ export const Repository = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+
+  span {
+    margin-left: 5px;
+    font-size: 11px;
+  }
 `;
 
 export const DateBox = styled.div`
