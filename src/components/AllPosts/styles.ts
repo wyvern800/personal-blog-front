@@ -150,7 +150,7 @@ export const PostList = styled.div`
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100%;
   margin-top: 5px;
 `;

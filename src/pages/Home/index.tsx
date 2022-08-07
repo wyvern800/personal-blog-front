@@ -3,6 +3,7 @@ import React from 'react';
 import { Container, Main } from './styles';
 import Title from '../../components/Title';
 import AllPosts from '../../components/AllPosts';
+import Commits from '../../components/Commits';
 
 const Home = () => {
   return (
@@ -13,7 +14,9 @@ const Home = () => {
           <section>
             <AllPosts firstSeparated={true} width={'100%'}/>
           </section>
-          <aside>aside</aside>
+          <aside>
+            <Commits />
+          </aside>
         </Main>
       </Container>
     </>
