@@ -7,10 +7,9 @@ import {
   Commit,
   Repository,
   DateBox,
-  Date,
+  Date as DatePost,
 } from './styles';
-import { parseISO, format } from 'date-fns';
-import { pt } from 'date-fns/locale';
+import { parseISO, formatDistance } from 'date-fns';
 import { CommitsType } from '../../types/commits';
 
 const Commits = () => {
@@ -89,13 +88,13 @@ const Commits = () => {
                 {commit.message}
               </Link>
               <DateBox>
-                <Date>
-                  {format(
+                <DatePost>
+                  {formatDistance(
                     parseISO(commit.author.date),
-                    "'Dia' dd 'de' MMMM', às ' HH:mm'h'",
-                    { locale: pt }
+                    new Date(),
+                    { addSuffix: true}
                   )}
-                </Date>
+                </DatePost>
               </DateBox>
             </Commit>
           ))}

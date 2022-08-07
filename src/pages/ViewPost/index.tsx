@@ -6,6 +6,7 @@ import { PostParams } from '../../types/post.params';
 
 import SinglePost from '../../components/SinglePost';
 import Breadcrumb from '../../components/Breadcrumb';
+import Comments from '../../components/Comments';
 
 import { Container, Main } from './styles';
 
@@ -41,6 +42,7 @@ const ViewPost = () => {
       <Container>
         <Main>
           <SinglePost post={post} loaded={loaded} width={'70%'} setResponse={setResponse}/>
+          <Comments post={post} />
         </Main>
       </Container>
     </>
