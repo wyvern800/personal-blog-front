@@ -61,7 +61,7 @@ const AllPosts = (props: AllPostsProps) => {
 
   return (
     <>
-      {firstSeparated && (
+      {firstSeparated && currentPage === 1 && (
         <>
           {posts
             .filter((_, index: number) => index === 0)
@@ -79,7 +79,7 @@ const AllPosts = (props: AllPostsProps) => {
         </>
       )}
         <>
-          {firstSeparated ? (
+          {firstSeparated && currentPage === 1 ? (
             <PostList>
               {posts
                 .filter((_, index: number) => index !== 0)
