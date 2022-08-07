@@ -5,15 +5,24 @@ import Collaborators from '../../components/Collaborators';
 import math from '../../assets/images/math.jpg';
 import victor from '../../assets/images/victor.jpg';
 import { Collaborator } from '../../types/collaborator';
+import { Story } from './styles';
 
 const About = () => {
   const collaborators: Collaborator[] = [
     {
-      name: 'Matheus Guilherme Ferreira',
-      effectPhrase: '*Insira frase de efeito*',
-      about: 'secco',
+      name: 'Matheus G. Ferreira',
+      effectPhrase:
+        "The truth is: I am a toy that people enjoy 'til all of my tricks don't work anymore",
+      about:
+        "Average gay guy who thinks coding motivates living. Been into this since I was aged 12, and I'm still learning every day",
       avatar: math,
-      skills: ['secca'],
+      skills: [
+        'Java & Spring',
+        'JavaScript, TypeScript, Node & React',
+        'HTML & CSS',
+        'Node',
+        'Python: Flask & Django',
+      ],
       socials: [
         {
           name: 'Github',
@@ -54,6 +63,20 @@ const About = () => {
   return (
     <>
       <Title name="About" />
+      <Story>
+        <h3>Story behind this blog</h3>
+        This blog was developed solely with the purpose of learning, when me
+        (wyvern800) and Victor (Terrible-Developer) started our post-graduation
+        course. The main objective of this app was to create a blog to fill with
+        dev. related content so other people worldwide could learn what are the
+        current development trends and what we can offer with nothing you must
+        give back, just because we feel altruist enough. Also this is some kind
+        of a portfolio so other companies can see what do we know and how we are
+        evolving in our career. We hope you guys enjoy your stay here!
+        <h3>Are we open to work?</h3>
+        Yes, we are urging for a job.
+      </Story>
+
       <Collaborators collaborators={collaborators} />
     </>
   );
