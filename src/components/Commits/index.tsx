@@ -5,6 +5,11 @@ import { parseISO, format } from 'date-fns';
 import { pt } from 'date-fns/locale';
 
 const Commits = () => {
+  const repository = {
+    name: 'personal-blog-front',
+    link: 'https://github.com/wyvern800/personal-blog-front'
+  }
+
   type AuthorType = {
     login: string;
     name: string;
@@ -73,7 +78,7 @@ const Commits = () => {
   return (
     <Wrapper>
       <Repository>
-        <strong>personal-blog-front</strong>
+        <strong><Link href={repository.link} target="_blank">{repository.name}</Link></strong>
       </Repository>
       <ul>
         {commitsFront &&
