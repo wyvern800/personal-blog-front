@@ -44,9 +44,9 @@ const AllPosts = (props: AllPostsProps) => {
     };
     getPosts().then((data) => {
       if (data) {
-        setInterval(() => {
+        //setInterval(() => {
           setLoaded(true);
-        }, 1000);
+        //}, 1000);
       }
     });
   }, [response, currentPage]);
