@@ -75,3 +75,18 @@ export const Date = styled.div`
   }
 `;
 
+export const Card = styled.div`
+   &:not(:first-child) {
+    margin-top: 12px;
+    border-top: 1px solid #4d4d4d;
+  }
+`;
+
+export const GitProfileLink = styled.a`
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
