@@ -12,6 +12,7 @@ import auth from '../../services/authService';
 
 import Link from '../Link';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const FormRegister = () => {
   const history = useHistory();
@@ -57,7 +58,7 @@ const FormRegister = () => {
     await auth
       .registerUser(formattedData)
       .then(() => {
-        alert('User successfully registered');
+        toast.success('User successfully registered');
         history.push('/login');
       })
       .catch((err) => {

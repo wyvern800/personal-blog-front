@@ -23,6 +23,8 @@ import auth from '../../../../services/authService';
 import Loading from '../../../../components/Loading';
 import Pagination from '../../../../components/Pagination';
 
+import { toast } from 'react-toastify';
+
 const List = () => {
   const history = useHistory();
   const [response, setResponse] = useState({});
@@ -67,7 +69,7 @@ const List = () => {
       await deletePost(postId)
         .then((response) => {
           if (response.status === 200) {
-            alert('post deletado');
+            toast.info(`The post was deleted!`);
             setResponse(response);
           }
         })

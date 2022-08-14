@@ -12,6 +12,7 @@ import auth from '../../services/authService';
 
 import Link from '../Link';
 
+import { toast } from 'react-toastify';
 
 const FormLogin = () => {
 
@@ -47,14 +48,21 @@ const FormLogin = () => {
         history.push(state?.from || '/');
         localStorage.setItem('token', response?.data?.token);
 
+        toast.success('You successfully logged in!')
       })
       .catch((err) => {
         console.log(err);
+        setError('email', {
+          type: 'manual',
+          message:
+            'Invalid credentials',
+        });
         setError('password', {
           type: 'manual',
           message:
-            'Autenticação falhou, verifique se o login ou senha não contém erros',
+            'Invalid credentials',
         });
+        toast.error('Invalid credentials');
       });
   };
 

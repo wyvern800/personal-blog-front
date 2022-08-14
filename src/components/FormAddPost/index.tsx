@@ -17,6 +17,8 @@ import { PostType } from '../../types/post';
 
 import FormFieldTinyMCE from '../FormFieldTinyMCE';
 
+import { toast } from 'react-toastify';
+
 type FormAddPostProps = {
   defaultValues?: PostType;
   editing?: boolean;
@@ -66,7 +68,7 @@ const FormAddPost = ({ defaultValues, editing }: FormAddPostProps) => {
     if (editing) {
       await editPost(data.id, data)
         .then(() => {
-          alert('Post editado com sucesso');
+          toast.success(`The post ${data.title} was successfully edited!`)
           history.push('/admin/posts');
         })
         .catch((err) => {
@@ -80,7 +82,7 @@ const FormAddPost = ({ defaultValues, editing }: FormAddPostProps) => {
         userid: postAuthor,
       })
         .then(() => {
-          alert('Post criado com sucesso');
+          toast.success('The post was successfully created!');
           history.push('/admin/posts');
           reset({});
         })
@@ -89,9 +91,9 @@ const FormAddPost = ({ defaultValues, editing }: FormAddPostProps) => {
 
           // Check if slug exists
           if (error.message === 'E_ROW_NOT_FOUND: Row not found') {
-            alert('Post já existe com esse titulo, use outro!')
+            toast.error('There is already a post with this title, please choose another.')
           } else if (error.code === '23505') { // Titulo já existe
-            alert('Post já existe com esse título')
+            toast.error('There os already a post with this title')
           }
           console.log(err);
         });
