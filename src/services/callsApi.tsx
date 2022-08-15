@@ -109,6 +109,28 @@ const likeDislikePost = async (postId: string): Promise<any> => {
   return response;
 }
 
+/**
+ * Returns a list of all commentaries of a post
+ * @param postId The post id we're retrieving the comments from
+ */
+const listAllPostComments = async (postId: string | undefined): Promise<any> => {
+  const response = await api.get(`/posts/comments/${postId}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  })
+  return response;
+}
+
+const getUserById = async (userId: string | undefined): Promise<any> => {
+  const response = await api.get(`/users/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  })
+  return response;
+}
+
 export {
   getAllPosts,
   getPost,
@@ -119,5 +141,7 @@ export {
   editPost,
   getPostById,
   hasUserLikedPost,
-  likeDislikePost
+  likeDislikePost,
+  listAllPostComments,
+  getUserById
 };

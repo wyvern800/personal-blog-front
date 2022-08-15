@@ -6,6 +6,7 @@ import { PostParams } from '../../types/post.params';
 
 import SinglePost from '../../components/SinglePost';
 import Breadcrumb from '../../components/Breadcrumb';
+import Comments from '../../components/Comments';
 
 import { Container, Main } from './styles';
 
@@ -31,6 +32,8 @@ const ViewPost = () => {
     get();
   }, [response]);
 
+  const width = '70%';
+
   return (
     <>
       <Title name={post?.title} />
@@ -40,7 +43,8 @@ const ViewPost = () => {
       />
       <Container>
         <Main>
-          <SinglePost post={post} loaded={loaded} width={'70%'} setResponse={setResponse}/>
+          <SinglePost post={post} loaded={loaded} width={width} setResponse={setResponse}/>
+          <Comments post={post} loaded={loaded} width={width}/>
         </Main>
       </Container>
     </>
