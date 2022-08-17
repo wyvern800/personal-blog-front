@@ -33,18 +33,21 @@ export const Container = styled.div`
 
   // Navbar active link
   .nav-link-active {
-    color:  #fb0;
+    color: #fb0;
     font-weight: bold;
   }
 `;
 
 export const NavigationBar = styled.nav`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   ul {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
     display: flex;
-    justify-content: center;
 
     li {
       margin-left: 10px;
