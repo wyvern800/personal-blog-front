@@ -12,7 +12,7 @@ import api from '../../services/api';
 
 import { User } from '../../types/user';
 
-import { getPostAuthor } from '../../services/callsApi';
+import { getPostAuthor, listAllPostComments } from '../../services/callsApi';
 
 import NewBadge from '../NewBadge';
 
@@ -28,7 +28,7 @@ type PostProps = {
 
 const SinglePost = (props: PostProps) => {
   const { post, loaded, width, firstSeparated, setResponse } = props;
-
+  const [postComments, setPostComments] = useState<number>();
   const [author, setAuthor] = useState<User>();
 
   // Gets post author and set to state
@@ -39,6 +39,16 @@ const SinglePost = (props: PostProps) => {
         setAuthor(response?.data);
       });
     };
+    get();
+  }, [post]);
+
+  // Gets the amount of commentaries
+  useEffect(() => {
+    const get = async () => {
+      await listAllPostComments(post?.id).then((response) => {
+        setPostComments(response?.data.length);
+      });
+    }
     get();
   }, [post]);
 
@@ -54,6 +64,7 @@ const SinglePost = (props: PostProps) => {
             {firstSeparated && <ReadMore><LinkToPost to={`/posts/${post?.slug}`}>Read more »</LinkToPost></ReadMore>}
             <Footer>
               <Reactions post={post} setResponse={setResponse}/>
+              <div>{`${postComments} comment${postComments && postComments > 1 ? 's': ''}`}</div>
               <div className="author">
                 <Author to={`/profile/${author?.username}`}>
                   {author?.username}

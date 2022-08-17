@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  ChangeEvent,
-  KeyboardEvent,
-} from 'react';
+import React, { useState, useEffect, ChangeEvent, KeyboardEvent } from 'react';
 
 import { PostType } from '../../types/post';
 import { CommentType } from '../../types/comment';
@@ -22,6 +17,7 @@ import {
   Author,
   ChatBox,
   Wrapper,
+  NoComments
 } from './styles';
 
 import { parseISO, formatRelative } from 'date-fns';
@@ -111,7 +107,7 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
         };
 
         // Resolves the promises in one call to avoid data loss
-        await Promise.all(getPostList.data.map(getUserData))
+        await Promise.all(getPostList.data.postComments.map(getUserData))
           .then(() => {
             setComments(newComments);
             setLoadedComments(true);
@@ -130,8 +126,7 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
     loadedComments && (
       <Wrapper width={width}>
         <Container>
-          {comments &&
-            comments.length > 0 &&
+          {comments && comments.length > 0 ? (
             comments.map((comment: any) => {
               return (
                 <Comment key={comment.id}>
@@ -150,13 +145,20 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
                   </Content>
                 </Comment>
               );
-            })}
+            })
+          ) : (
+            <NoComments>
+              Nobody has commented yet, why don't you do it then?
+            </NoComments>
+          )}
         </Container>
-        <form onSubmit={(e)=> {
-          e.preventDefault();
-          e.target.reset();
-          e.target.blur();
-        }}>
+        <form
+          onSubmit={(e: any) => {
+            e.preventDefault();
+            e.target.reset();
+            e.target.blur();
+          }}
+        >
           <ChatBox
             placeholder={`Comment as @${loggedUser?.username}`}
             onChange={handleComment}

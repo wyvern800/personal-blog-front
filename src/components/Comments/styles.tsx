@@ -68,3 +68,10 @@ export const Container = styled.div`
   max-height: 233px;
   overflow-y: auto;
 `;
+
+export const NoComments = styled.div`
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

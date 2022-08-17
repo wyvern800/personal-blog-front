@@ -71,6 +71,7 @@ export const Footer = styled.div`
   flex-direction: row;
 
   justify-content: space-between;
+  align-items: center;
 
   border-radius: 0 0 7px 7px;
 
