@@ -1,6 +1,7 @@
 import api from '../services/api';
 import { PostType } from '../types/post';
 import { tokenKey } from './authService';
+import { CommentType } from '../types/comment';
 
 /**
  * Gets a specific post by id or slug
@@ -122,8 +123,26 @@ const listAllPostComments = async (postId: string | undefined): Promise<any> => 
   return response;
 }
 
+/**
+ * Retrieves user data by it's id
+ * @param userId The userId
+ * @returns User data by an user id
+ */
 const getUserById = async (userId: string | undefined): Promise<any> => {
   const response = await api.get(`/users/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  })
+  return response;
+}
+
+/**
+ * Posts a commentary
+ * @param data The comment data
+ */
+const postComment = async (data: CommentType | undefined): Promise<any> => {
+  const response = await api.post(`/posts/comments`, data, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
     }
@@ -143,5 +162,6 @@ export {
   hasUserLikedPost,
   likeDislikePost,
   listAllPostComments,
-  getUserById
+  getUserById,
+  postComment
 };

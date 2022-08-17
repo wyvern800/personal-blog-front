@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-type ContainerProps = {
+type WrapperProps = {
   width: string;
 };
 
-export const Container = styled.div<ContainerProps>`
+export const Wrapper = styled.div<WrapperProps>`
   border: 1px solid #4d4d4d;
   width: ${(props) => props.width && props.width};
   border-radius: 7px;
@@ -45,4 +45,26 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+`;
+
+export const ChatBox = styled.input<any>`
+  border-radius: 7px;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: rgba(124,131,128,0.2);
+  -webkit-appearance: none;
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 10px;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const Container = styled.div`
+  max-height: 233px;
+  overflow-y: auto;
 `;

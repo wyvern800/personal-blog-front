@@ -44,7 +44,7 @@ const ViewPost = () => {
       <Container>
         <Main>
           <SinglePost post={post} loaded={loaded} width={width} setResponse={setResponse}/>
-          <Comments post={post} loaded={loaded} width={width}/>
+          <Comments post={post} loaded={loaded} width={width} setResponse={setResponse}/>
         </Main>
       </Container>
     </>
