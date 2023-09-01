@@ -29,7 +29,7 @@ export const Comment = styled.div`
 export const Author = styled.div`
   display: flex;
   font-weight: bold;
-  margin-left: 0.5%;
+  //margin-left: 0.5%;
   align-items: center;
 
   span {
@@ -46,6 +46,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-left: 8px;
 `;
 
 export const ChatBox = styled.input<any>`
@@ -63,11 +64,16 @@ export const ChatBox = styled.input<any>`
   &:focus {
     outline: none;
   }
+
+  &:disabled {
+    pointer-events: none;
+  }
 `;
 
 export const Container = styled.div`
   max-height: 233px;
   overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 export const NoComments = styled.div`
@@ -78,24 +84,44 @@ export const NoComments = styled.div`
 `;
 
 export const RemoveComment = styled(RiChatDeleteLine)`
-  font-size: 1.1rem;
+  font-size: 1.15rem;
+  opacity: 0.2;
 
   &:hover {
     fill: #ff5252;
     cursor: pointer;
+    opacity: 1;
   }
 `;
 
-export const ReportComment = styled(GoReport)`
+export const ReportComment = styled(GoReport)<any>`
   font-size: 1rem;
+  opacity: 0.2;
 
   &:hover {
     fill: #ff5252;
     cursor: pointer;
+    opacity: 1;
   }
 `;
 
 export const CommentActions = styled.div`
+  margin-left: 10px;
+  gap: 3px;
   display: flex;
-  gap: 5px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const AuthorName = styled.div`
+  &:hover {
+    color: #fb0;
+    cursor: pointer;
+  }
+`;
+
+export const CommentContent = styled.div`
+  width: 90%;
+  max-width: 90%;
+  word-wrap: break-word;
 `;

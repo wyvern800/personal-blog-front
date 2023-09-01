@@ -7,7 +7,7 @@ import {
   listAllPostComments,
   getUserById,
   postComment,
-  deletePostComment
+  deletePostComment,
 } from '../../services/callsApi';
 
 import {
@@ -21,7 +21,9 @@ import {
   NoComments,
   RemoveComment,
   ReportComment,
-  CommentActions
+  CommentActions,
+  AuthorName,
+  CommentContent,
 } from './styles';
 
 import { parseISO, formatRelative } from 'date-fns';
@@ -30,7 +32,9 @@ import { User } from '../../types/user';
 
 import auth from '../../services/authService';
 
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
+
+import { useHistory } from 'react-router-dom';
 
 type CommentsProps = {
   post: PostType;
@@ -48,12 +52,21 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
   const [loadedComments, setLoadedComments] = useState<boolean>(false);
   const [loggedUser, setLoggedUser] = useState<User>();
   const [comment, setComment] = useState<string>();
+  const [sending, setSending] = useState<boolean>(false);
+  const [isUserAdmin, setIsUserAdmin] = useState<boolean>(false);
+
+  const history = useHistory();
 
   // Gets the current logged informations
   useEffect(() => {
     const get = async () => {
-      await auth.getCurrentUser().then((res) => {
+      await auth.getCurrentUser().then(async (res) => {
         setLoggedUser(res.data);
+
+        // If user is admin set
+        await auth.isUserAdmin().then((res) => {
+          setIsUserAdmin(res.data.isAdmin);
+        })
       });
     };
     get();
@@ -72,12 +85,14 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
    * @param {string} commentId The comment id
    */
   const handleDeleteComment = async (commentId: string): Promise<any> => {
-    await deletePostComment(commentId).then((res) => {
-      setResponse(res);
-    }).catch(() => {
-      toast.error("Commentary could not be deleted.");
-    });
-  }
+    await deletePostComment(commentId)
+      .then((res) => {
+        setResponse(res);
+      })
+      .catch(() => {
+        toast.error('Commentary could not be deleted.');
+      });
+  };
 
   /**
    * Handles the requisition to post the comment
@@ -95,8 +110,11 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
         postId: post?.id,
         userId: loggedUser?.userid,
       };
+      setSending(true);
       await postComment(commentObject).then(() => {
         setResponse(commentObject);
+      }).finally(() => {
+        setSending(false);
       });
     }
   };
@@ -151,19 +169,33 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
                   <Avatar src={comment.avatar} />
                   <Content>
                     <Author>
-                      {comment.username}
+                      <AuthorName
+                        onClick={() => {
+                          history.push(`/profile/${comment.username}`);
+                        }}
+                      >
+                        {comment.username}
+                      </AuthorName>
                       <span>
                         {formatRelative(
                           parseISO(comment.created_at),
                           new Date()
                         )}
                       </span>
+                      <CommentActions>
+                        {(loggedUser?.username === comment.username || isUserAdmin) && (
+                            <RemoveComment
+                              title="Remove comment"
+                              onClick={() => handleDeleteComment(comment.id)}
+                            />
+                        )}
+                        {(loggedUser?.username !== comment.username && !isUserAdmin) && (
+                          <ReportComment title="Report comment"/>
+                        )}
+                      </CommentActions>
                     </Author>
-                    <span>{comment.content}</span>
+                    <CommentContent>{comment.content}</CommentContent>
                   </Content>
-                  <CommentActions>
-                    {loggedUser?.username === comment.username && <><RemoveComment onClick={() => handleDeleteComment(comment.id)} /> <ReportComment /> </>}
-                  </CommentActions>
                 </Comment>
               );
             })
@@ -184,6 +216,7 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
             placeholder={`Comment as @${loggedUser?.username}`}
             onChange={handleComment}
             onKeyPress={sendComment}
+            disabled={sending}
           />
         </form>
       </Wrapper>

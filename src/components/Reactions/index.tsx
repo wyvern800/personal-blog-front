@@ -42,11 +42,11 @@ const Reactions = (props: PostProps) => {
     post && (
       <Wrapper>
         {auth.isUserLogged() && (
-          <LikeButton onClick={() => processLikeBehavior(likeStatus)}>
+          <LikeButton title="Like this post" onClick={() => processLikeBehavior(likeStatus)}>
             {!likeStatus ? (
               <LikeIcon statusLike={likeStatus} />
             ) : (
-              <DislikeIcon statusLike={likeStatus} />
+              <DislikeIcon title="Dislike this post" statusLike={likeStatus} />
             )}
           </LikeButton>
         )}
