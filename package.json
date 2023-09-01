@@ -78,14 +78,15 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.11.1",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "3.11.2"
+    "webpack-dev-server": "3.11.2",
+    "@semantic-ui-react/css-patch": "^1.1.3"
   },
   "devServer": {
     "historyApiFallback": true
   },
   "scripts": {
-    "dev": "webpack-dev-server  --mode development",
-    "dev:server": "json-server --watch mocks/data.json --routes mocks/routes.json --port 3001 --middlewares mocks/middlewares/index.js",
+    "dev": "set NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --mode development",
+    "dev:server": "json-server --openssl-legacy-provider --watch mocks/data.json --routes mocks/routes.json --port 3001 --middlewares mocks/middlewares/index.js",
     "build": "webpack --mode production"
   }
 }

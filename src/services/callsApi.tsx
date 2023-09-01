@@ -88,7 +88,7 @@ const editPost = async (postId: string, data: PostType): Promise<any> => {
  * @param postId The post id
  * @returns true if user liked post | false if not
  */
-const hasUserLikedPost = async (postId: string): Promise<any> => {
+const hasUserLikedPost = async (postId: string | undefined): Promise<any> => {
   const response = await api.get(`/posts/hasuserliked/${postId}`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
@@ -150,6 +150,15 @@ const postComment = async (data: CommentType | undefined): Promise<any> => {
   return response;
 }
 
+/**
+ * Delete a post comment by its id
+ * @param commentId The comment we are deleting
+ */
+const deletePostComment = async (commentId: string): Promise<any> => {
+  const response = await api.delete(`/posts/comments/${commentId}`);
+  return response;
+};
+
 export {
   getAllPosts,
   getPost,
@@ -163,5 +172,6 @@ export {
   likeDislikePost,
   listAllPostComments,
   getUserById,
-  postComment
+  postComment,
+  deletePostComment
 };

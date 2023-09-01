@@ -66,15 +66,14 @@ const Footer = () => {
         </Links>
         <FooterBar>
           <a href="#">
-            Copyright © 2021-2022 Primatas Ltd. All rights reserved.
+            Copyright © 2021-2022 Super Seccos Ltd. All rights reserved.
           </a>
           <div className="social-links">
             <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a>
           </div>
         </FooterBar>
         <Credit>
-          © 2021-2022 Primatas - Seu universo da programação web. Todos os
-          direitos reservados.
+          {'Made with love by wyvern800 & Terrible-Developer'}
           {adminUser && logged && <LinkToAdminDashboard to="/admin">Go to admins dashboard</LinkToAdminDashboard>}
         </Credit>
       </Container>

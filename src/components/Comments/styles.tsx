@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-
+import { RiChatDeleteLine } from "react-icons/ri";
+import { GoReport } from "react-icons/go"
 type WrapperProps = {
   width: string;
 };
@@ -74,4 +75,27 @@ export const NoComments = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const RemoveComment = styled(RiChatDeleteLine)`
+  font-size: 1.1rem;
+
+  &:hover {
+    fill: #ff5252;
+    cursor: pointer;
+  }
+`;
+
+export const ReportComment = styled(GoReport)`
+  font-size: 1rem;
+
+  &:hover {
+    fill: #ff5252;
+    cursor: pointer;
+  }
+`;
+
+export const CommentActions = styled.div`
+  display: flex;
+  gap: 5px;
 `;

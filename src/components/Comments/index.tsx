@@ -7,6 +7,7 @@ import {
   listAllPostComments,
   getUserById,
   postComment,
+  deletePostComment
 } from '../../services/callsApi';
 
 import {
@@ -17,7 +18,10 @@ import {
   Author,
   ChatBox,
   Wrapper,
-  NoComments
+  NoComments,
+  RemoveComment,
+  ReportComment,
+  CommentActions
 } from './styles';
 
 import { parseISO, formatRelative } from 'date-fns';
@@ -25,6 +29,8 @@ import { parseISO, formatRelative } from 'date-fns';
 import { User } from '../../types/user';
 
 import auth from '../../services/authService';
+
+import { toast } from "react-toastify";
 
 type CommentsProps = {
   post: PostType;
@@ -60,6 +66,18 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
   const handleComment = (event: ChangeEvent<HTMLInputElement>): any => {
     setComment(event.target.value);
   };
+
+  /**
+   * Handles the comment deletion
+   * @param {string} commentId The comment id
+   */
+  const handleDeleteComment = async (commentId: string): Promise<any> => {
+    await deletePostComment(commentId).then((res) => {
+      setResponse(res);
+    }).catch((err) => {
+      toast.error("Post could not be deleted.");
+    });
+  }
 
   /**
    * Handles the requisition to post the comment
@@ -143,6 +161,9 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
                     </Author>
                     <span>{comment.content}</span>
                   </Content>
+                  <CommentActions>
+                    {loggedUser?.username === comment.username && <><RemoveComment onClick={() => handleDeleteComment(comment.id)} /> <ReportComment /> </>}
+                  </CommentActions>
                 </Comment>
               );
             })

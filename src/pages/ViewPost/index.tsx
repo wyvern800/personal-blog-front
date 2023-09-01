@@ -24,9 +24,9 @@ const ViewPost = () => {
     const get = async (): Promise<void> => {
       await getPost(id).then((response) => {
         setPost(response?.data);
-         setInterval(() => {
+         //setInterval(() => {
           setLoaded(true);
-         }, 1000);
+         //}, 1000);
       });
     };
     get();
