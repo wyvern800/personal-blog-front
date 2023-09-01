@@ -74,8 +74,8 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
   const handleDeleteComment = async (commentId: string): Promise<any> => {
     await deletePostComment(commentId).then((res) => {
       setResponse(res);
-    }).catch((err) => {
-      toast.error("Post could not be deleted.");
+    }).catch(() => {
+      toast.error("Commentary could not be deleted.");
     });
   }
 
