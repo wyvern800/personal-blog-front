@@ -82,7 +82,7 @@ const getPostById = async (postId: string): Promise<any> => {
 };
 
 /**
- * Get a post by its id
+ * Edit a post by its id
  * @param data The post data
  */
 const editPost = async (postId: string, data: PostType): Promise<any> => {
@@ -119,7 +119,7 @@ const likeDislikePost = async (postId: string | undefined): Promise<any> => {
 
 /**
  * Returns a list of all commentaries of a post
- * @param postId The post id we're retrieving the comments from
+ * @param {string} postId The post id we're retrieving the comments from
  */
 const listAllPostComments = async (postId: string | undefined): Promise<any> => {
   const response = await api.get(`/posts/comments/${postId}`, {

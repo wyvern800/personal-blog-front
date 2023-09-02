@@ -17,14 +17,9 @@ export const Body = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Footer = styled.div`
+export const Footer = styled.div``;
 
-`;
-
-
-export const TextFooter = styled.div`
-
-`;
+export const TextFooter = styled.div``;
 
 export const InnerModal = styled.div`
   display: flex;

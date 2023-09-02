@@ -24,9 +24,9 @@ const ViewPost = () => {
     const get = async (): Promise<void> => {
       await getPost(id).then((response) => {
         setPost(response?.data);
-         //setInterval(() => {
-          setLoaded(true);
-         //}, 1000);
+        //setInterval(() => {
+        setLoaded(true);
+        //}, 1000);
       });
     };
     get();
@@ -34,20 +34,35 @@ const ViewPost = () => {
 
   const width = '70%';
 
-  return (
+  return post ? (
     <>
       <Title name={post?.title} />
       <Breadcrumb
-        previous={[{ name: 'Home', linkTo: '/' }, { name: 'Posts', linkTo: '/posts' }]}
+        previous={[
+          { name: 'Home', linkTo: '/' },
+          { name: 'Posts', linkTo: '/posts' },
+        ]}
         currentAt={{ name: post?.title, linkTo: `/posts/${post?.id}` }}
       />
       <Container>
         <Main>
-          <SinglePost post={post} loaded={loaded} width={width} setResponse={setResponse}/>
-          <Comments post={post} loaded={loaded} width={width} setResponse={setResponse}/>
+          <SinglePost
+            post={post}
+            loaded={loaded}
+            width={width}
+            setResponse={setResponse}
+          />
+          <Comments
+            post={post}
+            loaded={loaded}
+            width={width}
+            setResponse={setResponse}
+          />
         </Main>
       </Container>
     </>
+  ) : (
+    <></>
   );
 };
 

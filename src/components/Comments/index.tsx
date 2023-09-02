@@ -25,7 +25,7 @@ import {
   AuthorName,
   CommentContent,
   InnerModal,
-  Buttons
+  Buttons,
 } from './styles';
 
 import { parseISO, formatRelative } from 'date-fns';
@@ -42,7 +42,7 @@ import Modal from '../Modal';
 
 import { ModalStates } from '../../types/modal.states';
 
-import Button from "../Button";
+import Button from '../Button';
 
 type CommentsProps = {
   post: PostType;
@@ -144,7 +144,6 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
       let newComments: any[] = [];
 
       if (getPostList) {
-        console.log(getPostList);
         const getUserData = async (comment: any) => {
           const commenter = await getUserById(comment?.userid);
 
@@ -182,115 +181,121 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
   }, [loadedComments, post, setResponse]);
 
   return (
-    loaded &&
-    loadedComments && (
-      <Wrapper width={width}>
-        <Modal
-          title={`Are you sure you want to delete comment #${deletingModalOpen.object?.id}!`}
-          open={deletingModalOpen}
-          setOpen={setDeletingModalOpen}
-          onCloseModal={() => {
-            setDeletingModalOpen({ ...deletingModalOpen, isModalOpen: false });
-          }}
-        >
-          <InnerModal>
-            <strong>Author:</strong> {deletingModalOpen?.object?.username}
-            <strong>Comment:</strong> {deletingModalOpen?.object?.content}
-          </InnerModal>
-          <Buttons>
-            <Button
-              bgColor='rgba(137, 255, 87, 0.67)'
-              //color="#1F1F1E"
-              onClick={() => {
-                // If there is an ID, remove, if not, then skip
-                if (deletingModalOpen.object) {
-                  handleDeleteComment(deletingModalOpen.object?.id);
-                }
-              }}
-            >
-              Yes
-            </Button>
-            <Button
-              bgColor='red'
-              //color="#1F1F1E"
-              onClick={() => {
+    loaded && (
+      <>
+        {loadedComments && (
+          <Wrapper width={width}>
+            <Modal
+              title={`Are you sure you want to delete comment #${deletingModalOpen.object?.id}!`}
+              open={deletingModalOpen}
+              setOpen={setDeletingModalOpen}
+              onCloseModal={() => {
                 setDeletingModalOpen({
                   ...deletingModalOpen,
                   isModalOpen: false,
                 });
               }}
             >
-              No
-            </Button>
-          </Buttons>
-        </Modal>
+              <InnerModal>
+                <strong>Author:</strong> {deletingModalOpen?.object?.username}
+                <strong>Comment:</strong> {deletingModalOpen?.object?.content}
+              </InnerModal>
+              <Buttons>
+                <Button
+                  bgColor="rgba(137, 255, 87, 0.67)"
+                  //color="#1F1F1E"
+                  onClick={() => {
+                    // If there is an ID, remove, if not, then skip
+                    if (deletingModalOpen.object) {
+                      handleDeleteComment(deletingModalOpen.object?.id);
+                    }
+                  }}
+                >
+                  Yes
+                </Button>
+                <Button
+                  bgColor="red"
+                  //color="#1F1F1E"
+                  onClick={() => {
+                    setDeletingModalOpen({
+                      ...deletingModalOpen,
+                      isModalOpen: false,
+                    });
+                  }}
+                >
+                  No
+                </Button>
+              </Buttons>
+            </Modal>
 
-        <Container>
-          {comments && comments.length > 0 ? (
-            comments.map((comment: any) => {
-              return (
-                <Comment key={comment.id}>
-                  <Avatar src={comment.avatar} />
-                  <Content>
-                    <Author>
-                      <AuthorName
-                        onClick={() => {
-                          history.push(`/profile/${comment.username}`);
-                        }}
-                      >
-                        {comment.username}
-                      </AuthorName>
-                      <span>
-                        {formatRelative(
-                          parseISO(comment.created_at),
-                          new Date()
-                        )}
-                      </span>
-                      <CommentActions>
-                        {(loggedUser?.username === comment.username ||
-                          isUserAdmin) && (
-                          <RemoveComment
-                            title="Remove comment"
-                            onClick={() =>
-                              setDeletingModalOpen({
-                                object: comment,
-                                isModalOpen: true,
-                              })
-                            }
-                          />
-                        )}
-                        {loggedUser?.username !== comment.username &&
-                          !isUserAdmin && (
-                            <ReportComment title="Report comment" />
-                          )}
-                      </CommentActions>
-                    </Author>
-                    <CommentContent>{comment.content}</CommentContent>
-                  </Content>
-                </Comment>
-              );
-            })
-          ) : (
-            <NoComments>
-              Nobody has commented yet, why don't you do it then?
-            </NoComments>
-          )}
-        </Container>
-        <form
-          onSubmit={(e: any) => {
-            e.preventDefault();
-            e.target.reset();
-            e.target.blur();
-          }}
-        >
-          <ChatBox
-            placeholder={`Comment as @${loggedUser?.username}`}
-            onChange={handleComment}
-            onKeyPress={sendComment}
-            disabled={sending}
-          />
-        </form>
-      </Wrapper>
+            <Container>
+              {comments && comments.length > 0 ? (
+                comments.map((comment: any) => {
+                  return (
+                    <Comment key={comment.id}>
+                      <Avatar src={comment.avatar} />
+                      <Content>
+                        <Author>
+                          <AuthorName
+                            onClick={() => {
+                              history.push(`/profile/${comment.username}`);
+                            }}
+                          >
+                            {comment.username}
+                          </AuthorName>
+                          <span>
+                            {formatRelative(
+                              parseISO(comment.created_at),
+                              new Date()
+                            )}
+                          </span>
+                          <CommentActions>
+                            {(loggedUser?.username === comment.username ||
+                              isUserAdmin) && (
+                              <RemoveComment
+                                title="Remove comment"
+                                onClick={() =>
+                                  setDeletingModalOpen({
+                                    object: comment,
+                                    isModalOpen: true,
+                                  })
+                                }
+                              />
+                            )}
+                            {loggedUser?.username !== comment.username &&
+                              !isUserAdmin && (
+                                <ReportComment title="Report comment" />
+                              )}
+                          </CommentActions>
+                        </Author>
+                        <CommentContent>{comment.content}</CommentContent>
+                      </Content>
+                    </Comment>
+                  );
+                })
+              ) : (
+                <NoComments>
+                  Nobody has commented yet, why don't you do it then?
+                </NoComments>
+              )}
+            </Container>
+            <form
+              onSubmit={(e: any) => {
+                e.preventDefault();
+                e.target.reset();
+                e.target.blur();
+              }}
+            >
+              <ChatBox
+                placeholder={`Comment as @${loggedUser?.username}`}
+                onChange={handleComment}
+                onKeyPress={sendComment}
+                disabled={sending}
+              />
+            </form>
+          </Wrapper>
+        )}{' '}
+      </>
     )
   );
 };

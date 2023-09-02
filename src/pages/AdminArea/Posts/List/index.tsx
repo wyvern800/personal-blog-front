@@ -133,14 +133,14 @@ const List = () => {
               </Controls>
             </Post>
           ))}
-          {totalPagesPagination > 1 && (
+        </PostsList>
+      )}
+      {totalPagesPagination > 1 && (
           <Pagination
             numberPages={totalPagesPagination}
             handlePageClick={handlePageClick}
           />
         )}
-        </PostsList>
-      )}
     </Wrapper>
   );
 };

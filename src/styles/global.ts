@@ -60,15 +60,16 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height:100vh;
 }
 `;
 
 export const Wrapper = styled.div`
+  display: flex;
   width: 80%;
   margin: auto;
   margin-top: 3%;
   margin-bottom: 3%;
+  min-height: 53.3vh;
 
   border-top: 8px solid #2d2d2d;
   border-bottom: 5px solid #2d2d2d;
@@ -78,4 +79,6 @@ export const Wrapper = styled.div`
   @media (max-width: 985px) {
     width: 95%;
   }
+
+  flex-direction: column;
 `;
