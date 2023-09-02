@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { NavLinkType } from '../../types/navlink';
+import { NavLink } from "react-router-dom";
 
-export const Navlink = styled.a<NavLinkType>`
+export const MenuLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${(props) => (props.active ? '#fb0' : 'gray')};
+  color: gray;
   width: 100%;
   align-items: center;
   height: 10%;
@@ -15,8 +15,15 @@ export const Navlink = styled.a<NavLinkType>`
   font-weight: bold;
   text-decoration: none;
 
+  &.active {
+    color: #fb0;
+
+    svg {
+      fill: #fb0;
+    }
+  }
+
   &:focus,
-  &:hover,
   &:visited,
   &:link,
   &:active {
@@ -24,9 +31,13 @@ export const Navlink = styled.a<NavLinkType>`
   }
 
   &:hover {
-    color: #fb0;
+    color: white;
     cursor: pointer;
     background-color: rgba(31, 30, 30, 0.63);
+
+    svg {
+      fill: white;
+    }
   }
 
   &&:not(:first-child) {

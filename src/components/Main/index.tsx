@@ -9,8 +9,6 @@ import { Container, Body, Footer, TextFooter } from './styles';
 
 import auth from '../../services/authService';
 
-import { navLinks_admin } from '../../constants/navLinks_admin';
-
 import Navbar from '../Navbar';
 import { useLocation } from 'react-router-dom';
 
@@ -18,13 +16,6 @@ const Dashboard = () => {
   const { userObjectData, setUserObjectData } = useUserObjectData();
   const history = useHistory();
   const location = useLocation();
-
-  // Remove last slash from url to set it as active
-  const currentUrl = location.pathname?.slice(
-    0,
-    location.pathname.lastIndexOf('/')
-  );
-  const [active, setActive] = useState(currentUrl);
 
   // Effect that authenticates the user
   useEffect(() => {
@@ -54,8 +45,6 @@ const Dashboard = () => {
           <Container>
             <Navbar
               type_user={userObjectData.type_user}
-              active={active}
-              setActive={setActive}
             />
             <Body>
               <PrivateRoutes userObjectData={userObjectData} />

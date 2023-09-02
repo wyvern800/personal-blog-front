@@ -101,7 +101,7 @@ const hasUserLikedPost = async (postId: string | undefined): Promise<any> => {
  * Process the like or dislike action
  * @param postId The post id
  */
-const likeDislikePost = async (postId: string): Promise<any> => {
+const likeDislikePost = async (postId: string | undefined): Promise<any> => {
   const response = await api.get(`/posts/like/${postId}`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,

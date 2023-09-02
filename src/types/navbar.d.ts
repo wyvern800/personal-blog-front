@@ -6,7 +6,5 @@ export type NavigationLinksType = {
 }
 
 export type NavBarType = {
-  type_user: string;
-  active: string;
-  setActive: any;
+  type_user: any;
 }

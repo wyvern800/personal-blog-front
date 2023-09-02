@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
+import { AiOutlineEdit } from "react-icons/ai";
+
 export const Container = styled.div``;
 
 type ContentProps = {
@@ -39,6 +41,7 @@ export const Header = styled.div`
   padding-top: 1.6%;
   padding-bottom: 1.6%;
   border-radius: 7px 7px 0 0;
+  position: relative;
 
   font-weight: bold;
   font-size: 1.3rem;
@@ -47,8 +50,8 @@ export const Header = styled.div`
 export const Content = styled.div<ContentProps>`
   margin: 5%;
 
-  text-align: justify;
-  text-indent: 50px;
+  //text-align: justify;
+  //text-indent: 50px;
 
   word-wrap: break-word;
 
@@ -154,5 +157,21 @@ export const ReadMore = styled.div`
     &:hover {
       color: #fb0;
     }
+  }
+`;
+
+export const EditThisPost = styled(AiOutlineEdit)`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0;
+  font-size: 3rem;
+
+  &:hover {
+    opacity: 0.95;
+    background-color: black;
+    border-radius: 50px;
+    padding: 4px;
+    cursor: pointer;
   }
 `;
