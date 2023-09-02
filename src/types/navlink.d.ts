@@ -1,4 +1,5 @@
 export type NavLinkType = {
   onClick: any;
-  active?: Boolean;
+  active?: string;
+  currentUrl?: string;
 }

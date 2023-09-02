@@ -20,12 +20,26 @@ export default createGlobalStyle`
 -ms-user-select: none;
 user-select: none;
 
+outline: none;
+
 /* liberar select em tables */
 table {
--webkit-user-select: text;
--moz-user-select: -moz-text;
--ms-user-select: text;
-user-select: text;
+-webkit-user-select: text !important;
+-moz-user-select: -moz-text !important;
+-ms-user-select: text !important;
+user-select: text !important;
+ }
+
+ pre, code {
+  border-radius: 8px;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+ }
+
+ a {
+    text-decoration: none;
 }
 }
 
@@ -36,7 +50,7 @@ body, html {
   height:100%;
 
   max-width: 100%;
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 body {

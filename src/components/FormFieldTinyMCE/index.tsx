@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
 import { Container, LabelInput, ContainerInput, LabelError } from './styles';
+
+import Prism from 'prismjs';
+
+import "../../styles/prism-material-dark.css";
 
 type FormFieldTinyMCEProps = {
   register: any;
@@ -37,9 +41,56 @@ const FormFieldTinyMCE = ({
    * @param {string} content Conteúdo do editor ;
    * @param {any} _ editor's object
    */
-  const onChange = (content: any, _: any) => {
+  const onChange = (content: any) => {
     setValueFormState(name, content);
     setValue(content);
+  };
+
+  const editorConfig = {
+    selector: 'textarea',
+    height: 300,
+    menubar: false,
+    oninit: 'setPlainText',
+    plugins: [
+      'advlist',
+      'autolink',
+      'lists',
+      'link',
+      'image',
+      'charmap',
+      'print',
+      'preview',
+      'anchor',
+      'searchreplace',
+      'visualblocks',
+      'fullscreen',
+      'insertdatetime',
+      'media',
+      'table',
+      'paste',
+      'wordcount',
+      'codesample',
+    ],
+    codesample_languages: [
+      { text: 'HTML/XML', value: 'markup' },
+      { text: 'JavaScript', value: 'javascript' },
+      { text: 'CSS', value: 'css' },
+      { text: 'Python', value: 'python' },
+      { text: 'Java', value: 'java' },
+    ],
+    toolbar:
+      'fontsize | formatselect | ' +
+      'bold strikethrough italic | blocks | forecolor backcolor | alignleft aligncenter |' +
+      'alignright alignjustify | bullist numlist outdent indent |' +
+      'codesample',
+    branding: false,
+    elementpath: false,
+    statusbar: false,
+    paste_as_text: true,
+    paste_text_sticky: true,
+    skin: 'oxide-dark',
+    content_css: 'dark',
+    content_style: `@import url('../../styles/prism-material-dark.css');`
   };
 
   return (
@@ -55,28 +106,8 @@ const FormFieldTinyMCE = ({
           {...register(name)}
           initialValue={defaultValue}
           value={value}
-          init={{
-            selector: 'textarea',
-            height: 300,
-            menubar: false,
-            oninit: 'setPlainText',
-            plugins: [
-              'advlist autolink lists link paste',
-              'charmap print preview anchor help',
-              'searchreplace visualblocks',
-              'insertdatetime textcolor codesample',
-            ],
-            toolbar:
-              'undo redo | fontsizeselect | forecolor backcolor | bold strikethrough italic | bullist numlist | link | codesample | help',
-            content_style:
-              'body { font-family: Inconsolata, monospace; font-size: 1.2rem;}',
-            branding: false,
-            elementpath: false,
-            statusbar: false,
-            paste_as_text: true,
-            paste_text_sticky: true,
-          }}
-          onEditorChange={(newValue, editor) => onChange(newValue, editor)}
+          init={editorConfig}
+          onEditorChange={(newValue) => onChange(newValue)}
         />
       </ContainerInput>
       {error && <LabelError>{error}</LabelError>}

@@ -21,7 +21,7 @@ type AllPostsProps = {
 };
 
 const AllPosts = (props: AllPostsProps) => {
-  const { firstSeparated, width } = props;
+  const { firstSeparated, width = '100%' } = props;
   const [posts, setPosts] = useState<PostType[]>([]);
   const [loaded, setLoaded] = useState<Boolean>(false);
   const [response, setResponse] = useState({});
@@ -71,7 +71,7 @@ const AllPosts = (props: AllPostsProps) => {
                   key={post?.id}
                   post={post}
                   loaded={loaded}
-                  width={width ?? '100%'}
+                  width={width}
                   firstSeparated={firstSeparated}
                   setResponse={setResponse}
                 />

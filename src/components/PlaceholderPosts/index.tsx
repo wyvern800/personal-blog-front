@@ -1,6 +1,6 @@
 import React from 'react';
 import { Placeholder } from 'semantic-ui-react';
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+//mport { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
 import { Wrapper, PostWrap } from './styles';
 

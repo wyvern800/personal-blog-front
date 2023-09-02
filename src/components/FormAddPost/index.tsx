@@ -123,7 +123,7 @@ const FormAddPost = ({ defaultValues, editing }: FormAddPostProps) => {
           defaultValue={defaultValues?.content}
           setValueFormState={setValue}
         />
-        <Login type="submit">{editing ? 'Edit' : 'Create'} Post</Login>
+        <Login type="submit">{editing ? 'Save' : 'Create'} Post</Login>
       </Form>
       )}
     </>

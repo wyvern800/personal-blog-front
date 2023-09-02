@@ -9,22 +9,17 @@ import { Container, Body, Footer, TextFooter } from './styles';
 
 import auth from '../../services/authService';
 
-import { navLinks_admin } from '../../constants/navLinks_admin';
-
 import Navbar from '../Navbar';
-import { useLocation } from 'react-router-dom';
+import { ModalStates } from '../../types/modal.states';
 
 const Dashboard = () => {
   const { userObjectData, setUserObjectData } = useUserObjectData();
-  const history = useHistory();
-  const location = useLocation();
 
-  // Remove last slash from url to set it as active
-  const currentUrl = location.pathname?.slice(
-    0,
-    location.pathname.lastIndexOf('/')
-  );
-  const [active, setActive] = useState(currentUrl);
+  const [logoutModalOpen, setLogoutModalOpen] = useState<ModalStates>({
+    isModalOpen: false,
+  });
+
+  const history = useHistory();
 
   // Effect that authenticates the user
   useEffect(() => {
@@ -52,11 +47,7 @@ const Dashboard = () => {
       {userObjectData && (
         <>
           <Container>
-            <Navbar
-              type_user={userObjectData.type_user}
-              active={active}
-              setActive={setActive}
-            />
+            <Navbar type_user={userObjectData.type_user} />
             <Body>
               <PrivateRoutes userObjectData={userObjectData} />
             </Body>

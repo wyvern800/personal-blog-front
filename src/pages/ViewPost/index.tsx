@@ -6,6 +6,7 @@ import { PostParams } from '../../types/post.params';
 
 import SinglePost from '../../components/SinglePost';
 import Breadcrumb from '../../components/Breadcrumb';
+import Comments from '../../components/Comments';
 
 import { Container, Main } from './styles';
 
@@ -23,13 +24,15 @@ const ViewPost = () => {
     const get = async (): Promise<void> => {
       await getPost(id).then((response) => {
         setPost(response?.data);
-         setInterval(() => {
+         //setInterval(() => {
           setLoaded(true);
-         }, 1000);
+         //}, 1000);
       });
     };
     get();
   }, [response]);
+
+  const width = '70%';
 
   return (
     <>
@@ -40,7 +43,8 @@ const ViewPost = () => {
       />
       <Container>
         <Main>
-          <SinglePost post={post} loaded={loaded} width={'70%'} setResponse={setResponse}/>
+          <SinglePost post={post} loaded={loaded} width={width} setResponse={setResponse}/>
+          <Comments post={post} loaded={loaded} width={width} setResponse={setResponse}/>
         </Main>
       </Container>
     </>

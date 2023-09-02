@@ -32,33 +32,34 @@ const List = () => {
   const [loaded, setLoaded] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPagesPagination, setTotalPagesPagination] = useState(1)
+  const [totalPagesPagination, setTotalPagesPagination] = useState(1);
 
-  const [postsCopy, setPostsCopy] = useState([]);
+  const [search, setSearch] = useState<string>('');
+
+  const getAllPosts = async () => {
+    setLoaded(false);
+    const loggedUserData = await auth.getCurrentUser();
+    if (loggedUserData) {
+      const { userid } = loggedUserData?.data;
+      await getAllPostsByAuthor(userid, currentPage, search)
+        .then((response) => {
+          setLoaded(true);
+          setPosts(response.data.userPosts.data);
+
+          const total_pages = response.data.totalPages;
+          if (totalPagesPagination !== total_pages)
+          setTotalPagesPagination(total_pages)
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  };
 
   // Get all posts
   useEffect(() => {
-    const get = async () => {
-      const loggedUserData = await auth.getCurrentUser();
-      if (loggedUserData) {
-        const { userid } = loggedUserData?.data;
-        await getAllPostsByAuthor(userid, currentPage)
-          .then((response) => {
-            setLoaded(true);
-            setPosts(response.data.userPosts.data);
-            setPostsCopy(response.data.userPosts.data)
-
-            const total_pages = response.data.totalPages;
-            if (totalPagesPagination !== total_pages)
-            setTotalPagesPagination(total_pages)
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }
-    };
-    get();
-  }, [response, currentPage]);
+    getAllPosts();
+  }, [response, currentPage, search]);
 
   /**
    * Deletes the post
@@ -102,9 +103,7 @@ const List = () => {
    * @param e The event
    */
   const processSearch = (e: any) => {
-      const val = e.target.value;
-      const filtered = posts.filter(p=> p.title.toLowerCase().includes(val));
-      setPosts(val !== '' ? filtered : postsCopy)
+      setSearch(e.target.value);
   }
 
   return (

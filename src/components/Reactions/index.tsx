@@ -42,21 +42,21 @@ const Reactions = (props: PostProps) => {
     post && (
       <Wrapper>
         {auth.isUserLogged() && (
-          <LikeButton onClick={() => processLikeBehavior(likeStatus)}>
+          <LikeButton title="Like this post" onClick={() => processLikeBehavior(likeStatus)}>
             {!likeStatus ? (
               <LikeIcon statusLike={likeStatus} />
             ) : (
-              <DislikeIcon statusLike={likeStatus} />
+              <DislikeIcon title="Dislike this post" statusLike={likeStatus} />
             )}
           </LikeButton>
         )}
         <Likes userLogged={auth.isUserLogged()}>
           {post?.likes_quantity !== undefined && post?.likes_quantity > 0
             ? post?.likes_quantity + ' like'+ (post?.likes_quantity > 1 ? 's':'')
-            : 'Nobody has liked this post yet '}
-          {post?.likes_quantity !== undefined && post?.likes_quantity <= 0 && (
+            : /*'Nobody has liked this post yet '*/ ''}
+          {/*post?.likes_quantity !== undefined && post?.likes_quantity <= 0 && (
             <ImSad />
-          )}
+          )*/}
         </Likes>
       </Wrapper>
     )

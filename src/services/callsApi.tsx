@@ -1,6 +1,8 @@
 import api from '../services/api';
 import { PostType } from '../types/post';
 import { tokenKey } from './authService';
+import { CommentType } from '../types/comment';
+import { IDataParams } from '../types/base.params';
 
 /**
  * Gets a specific post by id or slug
@@ -26,13 +28,19 @@ const getAllPosts = async (currentPage: number) => {
 
 /**
  * Gets a list with all posts
+ * @param {number} userId The user
+ * @param {number} currentPage The current page
+ * @param {string} search The searching filter
  */
-const getAllPostsByAuthor = async (userId: number, currentPage: number) => {
+const getAllPostsByAuthor = async (userId: number, currentPage: number, search: string) => {
+  let params: IDataParams = {
+    page: currentPage,
+    "per_page": 5,
+  }
+  // include search parameters if needed
+  if (search !== '') params.search = search;
   const response = await api.get(`/posts/byuser/${userId}`, {
-    params: {
-      page: currentPage,
-      "per_page": 5
-    }
+    params
   });
   return response;
 };
@@ -87,7 +95,7 @@ const editPost = async (postId: string, data: PostType): Promise<any> => {
  * @param postId The post id
  * @returns true if user liked post | false if not
  */
-const hasUserLikedPost = async (postId: string): Promise<any> => {
+const hasUserLikedPost = async (postId: string | undefined): Promise<any> => {
   const response = await api.get(`/posts/hasuserliked/${postId}`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
@@ -100,7 +108,7 @@ const hasUserLikedPost = async (postId: string): Promise<any> => {
  * Process the like or dislike action
  * @param postId The post id
  */
-const likeDislikePost = async (postId: string): Promise<any> => {
+const likeDislikePost = async (postId: string | undefined): Promise<any> => {
   const response = await api.get(`/posts/like/${postId}`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
@@ -108,6 +116,55 @@ const likeDislikePost = async (postId: string): Promise<any> => {
   });
   return response;
 }
+
+/**
+ * Returns a list of all commentaries of a post
+ * @param postId The post id we're retrieving the comments from
+ */
+const listAllPostComments = async (postId: string | undefined): Promise<any> => {
+  const response = await api.get(`/posts/comments/${postId}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  })
+  return response;
+}
+
+/**
+ * Retrieves user data by it's id
+ * @param userId The userId
+ * @returns User data by an user id
+ */
+const getUserById = async (userId: string | undefined): Promise<any> => {
+  const response = await api.get(`/users/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  })
+  return response;
+}
+
+/**
+ * Posts a commentary
+ * @param data The comment data
+ */
+const postComment = async (data: CommentType | undefined): Promise<any> => {
+  const response = await api.post(`/posts/comments`, data, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  })
+  return response;
+}
+
+/**
+ * Delete a post comment by its id
+ * @param commentId The comment we are deleting
+ */
+const deletePostComment = async (commentId: string): Promise<any> => {
+  const response = await api.delete(`/posts/comments/${commentId}`);
+  return response;
+};
 
 export {
   getAllPosts,
@@ -119,5 +176,9 @@ export {
   editPost,
   getPostById,
   hasUserLikedPost,
-  likeDislikePost
+  likeDislikePost,
+  listAllPostComments,
+  getUserById,
+  postComment,
+  deletePostComment
 };

@@ -24,7 +24,7 @@ const Logout = () => {
       // Redirect the logged out user to login after 3 seconds
       setTimeout(() => {
         history.push('/login');
-      }, 2000);
+      }, 1000);
     } else {
       history.push('/');
     }
