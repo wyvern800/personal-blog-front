@@ -20,6 +20,8 @@ export default createGlobalStyle`
 -ms-user-select: none;
 user-select: none;
 
+outline: none;
+
 /* liberar select em tables */
 table {
 -webkit-user-select: text !important;

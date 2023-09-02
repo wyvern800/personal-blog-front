@@ -10,12 +10,16 @@ import { Container, Body, Footer, TextFooter } from './styles';
 import auth from '../../services/authService';
 
 import Navbar from '../Navbar';
-import { useLocation } from 'react-router-dom';
+import { ModalStates } from '../../types/modal.states';
 
 const Dashboard = () => {
   const { userObjectData, setUserObjectData } = useUserObjectData();
+
+  const [logoutModalOpen, setLogoutModalOpen] = useState<ModalStates>({
+    isModalOpen: false,
+  });
+
   const history = useHistory();
-  const location = useLocation();
 
   // Effect that authenticates the user
   useEffect(() => {
@@ -43,9 +47,7 @@ const Dashboard = () => {
       {userObjectData && (
         <>
           <Container>
-            <Navbar
-              type_user={userObjectData.type_user}
-            />
+            <Navbar type_user={userObjectData.type_user} />
             <Body>
               <PrivateRoutes userObjectData={userObjectData} />
             </Body>

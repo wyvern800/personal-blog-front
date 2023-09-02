@@ -12,7 +12,7 @@ const About = () => {
     {
       name: 'Matheus G. Ferreira',
       effectPhrase:
-        "The truth is: I am a toy that people enjoy 'til all of my tricks don't work anymore",
+        "Ak 47's MAC 11's glocks and nine",
       about:
         "Average gay guy who thinks coding motivates living. Been into this since I was aged 12, and I'm still learning every day",
       avatar: math,

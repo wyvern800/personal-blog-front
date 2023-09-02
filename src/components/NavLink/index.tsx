@@ -20,7 +20,7 @@ const NavLink = ({
     margin-right: 1.5%;
 
     &:hover {
-      //fill: #fb0;
+      fill: #fb0;
       cursor: pointer;
     }
   `;

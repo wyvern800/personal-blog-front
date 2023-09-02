@@ -24,6 +24,8 @@ import {
   CommentActions,
   AuthorName,
   CommentContent,
+  InnerModal,
+  Buttons
 } from './styles';
 
 import { parseISO, formatRelative } from 'date-fns';
@@ -35,6 +37,12 @@ import auth from '../../services/authService';
 import { toast } from 'react-toastify';
 
 import { useHistory } from 'react-router-dom';
+
+import Modal from '../Modal';
+
+import { ModalStates } from '../../types/modal.states';
+
+import Button from "../Button";
 
 type CommentsProps = {
   post: PostType;
@@ -57,6 +65,10 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
 
   const history = useHistory();
 
+  const [deletingModalOpen, setDeletingModalOpen] = useState<ModalStates>({
+    isModalOpen: false,
+  });
+
   // Gets the current logged informations
   useEffect(() => {
     const get = async () => {
@@ -66,7 +78,7 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
         // If user is admin set
         await auth.isUserAdmin().then((res) => {
           setIsUserAdmin(res.data.isAdmin);
-        })
+        });
       });
     };
     get();
@@ -88,6 +100,10 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
     await deletePostComment(commentId)
       .then((res) => {
         setResponse(res);
+        setDeletingModalOpen({
+          ...deletingModalOpen,
+          isModalOpen: false,
+        });
       })
       .catch(() => {
         toast.error('Commentary could not be deleted.');
@@ -111,11 +127,13 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
         userId: loggedUser?.userid,
       };
       setSending(true);
-      await postComment(commentObject).then(() => {
-        setResponse(commentObject);
-      }).finally(() => {
-        setSending(false);
-      });
+      await postComment(commentObject)
+        .then(() => {
+          setResponse(commentObject);
+        })
+        .finally(() => {
+          setSending(false);
+        });
     }
   };
 
@@ -126,6 +144,7 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
       let newComments: any[] = [];
 
       if (getPostList) {
+        console.log(getPostList);
         const getUserData = async (comment: any) => {
           const commenter = await getUserById(comment?.userid);
 
@@ -145,7 +164,12 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
         // Resolves the promises in one call to avoid data loss
         await Promise.all(getPostList.data.postComments.map(getUserData))
           .then(() => {
-            setComments(newComments);
+            const sortedData: any[] = newComments.sort((a: any, b: any) => {
+              const dateA = new Date(a.created_at).getTime();
+              const dateB = new Date(b.created_at).getTime();
+              return dateB - dateA;
+            });
+            setComments(sortedData);
             setLoadedComments(true);
           })
           .catch(() => {
@@ -161,6 +185,46 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
     loaded &&
     loadedComments && (
       <Wrapper width={width}>
+        <Modal
+          title={`Are you sure you want to delete comment #${deletingModalOpen.object?.id}!`}
+          open={deletingModalOpen}
+          setOpen={setDeletingModalOpen}
+          onCloseModal={() => {
+            setDeletingModalOpen({ ...deletingModalOpen, isModalOpen: false });
+          }}
+        >
+          <InnerModal>
+            <strong>Author:</strong> {deletingModalOpen?.object?.username}
+            <strong>Comment:</strong> {deletingModalOpen?.object?.content}
+          </InnerModal>
+          <Buttons>
+            <Button
+              bgColor='rgba(137, 255, 87, 0.67)'
+              //color="#1F1F1E"
+              onClick={() => {
+                // If there is an ID, remove, if not, then skip
+                if (deletingModalOpen.object) {
+                  handleDeleteComment(deletingModalOpen.object?.id);
+                }
+              }}
+            >
+              Yes
+            </Button>
+            <Button
+              bgColor='red'
+              //color="#1F1F1E"
+              onClick={() => {
+                setDeletingModalOpen({
+                  ...deletingModalOpen,
+                  isModalOpen: false,
+                });
+              }}
+            >
+              No
+            </Button>
+          </Buttons>
+        </Modal>
+
         <Container>
           {comments && comments.length > 0 ? (
             comments.map((comment: any) => {
@@ -183,15 +247,22 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
                         )}
                       </span>
                       <CommentActions>
-                        {(loggedUser?.username === comment.username || isUserAdmin) && (
-                            <RemoveComment
-                              title="Remove comment"
-                              onClick={() => handleDeleteComment(comment.id)}
-                            />
+                        {(loggedUser?.username === comment.username ||
+                          isUserAdmin) && (
+                          <RemoveComment
+                            title="Remove comment"
+                            onClick={() =>
+                              setDeletingModalOpen({
+                                object: comment,
+                                isModalOpen: true,
+                              })
+                            }
+                          />
                         )}
-                        {(loggedUser?.username !== comment.username && !isUserAdmin) && (
-                          <ReportComment title="Report comment"/>
-                        )}
+                        {loggedUser?.username !== comment.username &&
+                          !isUserAdmin && (
+                            <ReportComment title="Report comment" />
+                          )}
                       </CommentActions>
                     </Author>
                     <CommentContent>{comment.content}</CommentContent>
