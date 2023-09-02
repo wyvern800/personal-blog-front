@@ -32,13 +32,15 @@ user-select: text !important;
 
  pre, code {
   border-radius: 8px;
-
-
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
   user-select: text;
  }
+
+ a {
+    text-decoration: none;
+}
 }
 
 body, html {

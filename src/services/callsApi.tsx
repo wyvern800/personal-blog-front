@@ -2,6 +2,7 @@ import api from '../services/api';
 import { PostType } from '../types/post';
 import { tokenKey } from './authService';
 import { CommentType } from '../types/comment';
+import { IDataParams } from '../types/base.params';
 
 /**
  * Gets a specific post by id or slug
@@ -27,13 +28,19 @@ const getAllPosts = async (currentPage: number) => {
 
 /**
  * Gets a list with all posts
+ * @param {number} userId The user
+ * @param {number} currentPage The current page
+ * @param {string} search The searching filter
  */
-const getAllPostsByAuthor = async (userId: number, currentPage: number) => {
+const getAllPostsByAuthor = async (userId: number, currentPage: number, search: string) => {
+  let params: IDataParams = {
+    page: currentPage,
+    "per_page": 5,
+  }
+  // include search parameters if needed
+  if (search !== '') params.search = search;
   const response = await api.get(`/posts/byuser/${userId}`, {
-    params: {
-      page: currentPage,
-      "per_page": 5
-    }
+    params
   });
   return response;
 };
