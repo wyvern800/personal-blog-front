@@ -7,16 +7,20 @@ import FormField from '../../components/FormField';
 
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import auth from '../../services/authService';
 
 import Link from '../Link';
 
 import { toast } from 'react-toastify';
 
+import { useUserObjectData } from '../../hooks/UserObjectData';
+
 const FormLogin = () => {
 
   const history = useHistory();
+
+  const { userObjectData, setUserObjectData } = useUserObjectData();
 
   const validationSchema = yup.object().shape({
     email: yup.string().required('E-mail/login inválido'),
@@ -34,8 +38,6 @@ const FormLogin = () => {
     setValue,
   } = useForm({ resolver: yupResolver(validationSchema) });
 
-  const { state } = useLocation();
-
   /**
    * Executed when we hit submit on the login form
    * @param data Dados do login
@@ -45,7 +47,7 @@ const FormLogin = () => {
       .login(data?.email, data?.password)
       .then((response) => {
 
-        history.push(state?.from || '/');
+        history.push(userObjectData?.lastURL ? userObjectData?.lastURL : '/');
         localStorage.setItem('token', response?.data?.token);
 
         toast.success('You successfully logged in!')

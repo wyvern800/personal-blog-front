@@ -5,6 +5,8 @@ import Tooltip from 'react-power-tooltip';
 import { useLocation, useHistory } from 'react-router-dom';
 import { Wrapper, LinkLogin, ArrowDropdown, HiddenMenu, Separator } from './styles';
 import menuData from '../../constants/menuLinks';
+import { useUserObjectData } from '../../hooks/UserObjectData';
+
 
 const LoggedUser = () => {
   const history = useHistory();
@@ -12,6 +14,8 @@ const LoggedUser = () => {
   const [loggedUser, setLoggedUser] = useState<UserType>();
   const [isUserLogged, setIsUserLogged] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+
+  const { userObjectData, setUserObjectData } = useUserObjectData();
 
   // Get the logged user data
   useEffect(() => {
@@ -36,6 +40,14 @@ const LoggedUser = () => {
     };
     getLoggedUserData();
   }, [location]);
+
+  /**
+   * Saves the current URL before the user login, so the user can be redirected
+   * back to the last page as soon as the login succeed ;)
+   */
+  const storeCurrentUrl = () => {
+    setUserObjectData({...userObjectData, lastURL: location.pathname});
+  }
 
   return (
     <Wrapper>
@@ -71,7 +83,9 @@ const LoggedUser = () => {
         </HiddenMenu>
       ) : (
         <>
-          <LinkLogin to={'/login'}>Login</LinkLogin>
+          <LinkLogin to={'/login'} onClick={() => {
+            storeCurrentUrl();
+          }}>Login</LinkLogin>
           <Separator>|</Separator>
           <LinkLogin to={'/register'}>Register</LinkLogin>
         </>

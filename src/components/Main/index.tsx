@@ -33,6 +33,7 @@ const Dashboard = () => {
 
             // Sets the user type
             setUserObjectData({
+              ...userObjectData,
               type_user: isAdmin ? 'admin' : 'user',
             });
           });

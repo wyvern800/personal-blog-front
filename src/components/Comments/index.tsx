@@ -275,15 +275,16 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
                 })
               ) : (
                 <NoComments>
-                  Nobody has commented yet, why don't you do it then?
+                  Nobody has commented yet{loggedUser ? ", why don't you do it then?" : "!"}
                 </NoComments>
               )}
             </Container>
-            <form
+
+            {loggedUser && <form
               onSubmit={(e: any) => {
                 e.preventDefault();
                 e.target.reset();
-                e.target.blur();
+                //e.target.blur();
               }}
             >
               <ChatBox
@@ -292,7 +293,7 @@ const Comments = ({ post, width, loaded, setResponse }: CommentsProps) => {
                 onKeyPress={sendComment}
                 disabled={sending}
               />
-            </form>
+            </form> }
           </Wrapper>
         )}{' '}
       </>
