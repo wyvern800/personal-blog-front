@@ -17,6 +17,9 @@ import PostsNew from './pages/AdminArea/Posts/New';
 import PostsEdit from './pages/AdminArea/Posts/Edit';
 import NotFound from './pages/NotFound';
 import ProfileOther from './pages/ProfileOther';
+import NewsList from './pages/AdminArea/News/List';
+import NewsNew from './pages/AdminArea/News/New';
+import NewsEdit from './pages/AdminArea/News/Edit';
 
 const PrivateRoute = ({ component: Component, ...rest }: any) => {
   const isAuthenticate = localStorage.getItem('token');
@@ -66,6 +69,9 @@ export const PrivateRoutes = ({ userObjectData }: any) => (
         <PrivateRoute exact path="/admin/posts" component={PostsList} />
         <PrivateRoute exact path="/admin/posts/new" component={PostsNew} />
         <PrivateRoute exact path="/admin/posts/edit/:postId" component={PostsEdit} />
+        <PrivateRoute exact path="/admin/newsletter" component={NewsList} />
+        <PrivateRoute exact path="/admin/newsletter/new" component={NewsNew} />
+        <PrivateRoute exact path="/admin/newsletter/edit/:newsId" component={NewsEdit} />
       </>
     )}
     <PrivateRoute exact path="/profile" component={Profile} />

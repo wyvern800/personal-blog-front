@@ -1,6 +1,6 @@
 import { AiOutlineHome } from 'react-icons/ai';
 import { FaBuffer } from 'react-icons/fa';
-import { BiExit } from 'react-icons/bi';
+import { BiExit, BiNews } from 'react-icons/bi';
 import { GoPerson } from 'react-icons/go';
 
 const navLinks: any = [
@@ -35,12 +35,18 @@ const navLinks: any = [
       },
       {
         id: 3,
+        icon: BiNews,
+        title: 'Newsletter',
+        linkTo: '/admin/newsletter',
+      },
+      {
+        id: 4,
         icon: GoPerson,
         title: 'My Profile',
         linkTo: '/profile',
       },
       {
-        id: 4,
+        id: 5,
         icon: BiExit,
         title: 'Logout',
         linkTo: '/logout',
