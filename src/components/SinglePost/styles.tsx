@@ -20,7 +20,7 @@ export const Main = styled.div`
 
 export const Body = styled.div`
   //border: 1px solid orange;
-  margin-top: 10px;
+  //margin-top: 10px;
   margin-bottom: 10px;
 
   background-color: rgba(124, 131, 128, 0.2);

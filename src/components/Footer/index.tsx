@@ -35,7 +35,7 @@ const Footer = () => {
       <Container>
         <Links>
           <FooterColumn>
-            <dt>Sobre o projeto</dt>
+            <dt>About the project</dt>
             <dd>
               <FooterLink href="https://github.com/wyvern800/personal-blog-front">
                 Repository (this)
@@ -55,8 +55,8 @@ const Footer = () => {
           </FooterColumn>
           <FooterColumn>
             <dt>Informations</dt>
-            <dd>Info 1</dd>
-            <dd>Info 2</dd>
+            <dd>Getting Started</dd>
+            <dd>Privacy Policy</dd>
           </FooterColumn>
           <FooterColumn>
             <dt>Important Links</dt>

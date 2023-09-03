@@ -142,6 +142,7 @@ export const Post = styled(Link)`
   h4 {
     margin: 0;
     padding: 0;
+    font-size: 1.1rem;
   }
 `;
 

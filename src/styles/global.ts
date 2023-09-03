@@ -82,3 +82,22 @@ export const Wrapper = styled.div`
 
   flex-direction: column;
 `;
+
+export const InnerModal = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
+  outline: none;
+
+  @media (max-width: 600px) {
+    gap: 0;
+  }
+`;

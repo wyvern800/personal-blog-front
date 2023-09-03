@@ -59,7 +59,11 @@ const getPostAuthor = async (authorId: number): Promise<any> => {
  * @param data The post data
  */
 const createPost = async (data: PostType): Promise<any> => {
-  const response = await api.post(`/posts`, data);
+  const response = await api.post(`/posts`, data, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  });
   return response;
 };
 
@@ -68,7 +72,11 @@ const createPost = async (data: PostType): Promise<any> => {
  * @param postId The post id we're deleting
  */
 const deletePost = async (postId: string): Promise<any> => {
-  const response = await api.delete(`/posts/${postId}`);
+  const response = await api.delete(`/posts/${postId}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  });
   return response;
 };
 
@@ -86,7 +94,11 @@ const getPostById = async (postId: string): Promise<any> => {
  * @param data The post data
  */
 const editPost = async (postId: string, data: PostType): Promise<any> => {
-  const response = await api.put(`/posts/${postId}`, data);
+  const response = await api.put(`/posts/${postId}`, data, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  });
   return response;
 };
 
@@ -162,7 +174,11 @@ const postComment = async (data: CommentType | undefined): Promise<any> => {
  * @param commentId The comment we are deleting
  */
 const deletePostComment = async (commentId: string): Promise<any> => {
-  const response = await api.delete(`/posts/comments/${commentId}`);
+  const response = await api.delete(`/posts/comments/${commentId}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  });
   return response;
 };
 

@@ -73,8 +73,8 @@ const About = () => {
         give back, just because we feel altruist enough. Also this is some kind
         of a portfolio so other companies can see what do we know and how we are
         evolving in our career. We hope you guys enjoy your stay here!
-        <h3>Are we open to work?</h3>
-        Yes, we are urging for a job.
+        <h3 style={{marginTop: '15px'}}>Are we open to work?</h3>
+        Yes, definitely.
       </Story>
 
       <Collaborators collaborators={collaborators} />
