@@ -3,6 +3,7 @@ import { PostType } from '../types/post';
 import { tokenKey } from './authService';
 import { CommentType } from '../types/comment';
 import { IDataParams } from '../types/base.params';
+import { NewsType } from '../types/news';
 
 /**
  * Gets a specific post by id or slug
@@ -182,6 +183,90 @@ const deletePostComment = async (commentId: string): Promise<any> => {
   return response;
 };
 
+/**
+ * Gets a list with all news
+ * @param {number} currentPage The current page
+ * @param {string} search The searching filter
+ */
+const getAllNews = async (currentPage: number, search: string) => {
+  let params: IDataParams = {
+    page: currentPage,
+    "per_page": 5,
+  }
+  // include search parameters if needed
+  if (search !== '') params.search = search;
+  const response = await api.get(`/news`, {
+    params
+  });
+  return response;
+};
+
+/**
+ * Gets a specific post by id or slug
+ * @param newsId The postId or slug
+ */
+const getNews = async (newsId: any) => {
+  const response = await api.get(`/news/${newsId}`);
+  return response;
+};
+
+/**
+ * Get a news by its id
+ * @param newsId The news id we're deleting
+ */
+const getNewsById = async (newsId: string): Promise<any> => {
+  const response = await api.get(`/news/${newsId}`);
+  return response;
+};
+
+/**
+ * Create a news for the author
+ * @param data The news data
+ */
+const createNews = async (data: NewsType): Promise<any> => {
+  const response = await api.post(`/news`, data, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  });
+  return response;
+};
+
+/**
+ * Edit a news by its id
+ * @param data The news data
+ */
+const editNews = async (newsId: string, data: NewsType): Promise<any> => {
+  const response = await api.put(`/news/${newsId}`, data, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  });
+  return response;
+};
+
+/**
+ * Delete a news by its id
+ * @param newsId The news id we're deleting
+ */
+const deleteNews = async (newsId: string): Promise<any> => {
+  const response = await api.delete(`/news/${newsId}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    }
+  });
+  return response;
+};
+
+/**
+ * Get last news by
+ * @param newsId The news id we're deleting
+ */
+const getLastNewsLetter = async (): Promise<any> => {
+  const response = await api.get(`/news/last`);
+  return response;
+};
+
 export {
   getAllPosts,
   getPost,
@@ -196,5 +281,12 @@ export {
   listAllPostComments,
   getUserById,
   postComment,
-  deletePostComment
+  deletePostComment,
+  getAllNews,
+  getNews,
+  getNewsById,
+  editNews,
+  createNews,
+  deleteNews,
+  getLastNewsLetter
 };
