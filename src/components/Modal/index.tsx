@@ -16,7 +16,7 @@ const Modal = ({
   return (
     <div>
       <ReactResponsiveModal
-        open={open.isModalOpen}
+        open={open?.isModalOpen ?? false}
         onClose={() => {
           setOpen(false);
           if (onCloseModal) {

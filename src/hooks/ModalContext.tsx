@@ -3,7 +3,7 @@ import { ModalStates } from '../types/modal.states';
 import { ModalProviderProps } from '../types/modal.provider';
 import { ContextType } from "../types/context";
 
-const ModalContext = createContext<any>({});
+const ModalContext = createContext<ContextType>({modalOpen: {}, setModalOpen: () => {}});
 
 export default function ModalProvider({ children }: ModalProviderProps) {
   const [modalOpen, setModalOpen] = useState<ModalStates>({

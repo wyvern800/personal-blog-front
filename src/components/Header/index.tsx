@@ -12,7 +12,12 @@ const Header = () => {
         <ul>
           {headerData.headerLinks.map((link: any) => (
             <li>
-              <NavLink key={link.id} exact to={link.linkTo} activeClassName="nav-link-active">
+              <NavLink
+                key={link.id}
+                exact
+                to={link.linkTo}
+                activeClassName="nav-link-active"
+              >
                 {link.title}
               </NavLink>
             </li>

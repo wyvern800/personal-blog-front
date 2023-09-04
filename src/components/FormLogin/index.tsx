@@ -15,12 +15,13 @@ import Link from '../Link';
 import { toast } from 'react-toastify';
 
 import { useUserObjectData } from '../../hooks/UserObjectData';
+import { LoginModalProps } from '../../types/login.modal';
 
-const FormLogin = () => {
+const FormLogin = ({ setLoginModalOpen, onModal }: LoginModalProps) => {
 
   const history = useHistory();
 
-  const { userObjectData, setUserObjectData } = useUserObjectData();
+  const { userObjectData } = useUserObjectData();
 
   const validationSchema = yup.object().shape({
     email: yup.string().required('E-mail/login inválido'),
@@ -51,9 +52,14 @@ const FormLogin = () => {
         localStorage.setItem('token', response?.data?.token);
 
         toast.success('You successfully logged in!')
+
+        // If there is login modal open, close
+        if (setLoginModalOpen) {
+          location.reload()
+          setLoginModalOpen({isModalOpen: false});
+        }
       })
       .catch((err) => {
-        console.log(err);
         setError('email', {
           type: 'manual',
           message:
@@ -76,6 +82,7 @@ const FormLogin = () => {
         register={register}
         error={errors.email?.message}
         setValueFormState={setValue}
+        width={onModal && '100%'}
       />
       <FormField
         name="password"
@@ -84,6 +91,7 @@ const FormLogin = () => {
         register={register}
         error={errors.password?.message}
         setValueFormState={setValue}
+        width={onModal && '100%'}
       />
       <Link text="Not registered yet? click to register" linkTo="/register"/>
       <Login type="submit">Login</Login>

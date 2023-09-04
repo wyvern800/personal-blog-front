@@ -6,6 +6,7 @@
   border-color: #4D4D4D;
   color: #808076;
   opacity: 0.8;
+  min-width: 350px;
 }
 
 .global svg {

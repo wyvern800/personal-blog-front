@@ -5,7 +5,7 @@ import { ModalStates } from './modal.states';
 export type ModalType = {
   title: string;
   center?: boolean | undefined;
-  open: ModalStates;
+  open: ModalStates | undefined;
   setOpen: Dispatch<SetStateAction<boolean>>;
   onCloseModal: () => void;
   classNames?: ModalProps.classNames;

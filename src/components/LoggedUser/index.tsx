@@ -14,6 +14,8 @@ import menuData from '../../constants/menuLinks';
 import { useUserObjectData } from '../../hooks/UserObjectData';
 
 import { useModal } from '../../hooks/ModalContext';
+import { ModalStates } from '../../types/modal.states';
+import LoginModal from '../LoginModal';
 
 const LoggedUser = () => {
   const history = useHistory();
@@ -24,6 +26,9 @@ const LoggedUser = () => {
 
   const { userObjectData, setUserObjectData } = useUserObjectData();
   const { modalOpen, setModalOpen } = useModal();
+  const [loginModalOpen, setLoginModalOpen] = useState<ModalStates>({
+    isModalOpen: false,
+  });
 
   // Get the logged user data
   useEffect(() => {
@@ -57,6 +62,7 @@ const LoggedUser = () => {
     setUserObjectData({ ...userObjectData, lastURL: location.pathname });
   };
 
+
   return (
     <Wrapper>
       {isUserLogged ? (
@@ -64,7 +70,6 @@ const LoggedUser = () => {
           <HiddenMenu
             open={showTooltip}
             onClick={() => setShowTooltip(!showTooltip)}
-            //onMouseOver={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
           >
             <Tooltip
@@ -73,7 +78,7 @@ const LoggedUser = () => {
               backgroundColor="#444444"
               show={showTooltip}
               arrowAlign="center"
-              position="bottom left"
+              position="bottom start"
               hoverColor="#fb0"
               moveRight="20px"
             >
@@ -82,13 +87,16 @@ const LoggedUser = () => {
                   {link.title}
                 </span>
               ))}
-              <span onClick={() => {
-                setModalOpen({
-                  ...modalOpen,
-                  isModalOpen: true,
-                });
-                console.log(modalOpen)
-              }}>Logout</span>
+              <span
+                onClick={() => {
+                  setModalOpen({
+                    ...modalOpen,
+                    isModalOpen: true,
+                  });
+                }}
+              >
+                Logout
+              </span>
             </Tooltip>
             Hello, <b>{loggedUser?.username}</b>
             <ArrowDropdown
@@ -100,16 +108,24 @@ const LoggedUser = () => {
         </>
       ) : (
         <>
-          <LinkLogin
-            to={'/login'}
-            onClick={() => {
-              storeCurrentUrl();
-            }}
-          >
-            Login
-          </LinkLogin>
-          <Separator>|</Separator>
-          <LinkLogin to={'/register'}>Register</LinkLogin>
+          <LoginModal
+            loginModalOpen={loginModalOpen}
+            setLoginModalOpen={setLoginModalOpen}
+          />
+          {!location?.pathname?.includes('/login') && (
+            <>
+              <span
+                onClick={() => {
+                  storeCurrentUrl();
+                  setLoginModalOpen({ isModalOpen: true });
+                }}
+              >
+                Login
+              </span>
+              <Separator>|</Separator>
+              <LinkLogin to={'/register'}>Register</LinkLogin>
+            </>
+          )}
         </>
       )}
     </Wrapper>

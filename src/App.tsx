@@ -14,8 +14,8 @@ function App() {
   return (
     <>
       <ModalProvider>
-        <LogoutModal />
         <UserObjectDataProvider>
+          <LogoutModal />
           <Header />
           <Wrapper>
             <Routes />

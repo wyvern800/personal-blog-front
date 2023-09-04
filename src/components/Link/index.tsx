@@ -9,11 +9,11 @@ type LinkProps = {
 
 const Link = ({ text, linkTo, newTab }: LinkProps) => {
   return newTab ? (
-    <StyledLink to={linkTo} target="_blank" rel="noopener noreferrer">
+    <StyledLink style={{marginTop: '15px', marginBottom: '15px'}} to={linkTo} target="_blank" rel="noopener noreferrer">
       {text}
     </StyledLink>
   ) : (
-    <StyledLink to={linkTo}>{text}</StyledLink>
+    <StyledLink style={{marginTop: '15px', marginBottom: '15px'}} to={linkTo}>{text}</StyledLink>
   );
 };
 
