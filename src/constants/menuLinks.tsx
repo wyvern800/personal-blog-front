@@ -9,11 +9,6 @@ const menuLinks = [
     title: 'Settings',
     linkTo: '/settings',
   },
-  {
-    id: 3,
-    title: 'Logout',
-    linkTo: '/logout',
-  },
 ]
 
 export default {

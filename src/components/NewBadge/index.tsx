@@ -4,10 +4,11 @@ import { addDays, isBefore } from 'date-fns';
 
 type NewBadgeProps = {
   createdAt?: Date;
+  title?: string;
 };
 
 const NewBadge = (props: NewBadgeProps) => {
-  const { createdAt } = props;
+  const { title, createdAt } = props;
 
   const [isNew, setIsNew] = useState<Boolean>(false);
 
@@ -19,7 +20,7 @@ const NewBadge = (props: NewBadgeProps) => {
     }
   }, []);
 
-  return isNew && <Badge>new</Badge>;
+  return isNew && <Badge title={title ? title : 'New Post'}>new</Badge>;
 };
 
 export default NewBadge;

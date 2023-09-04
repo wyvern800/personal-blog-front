@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useUserObjectData } from '../../hooks/UserObjectData';
+import { useModal } from '../../hooks/ModalContext';
 import { useHistory } from 'react-router-dom';
 
 import { PrivateRoutes } from '../../routes';
@@ -10,14 +11,15 @@ import { Container, Body, Footer, TextFooter } from './styles';
 import auth from '../../services/authService';
 
 import Navbar from '../Navbar';
-import { ModalStates } from '../../types/modal.states';
+
+import Modal from '../Modal';
+import Button from '../Button';
+
+import { InnerModal, Buttons } from '../../styles/global';
 
 const Dashboard = () => {
+  const { modalOpen, setModalOpen } = useModal();
   const { userObjectData, setUserObjectData } = useUserObjectData();
-
-  const [logoutModalOpen, setLogoutModalOpen] = useState<ModalStates>({
-    isModalOpen: false,
-  });
 
   const history = useHistory();
 
@@ -39,7 +41,6 @@ const Dashboard = () => {
           });
       }
     }
-
     get();
   }, [history, userObjectData, setUserObjectData]);
 

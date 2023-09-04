@@ -7,19 +7,24 @@ import GlobalStyle from './styles/global';
 import { Wrapper } from './styles/global';
 import UserObjectDataProvider from './hooks/UserObjectData';
 import Toast from './components/Toast';
+import ModalProvider from './hooks/ModalContext';
+import LogoutModal from './components/LogoutModal';
 
 function App() {
   return (
     <>
-      <UserObjectDataProvider>
-        <Header />
-        <Wrapper>
-          <Routes />
-          <GlobalStyle />
-          <Toast />
-        </Wrapper>
-        <Footer />
-      </UserObjectDataProvider>
+      <ModalProvider>
+        <LogoutModal />
+        <UserObjectDataProvider>
+          <Header />
+          <Wrapper>
+            <Routes />
+            <GlobalStyle />
+            <Toast />
+          </Wrapper>
+          <Footer />
+        </UserObjectDataProvider>
+      </ModalProvider>
     </>
   );
 }

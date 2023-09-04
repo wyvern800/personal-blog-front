@@ -47,7 +47,7 @@ const FormLogin = () => {
       .login(data?.email, data?.password)
       .then((response) => {
 
-        history.push(userObjectData?.lastURL ? userObjectData?.lastURL : '/');
+        history.push(userObjectData?.lastURL ? (userObjectData?.lastURL === '/login' ? '/' : userObjectData?.lastURL) : '/');
         localStorage.setItem('token', response?.data?.token);
 
         toast.success('You successfully logged in!')

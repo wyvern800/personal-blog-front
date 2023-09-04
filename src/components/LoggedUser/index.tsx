@@ -3,10 +3,17 @@ import { User as UserType } from '../../types/user';
 import auth from '../../services/authService';
 import Tooltip from 'react-power-tooltip';
 import { useLocation, useHistory } from 'react-router-dom';
-import { Wrapper, LinkLogin, ArrowDropdown, HiddenMenu, Separator } from './styles';
+import {
+  Wrapper,
+  LinkLogin,
+  ArrowDropdown,
+  HiddenMenu,
+  Separator,
+} from './styles';
 import menuData from '../../constants/menuLinks';
 import { useUserObjectData } from '../../hooks/UserObjectData';
 
+import { useModal } from '../../hooks/ModalContext';
 
 const LoggedUser = () => {
   const history = useHistory();
@@ -16,6 +23,7 @@ const LoggedUser = () => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const { userObjectData, setUserObjectData } = useUserObjectData();
+  const { modalOpen, setModalOpen } = useModal();
 
   // Get the logged user data
   useEffect(() => {
@@ -46,46 +54,60 @@ const LoggedUser = () => {
    * back to the last page as soon as the login succeed ;)
    */
   const storeCurrentUrl = () => {
-    setUserObjectData({...userObjectData, lastURL: location.pathname});
-  }
+    setUserObjectData({ ...userObjectData, lastURL: location.pathname });
+  };
 
   return (
     <Wrapper>
       {isUserLogged ? (
-        <HiddenMenu
-          open={showTooltip}
-          onClick={() => setShowTooltip(!showTooltip)}
-          //onMouseOver={() => setShowTooltip(true)}
-          onMouseLeave={() => setShowTooltip(false)}
-        >
-          <Tooltip
-            color="white"
-            hoverBackground="#1f1f1e"
-            backgroundColor="#444444"
-            show={showTooltip}
-            arrowAlign="center"
-            position="bottom left"
-            hoverColor="#fb0"
-            moveRight="20px"
-          >
-            {menuData.menuLinks.map((link: any) => (
-              <span key={link.id} onClick={() => history.push(link.linkTo)}>
-                {link.title}
-              </span>
-            ))}
-          </Tooltip>
-          Hello, <b>{loggedUser?.username}</b>
-          <ArrowDropdown
-            className={'dropdown-arow'}
+        <>
+          <HiddenMenu
             open={showTooltip}
-            size={'28px'}
-          />
-        </HiddenMenu>
+            onClick={() => setShowTooltip(!showTooltip)}
+            //onMouseOver={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+          >
+            <Tooltip
+              color="white"
+              hoverBackground="#1f1f1e"
+              backgroundColor="#444444"
+              show={showTooltip}
+              arrowAlign="center"
+              position="bottom left"
+              hoverColor="#fb0"
+              moveRight="20px"
+            >
+              {menuData.menuLinks.map((link: any) => (
+                <span key={link.id} onClick={() => history.push(link.linkTo)}>
+                  {link.title}
+                </span>
+              ))}
+              <span onClick={() => {
+                setModalOpen({
+                  ...modalOpen,
+                  isModalOpen: true,
+                });
+                console.log(modalOpen)
+              }}>Logout</span>
+            </Tooltip>
+            Hello, <b>{loggedUser?.username}</b>
+            <ArrowDropdown
+              className={'dropdown-arow'}
+              open={showTooltip}
+              size={'28px'}
+            />
+          </HiddenMenu>
+        </>
       ) : (
         <>
-          <LinkLogin to={'/login'} onClick={() => {
-            storeCurrentUrl();
-          }}>Login</LinkLogin>
+          <LinkLogin
+            to={'/login'}
+            onClick={() => {
+              storeCurrentUrl();
+            }}
+          >
+            Login
+          </LinkLogin>
           <Separator>|</Separator>
           <LinkLogin to={'/register'}>Register</LinkLogin>
         </>

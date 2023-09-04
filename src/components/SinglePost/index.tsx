@@ -10,6 +10,9 @@ import {
   Author,
   ReadMore,
   EditThisPost,
+  PostTitle,
+  HeaderWrapper,
+  EditPostWrapper,
 } from './styles';
 
 import Placeholder from '../../components/Placeholder';
@@ -45,6 +48,7 @@ const SinglePost = (props: PostProps) => {
   const [author, setAuthor] = useState<User>();
   const [canEditPost, setCanEditPost] = useState<boolean>(false);
   const history = useHistory();
+  const [hoveringEditIcon, setHoveringEditIcon] = useState<boolean>(false);
 
   Prism.highlightAll();
 
@@ -99,20 +103,30 @@ const SinglePost = (props: PostProps) => {
       <Body style={{ width: width }}>
         {loaded ? (
           <>
-            <Header>
-              <LinkToPost to={`/posts/${post?.slug}`}>
-                {post?.title}{' '}
-              </LinkToPost>
-              <NewBadge createdAt={post?.created_at} />
-              {canEditPost && (
-                <EditThisPost
-                  onClick={() => {
-                    if (!canEditPost) return;
-                    history.push(`/admin/posts/edit/${post?.slug}`);
-                  }}
-                />
-              )}
-            </Header>
+            <HeaderWrapper>
+              <Header hoveringEditIcon={hoveringEditIcon}>
+                {location.pathname.includes(post?.slug) ? (
+                  <PostTitle>{post?.title} </PostTitle>
+                ) : (
+                  <LinkToPost to={`/posts/${post?.slug}`}>
+                    {post?.title}{' '}
+                  </LinkToPost>
+                )}
+                <NewBadge createdAt={post?.created_at} />
+              </Header>
+              <EditPostWrapper hoveringEditIcon={hoveringEditIcon}>
+                {canEditPost && (
+                  <EditThisPost
+                    onMouseEnter={() => setHoveringEditIcon(true)}
+                    onMouseLeave={() => setHoveringEditIcon(false)}
+                    onClick={() => {
+                      if (!canEditPost) return;
+                      history.push(`/admin/posts/edit/${post?.slug}`);
+                    }}
+                  />
+                )}
+              </EditPostWrapper>
+            </HeaderWrapper>
             <Content className="canSelect" firstSeparated={firstSeparated}>
               {post !== undefined && parse(post?.content)}{' '}
             </Content>
