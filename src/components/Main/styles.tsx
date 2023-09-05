@@ -12,9 +12,9 @@ export const Container = styled.div`
 
 export const Body = styled.div`
   width: 100%;
-  margin: 0.5%;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  //margin: 0.5%;
+  //margin-top: 10px;
+  //margin-bottom: 10px;
 `;
 
 export const Footer = styled.div``;

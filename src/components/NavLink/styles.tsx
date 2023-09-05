@@ -8,7 +8,7 @@ export const MenuLink = styled(NavLink)`
   color: gray;
   width: 100%;
   align-items: center;
-  height: 10%;
+  height: 30px;
   align-items: center;
   background-color: rgba(23, 23, 23, 0.63);
   font-size: 1.2rem;
@@ -44,10 +44,18 @@ export const MenuLink = styled(NavLink)`
     margin-top: 0.5%;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 1024px) {
+    font-size: 1.8vw;
+  }
+
+  @media (max-width: 800px) {
     &&:not(:first-child) {
       margin: 0;
       margin-left: 0.5%;
     }
+  }
+
+  @media (max-width: 600px) {
+    font-size: 4vw;
   }
 `;
